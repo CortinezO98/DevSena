@@ -17,13 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from principal.views import *
+from usuario.views import *
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', IndexView),
-    path('interface2', Interface2),
+    path('', IndexView, name="index"),
+    path('panel', PanelView, name="panel"),
     path('formajob', Formajob),
     path('gesples', Gesples),
     path('cercom', Cercom),
     path('setroc', Setroc),
     path('enrural', Enrural),
+    path("accounts/login/", Login, name="login"),
+    path('logout/', Logout, name='logout'),
 ]

@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block header %}{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col offset-lg-4 col-lg-4">
+
+        <div class="m-4 text-center animate__animated animate__fadeInDown">
+            <img src="{% static 'img/logoSena.png' %}" alt="logo" style="width: 40%;">
+        </div>
+
+        <div class="card my-4 animate__animated animate__fadeInUp">
+            <div class="card-header text-center">
+                Inicio de sesión
+            </div>
+            <div class="card-body shadow">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-control" name="username" id="username" autocomplete="off" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="text-center py-2">
+                        <button type="submit" class="btn btn-success">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>        
+{%endblock%}
+
+{% block footer %}{% endblock %}

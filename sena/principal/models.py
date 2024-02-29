@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class ClickLog(models.Model):
+    boton = models.CharField(max_length=100)
+    usuario = models.CharField(max_length=100)
+    fecha = models.DateTimeField()
