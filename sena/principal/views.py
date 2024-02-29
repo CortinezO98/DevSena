@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 #from django.http import HttpResponse
 from django.contrib import messages
 from datetime import datetime
+from .models import *
 
 # Pagina principal
 def IndexView(request):
@@ -31,4 +33,14 @@ def Setroc(request):
 @login_required
 def Enrural(request):
     return render(request, "enrural.html")
+
+def crearRegistroAccion(request, accion):
+    usuario = request.user if request.user else None
+    accionRegistro = AccionRegistro(
+        accion = accion,
+        ip = request.META.get('REMOTE_ADDR'),
+        fecha = datetime.now(),
+        usuario = usuario
+    )
+    accionRegistro.save()
 

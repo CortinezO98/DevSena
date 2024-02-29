@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from principal.views import crearRegistroAccion
 
 def Login(request):
     if request.user.is_authenticated:
@@ -11,6 +12,7 @@ def Login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            crearRegistroAccion(request, "Inicio de sesión")
             if request.GET.get('next'):
                 return redirect(request.GET.get('next'))
             else:

@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class ClickLog(models.Model):
-    boton = models.CharField(max_length=100)
-    usuario = models.CharField(max_length=100)
+class AccionRegistro(models.Model):
+    accion = models.CharField(max_length=100)
+    ip = models.CharField(max_length=100)
     fecha = models.DateTimeField()
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
