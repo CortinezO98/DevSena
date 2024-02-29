@@ -34,6 +34,10 @@ def Setroc(request):
 def Enrural(request):
     return render(request, "enrural.html")
 
+@login_required
+def Califica(request):
+    return render(request, "califica.html")
+
 def crearRegistroAccion(request, accion):
     usuario = request.user if request.user else None
     accionRegistro = AccionRegistro(
@@ -41,6 +45,7 @@ def crearRegistroAccion(request, accion):
         ip = request.META.get('REMOTE_ADDR'),
         fecha = datetime.now(),
         usuario = usuario
+        
     )
     accionRegistro.save()
 

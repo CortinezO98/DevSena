@@ -28,6 +28,7 @@ urlpatterns = [
     path('cercom', Cercom),
     path('setroc', Setroc),
     path('enrural', Enrural),
+    path('califica', Califica),
     path("accounts/login/", Login, name="login"),
     path('logout/', Logout, name='logout'),
 ]
