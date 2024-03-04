@@ -3,18 +3,110 @@
 
 {% block main %}
 <div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Formación para el trabajo
-            </a>
-            <a href="https://sena.territorio.la/cms/index.php/titulada" class="list-group-item list-group-item-action " target="_blank">Formación Titulada</a>
-            <a href="https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx" class="list-group-item list-group-item-action" target="_blank">Articulación Con La Media Tecnica</a>
-            <a href="https://www.sena.edu.co/es-co/Noticias/Documents/Formacion_Dual_23122020.pdf" class="list-group-item list-group-item-action" target="_blank">Formación Dual</a>
-            <a href="https://ejecuciondelaformacion.sena.edu.co/cursos-cortos" class="list-group-item list-group-item-action" target="_blank">Complementaria</a>
-            <a href="https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx" class="list-group-item list-group-item-action" target="_blank">Tecnoacademias</a>
-            <a href="https://www.sena.edu.co/es-co/formacion/Paginas/bilinguismo.aspx" class="list-group-item list-group-item-action" target="_blank">Bilingüismo</a>
-            <a href="https://www.sena.edu.co/es-co/comunidades/aprendices/Paginas/bienestarAprendiz.aspx" class="list-group-item list-group-item-action" target="_blank">Bienestar Al Aprendiz</a>
+    <div class="offset-lg-2 col-lg-8">
+        <div class="card shadow">
+            <div class="card-body px-4">
+                <h5 class="text-center fw-bold">¡Tu opinion es importante!</h5>
+                <h6 class="text-start text-justify">Evalúa nuestra atención frente al servicio o trámite solicitado y califica en una escala de 1 a 5, donde 5 es muy satisfecho y 1 es muy insatisfecho:</h6>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="py-3">
+                        <label for="dominioPersonaAtendio">
+                            <strong>1. ¿Como calificas el dominio del tema de la persona que te atendió?</strong>
+                        </label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio1" value="1" required>
+                            <label class="form-check-label" for="dominioPersonaAtendio1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio2" value="2">
+                            <label class="form-check-label" for="dominioPersonaAtendio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio3" value="3">
+                            <label class="form-check-label" for="dominioPersonaAtendio3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio4" value="4">
+                            <label class="form-check-label" for="dominioPersonaAtendio4">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio5" value="5">
+                            <label class="form-check-label" for="dominioPersonaAtendio5">5</label>
+                        </div>
+                    </div>
+                    <div class="py-3">
+                        <label for="satisfaccionServicioRecibido">
+                            <strong>2. ¿Que tan satisfecho/a te siente con el servicio recibido?</strong>
+                        </label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido1" value="1" required>
+                            <label class="form-check-label" for="satisfaccionServicioRecibido1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido2" value="2">
+                            <label class="form-check-label" for="satisfaccionServicioRecibido2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido3" value="3">
+                            <label class="form-check-label" for="satisfaccionServicioRecibido3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido4" value="4">
+                            <label class="form-check-label" for="satisfaccionServicioRecibido4">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido  " id="satisfaccionServicioRecibido5" value="5">
+                            <label class="form-check-label" for="satisfaccionServicioRecibido5">5</label>
+                        </div>
+                    </div>    
+                    <div class="py-3">
+                        <label for="recomendacionCanalAtencion">
+                            <strong>3. ¿Recomendarias este canal de atención a algun familiar, conocido o amigo?</strong>
+                        </label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion1" value="1" required>
+                            <label class="form-check-label" for="recomendacionCanalAtencion1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion2" value="2">
+                            <label class="form-check-label" for="recomendacionCanalAtencion2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion3" value="3">
+                            <label class="form-check-label" for="recomendacionCanalAtencion3">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion4" value="4">
+                            <label class="form-check-label" for="recomendacionCanalAtencion4">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion5" value="5">
+                            <label class="form-check-label" for="recomendacionCanalAtencion5">5</label>
+                        </div>
+                    </div>
+                    <div class="py-3">
+                        <label for="solucionSolicitud">
+                            <strong>4. ¿Le dimos solución a tu solicitud?</strong>
+                        </label>
+                        <br>
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="radio" name="solucionSolicitud" id="solucionSolicitud1" value="True" required>
+                            <label class="form-check-label" for="solucionSolicitud1">Si</label>
+                        </div>
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="radio" name="solucionSolicitud" id="solucionSolicitud2" value="False">
+                            <label class="form-check-label" for="solucionSolicitud2">No</label>
+                        </div>                
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Finalizar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

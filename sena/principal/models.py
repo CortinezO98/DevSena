@@ -19,3 +19,13 @@ class RegistroAccion(models.Model):
         verbose_name_plural = 'Registro de acciones'
     def __str__(self):
         return "{} - {} - {} - {}".format(self.id, self.accion.nombre, self.ip, self.usuario, self.fecha)
+    
+class Encuesta(models.Model):
+    dominioPersonaAtendio = models.IntegerField()
+    satisfaccionServicioRecibido = models.IntegerField()
+    recomendacionCanalAtencion = models.IntegerField()
+    solucionSolicitud = models.BooleanField()
+    ip = models.CharField(max_length=100)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    
+    

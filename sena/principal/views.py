@@ -41,6 +41,18 @@ def Enrural(request):
 
 @login_required
 def Califica(request):
+    if request.method == 'POST':
+        encuesta = Encuesta(
+            dominioPersonaAtendio = int(request.POST["dominioPersonaAtendio"]),
+            satisfaccionServicioRecibido = int(request.POST["satisfaccionServicioRecibido"]),
+            recomendacionCanalAtencion = int(request.POST["recomendacionCanalAtencion"]),
+            solucionSolicitud = eval(request.POST["solucionSolicitud"]),
+            ip = request.META.get('REMOTE_ADDR'),
+            usuario = request.user if request.user else None
+        )
+        encuesta.save()
+        messages.success(request, 'La encuesta de satisfacción se ha guardado correctamente.')
+        return redirect('califica')
     return render(request, "califica.html")
 
 @login_required
