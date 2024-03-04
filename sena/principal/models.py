@@ -1,8 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class AccionRegistro(models.Model):
-    accion = models.CharField(max_length=100)
+class Accion(models.Model):
+    nombre = models.CharField(max_length=150)
+    class Meta:
+        verbose_name = 'Acción'
+        verbose_name_plural = 'Acciones'
+    def __str__(self):
+        return "{}".format(self.nombre)
+
+class RegistroAccion(models.Model):
+    accion = models.ForeignKey(Accion, on_delete=models.CASCADE)
     ip = models.CharField(max_length=100)
     fecha = models.DateTimeField()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    class Meta:
+        verbose_name = 'Registro de acción'
+        verbose_name_plural = 'Registro de acciones'
+    def __str__(self):
+        return "{} - {} - {} - {}".format(self.id, self.accion.nombre, self.ip, self.usuario, self.fecha)

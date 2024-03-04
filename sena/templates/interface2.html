@@ -4,7 +4,7 @@
 {% block main %}
     <div class="row animate__animated animate__fadeIn">
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senawebTs?token=727066304B0F6D1C8BA8A82A5483A073" class="a-none" target="_blank">
+            <a href="{% url 'abrirUrl' 'Lenguaje de señas' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senawebTs?token=727066304B0F6D1C8BA8A82A5483A073' %}" class="a-none" target="_blank">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-hands-asl-interpreting fa-5x text-secondary"></i>
@@ -17,7 +17,7 @@
         </div>
         
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="formajob" class="a-none" target="_blank">
+            <a href="{% url 'formajob' %}" class="a-none">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-graduation-cap fa-5x text-secondary"></i>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="gesples" class="a-none" target="_blank">
+            <a href="{% url 'gesples' %}" class="a-none">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-business-time fa-5x text-secondary"></i>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="cercom" class="a-none" target="_blank">
+            <a href="{% url 'cercom' %}" class="a-none">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-file-circle-check fa-5x text-secondary"></i>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="setroc" class="a-none" target="_blank">
+            <a href="{% url 'setroc' %}" class="a-none">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-microchip fa-5x text-secondary"></i>
@@ -70,7 +70,7 @@
 
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx" class="a-none" target="_blank">
+            <a href="{% url 'abrirUrl' 'CampeSENA' 'https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx' %}" class="a-none" target="_blank">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         
@@ -84,7 +84,7 @@
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="enrural" class="a-none" target="_blank">
+            <a href="{% url 'enrural' %}" class="a-none">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-regular fa-lightbulb fa-5x text-secondary"></i>
@@ -97,7 +97,7 @@
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="https://www.sena.edu.co/es-co/comunidades/aprendices/Paginas/bienestarAprendiz.aspx" class="a-none" target="_blank">
+            <a href="{% url 'abrirUrl' 'Bienestar al aprendiz' 'https://www.sena.edu.co/es-co/comunidades/aprendices/Paginas/bienestarAprendiz.aspx' %}" class="a-none" target="_blank">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-heart-pulse fa-5x text-secondary"></i>
@@ -111,7 +111,7 @@
 
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="https://www.sena.edu.co/es-co/ciudadano/Paginas/servicios_entidad.aspx" class="a-none" target="_blank">
+            <a href="{% url 'abrirUrl' 'Otros servicios' 'https://www.sena.edu.co/es-co/ciudadano/Paginas/servicios_entidad.aspx' %}" class="a-none" target="_blank">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-hand-holding-heart fa-5x text-secondary"></i>
@@ -124,7 +124,7 @@
         </div>
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="https://www.sena.edu.co/es-co/Empresarios/Paginas/default.aspx" class="a-none" target="_blank">
+            <a href="{% url 'abrirUrl' 'Empresarios' 'https://www.sena.edu.co/es-co/Empresarios/Paginas/default.aspx' %}" class="a-none" target="_blank">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-users fa-5x text-secondary"></i>
@@ -138,7 +138,7 @@
 
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="https://sciudadanos.sena.edu.co/SolicitudIndex.aspx" class="a-none" target="_blank">
+            <a href="{% url 'abrirUrl' 'PQRS' 'https://sciudadanos.sena.edu.co/SolicitudIndex.aspx' %}" class="a-none" target="_blank">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-headset fa-5x text-secondary"></i>
@@ -152,7 +152,7 @@
 
 
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="https://www.sena.edu.co/es-co/Noticias/Paginas/default.aspx" class="a-none" target="_blank">
+            <a href="{% url 'abrirUrl' 'Sala de Prensa' 'https://www.sena.edu.co/es-co/Noticias/Paginas/default.aspx' %}" class="a-none" target="_blank">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-regular fa-comments fa-5x text-secondary"></i>

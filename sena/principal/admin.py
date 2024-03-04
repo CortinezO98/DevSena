@@ -1,4 +1,5 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(AccionRegistro)
+admin.site.register(Accion)
+admin.site.register(RegistroAccion)
