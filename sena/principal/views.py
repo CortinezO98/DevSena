@@ -40,6 +40,31 @@ def Enrural(request):
     return render(request, "enrural.html")
 
 @login_required
+def CAMPESENA(request):
+    crearRegistroAccion(request, "CAMPESENA")
+    return render(request, "campeSENA.html")
+
+@login_required
+def BIENESTAR(request):
+    crearRegistroAccion(request, "BIENESTAR AL APRENDIZ")
+    return render(request, "Bienestar.html")
+
+@login_required
+def SERVICIOS(request):
+    crearRegistroAccion(request, "OTROS SERVICIOS")
+    return render(request, "Servicios.html")
+
+@login_required
+def EMPRESARIOS(request):
+    crearRegistroAccion(request, "EMPRESARIOS")
+    return render(request, "Empresarios.html")
+
+@login_required
+def PQR(request):
+    crearRegistroAccion(request, "PQRS")
+    return render(request, "Pqr.html")
+
+@login_required
 def Califica(request):
     if request.method == 'POST':
         encuesta = Encuesta(
