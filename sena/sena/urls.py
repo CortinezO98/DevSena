@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from principal.views import *
 from usuario.views import *
 
@@ -38,4 +40,4 @@ urlpatterns = [
     path('abrirUrl/<str:accion>/<path:url>', AbrirUrl, name="abrirUrl"),
     path("accounts/login/", Login, name="login"),
     path('logout/', Logout, name='logout'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
