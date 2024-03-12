@@ -8,10 +8,12 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
             Certificación de Competencias
             </a>
-            <a href="https://dsnft.sena.edu.co/Candidatos/servlet/com.senaws.hlogin" class="list-group-item list-group-item-action " target="_blank">Evaluación y Certificación de Competencias</a>
-            <a href="https://competencias.sena.edu.co/page?3,plantilla,consulta-mesas-sectoriales,O,es,0," class="list-group-item list-group-item-action" target="_blank">Mesas Sectoriales</a>
-            <a href="https://competencias.sena.edu.co/" class="list-group-item list-group-item-action" target="_blank">Normalización de Competencias Laborales</a>
+            <a href="{% url 'abrirUrl' 'Evaluación y Certificación de Competencias' 'https://dsnft.sena.edu.co/Candidatos/servlet/com.senaws.hlogin' %}" class="list-group-item list-group-item-action " target="_blank">Evaluación y Certificación de Competencias</a>
+            <a href="{% url 'abrirUrl' 'Mesas Sectoriales' 'https://competencias.sena.edu.co/page?3,plantilla,consulta-mesas-sectoriales,O,es,0,' %}" class="list-group-item list-group-item-action" target="_blank">Mesas Sectoriales</a>
+            <a href="{% url 'abrirUrl' 'Normalización de Competencias Laborales' 'https://competencias.sena.edu.co/' %}" class="list-group-item list-group-item-action" target="_blank">Normalización de Competencias Laborales</a>
         </div>
     </div>
+    {% include 'base/components/botonAtras.html' %}
 </div>        
 {%endblock%}
+

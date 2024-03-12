@@ -65,6 +65,11 @@ def PQR(request):
     return render(request, "Pqr.html")
 
 @login_required
+def CATENCION(request):
+    crearRegistroAccion(request, "Canales de Atencion")
+    return render(request, "Catencion.html")
+
+@login_required
 def Califica(request):
     if request.method == 'POST':
         encuesta = Encuesta(

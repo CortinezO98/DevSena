@@ -8,11 +8,14 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
             Empresarios
             </a>
-            <a href="https://www.sena.edu.co/es-co/Empresarios/Paginas/default.aspx" class="list-group-item list-group-item-action " target="_blank">Empresarios</a>
-            <a href="https://autogestionprd.powerappsportals.com/SignIn?ReturnUrl=%2F" class="list-group-item list-group-item-action" target="_blank">Portal Autogestión</a>
-            <a href="https://certificadoempresarios.sena.edu.co/index.php/auth/login#no" class="list-group-item list-group-item-action" target="_blank">Certificados Aportes Y Fic</a>
-            <a href="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx" class="list-group-item list-group-item-action" target="_blank">Facilidad de Pago</a>
+            <a href="{% url 'abrirUrl' 'Empresarios' 'https://www.sena.edu.co/es-co/Empresarios/Paginas/default.aspx' %}" class="list-group-item list-group-item-action " target="_blank">Empresarios</a>
+            <a href="{% url 'abrirUrl' 'Portal Autogestión' 'https://autogestionprd.powerappsportals.com/SignIn?ReturnUrl=%2F' %}" class="list-group-item list-group-item-action" target="_blank">Portal Autogestión</a>
+            <a href="{% url 'abrirUrl' 'Certificados Aportes Y Fic' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no' %}" class="list-group-item list-group-item-action" target="_blank">Certificados Aportes Y Fic</a>
+            <a href="{% url 'abrirUrl' 'Facilidad de Pago' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no' %}" class="list-group-item list-group-item-action" target="_blank">Facilidad de Pago</a>
         </div>
     </div>
+    {% include 'base/components/botonAtras.html' %}
 </div>        
 {%endblock%}
+
+

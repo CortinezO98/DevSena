@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="row justify-content-center animate__animated animate__fadeIn ">
+        <div class="col-sm-6 col-md-4 col-lg-2">
+            <a href="{% url 'abrirUrl' 'Llamada de voz' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senawebTs?token=727066304B0F6D1C8BA8A82A5483A073' %}" class="a-none" target="_blank">
+                <div class="card border-success card-link">
+                    <div class="card-body rounded-top text-center py-4">
+                        <i class="fa-solid fa-phone-volume fa-5x text-secondary"></i>
+                    </div>
+                    <div class="card-footer text-bg-success">
+                        Llamada de voz
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-sm-6 col-md-4 col-lg-2">
+            <a href="{% url 'abrirUrl' 'Whatsapp' 'https://api.whatsapp.com/send/?phone=573168760255&text&app_absent=0' %}" class="a-none" target="_blank">
+                <div class="card border-success card-link">
+                    <div class="card-body rounded-top text-center py-4">
+                        <i class="fa-solid fab fa-whatsapp fa-5x text-secondary"></i>
+                    </div>
+                    <div class="card-footer text-bg-success">
+                        Whatsapp
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-2">
+            <a href="{% url 'abrirUrl' 'Te contactamos' 'https://ws-boca.inconcertcc.com/sena-callbackv2/static/' %}" class="a-none" target="_blank">
+                <div class="card border-success card-link">
+                    <div class="card-body rounded-top text-center py-4">
+                        <i class="fa-solid fa-headset fa-5x text-secondary"></i>
+                    </div>
+                    <div class="card-footer text-bg-success">
+                        Te contactamos
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    {% include 'base/components/botonAtras.html' %}
+
+{% endblock %}
+
+

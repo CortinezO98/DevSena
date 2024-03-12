@@ -8,9 +8,12 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
             Servicios
             </a>
-            <a href="https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx" class="list-group-item list-group-item-action " target="_blank">Aulas Moviles</a>
-            <a href="http://sennova.senaedu.edu.co/" class="list-group-item list-group-item-action" target="_blank">Sennova</a>
+            <a href="{% url 'abrirUrl' 'Aulas Moviles' 'https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx' %}" class="list-group-item list-group-item-action " target="_blank">Aulas Moviles</a>
+            <a href="{% url 'abrirUrl' 'Sennova' 'http://sennova.senaedu.edu.co/' %}" class="list-group-item list-group-item-action" target="_blank">Sennova</a>
         </div>
     </div>
+    {% include 'base/components/botonAtras.html' %}
 </div>        
 {%endblock%}
+
+

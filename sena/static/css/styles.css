@@ -28,6 +28,17 @@ body {
     --bs-btn-disabled-border-color: #39a900 !important;
 }
 
+.btn-outline-success {
+    --bs-btn-color: #39a900;
+    --bs-btn-border-color: #39a900;
+    --bs-btn-hover-bg: #39a900;
+    --bs-btn-hover-border-color: #39a900;
+    --bs-btn-active-bg: #39a900;
+    --bs-btn-active-border-color: #39a900;
+    --bs-btn-disabled-color: #39a900;
+    --bs-btn-disabled-border-color: #39a900;
+}
+
 .text-bg-success {
     background-color: #39a900 !important;
 }
@@ -164,3 +175,4 @@ section.links {
 .footer-list-links > p > a {
     text-decoration: none;
 }
+

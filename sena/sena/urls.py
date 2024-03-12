@@ -34,6 +34,7 @@ urlpatterns = [
     path('Servicios', SERVICIOS, name="Servicios"),
     path('Empresarios', EMPRESARIOS, name="Empresarios"),
     path('Pqr', PQR, name="Pqr"),
+    path('Catencion', CATENCION, name="Catencion"),
     path('abrirUrl/<str:accion>/<path:url>', AbrirUrl, name="abrirUrl"),
     path("accounts/login/", Login, name="login"),
     path('logout/', Logout, name='logout'),
