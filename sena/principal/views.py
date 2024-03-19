@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.contrib import messages
 from datetime import datetime
 from .models import *
@@ -111,7 +111,8 @@ def Califica(request):
 @login_required
 def AbrirUrl(request, accion, url):
     crearRegistroAccion(request, accion)
-    return redirect(url)
+    #return redirect(url)
+    return HttpResponsePermanentRedirect(url)
 
 def crearRegistroAccion(request, accion:str):
     registroAccion = RegistroAccion(
