@@ -5,6 +5,9 @@ from django.http import HttpResponse
 from django.contrib import messages
 from datetime import datetime
 from .models import *
+from .forms import RegistroFormulario
+
+
 
 # Pagina principal
 def IndexView(request):
@@ -68,6 +71,26 @@ def PQR(request):
 def CATENCION(request):
     crearRegistroAccion(request, "Canales de Atencion")
     return render(request, "Catencion.html")
+
+
+@login_required
+def REGISTROUSER(request):
+    if request.method == 'POST':
+        form = RegistroFormulario(request.POST)
+        if form.is_valid():
+            registro = form.save(commit=False)
+            registro.ip_dispositivo = request.META.get('REMOTE_ADDR')
+            registro.save()
+            messages.success(request, 'Registro exitoso.')
+            return redirect('panel')  # Reemplaza 'panel' con el nombre de la URL de tu página de éxito
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"Error en el campo {field}: {error}")
+    else:
+        form = RegistroFormulario()
+        
+    return render(request, 'RegistroUser.html', {'form': form})
 
 @login_required
 def Califica(request):

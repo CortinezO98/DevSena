@@ -16,7 +16,7 @@ def Login(request):
             if request.GET.get('next'):
                 return redirect(request.GET.get('next'))
             else:
-                return redirect('panel')
+                return redirect('index')
         else:
             messages.error(request, 'El usuario o la contraseña son incorrectos.')
             return redirect('login')

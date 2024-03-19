@@ -176,3 +176,7 @@ section.links {
     text-decoration: none;
 }
 
+.custom-header {
+    background-color: #39a900;
+    color: white;
+}

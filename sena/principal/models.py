@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Accion(models.Model):
     nombre = models.CharField(max_length=150)
     class Meta:
@@ -28,4 +29,14 @@ class Encuesta(models.Model):
     ip = models.CharField(max_length=100)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     
-    
+class RegistroDatosUser(models.Model):
+    tipo_contacto = models.CharField(max_length=20)
+    tipo_documento = models.CharField(max_length=50)
+    numero_documento = models.CharField(max_length=10)
+    nombres = models.CharField(max_length=20)
+    apellidos = models.CharField(max_length=20)
+    sede_contacto = models.CharField(max_length=100)
+    ip_dispositivo = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.nombres} {self.apellidos}'
