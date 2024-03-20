@@ -8,8 +8,7 @@
             <div class="float-end">
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'index' %}" class="text-light a-none">Inicio</a>
-                    |
-                    <a href="{% url 'logout' %}" class="text-light a-none">Cerrar sesión</a>
+                    <!-- <a href="{% url 'logout' %}" class="text-light a-none">Cerrar sesión</a> -->
                 {% else %}
                     <a href="{% url 'login' %}" class="text-light a-none">Inicio de sesión</a>
                 {% endif %}

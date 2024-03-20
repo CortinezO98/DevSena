@@ -18,57 +18,46 @@ def PanelView(request):
 
 @login_required
 def Formajob(request):
-    crearRegistroAccion(request, "Formación para el trabajo")
     return render(request, "formajob.html")
 
 @login_required
 def Gesples(request):
-    crearRegistroAccion(request, "Gestión para el empleo Sena")
     return render(request, "gesples.html")
 
 @login_required
 def Cercom(request):
-    crearRegistroAccion(request, "Certificación de competencias")
     return render(request, "cercom.html")
 
 @login_required
 def Setroc(request):
-    crearRegistroAccion(request, "Senatronica")
     return render(request, "setroc.html")
 
 @login_required
 def Enrural(request):
-    crearRegistroAccion(request, "Emprendimiento emprende rural")
     return render(request, "enrural.html")
 
 @login_required
 def CAMPESENA(request):
-    crearRegistroAccion(request, "CAMPESENA")
     return render(request, "campeSENA.html")
 
 @login_required
 def BIENESTAR(request):
-    crearRegistroAccion(request, "BIENESTAR AL APRENDIZ")
     return render(request, "Bienestar.html")
 
 @login_required
 def SERVICIOS(request):
-    crearRegistroAccion(request, "OTROS SERVICIOS")
     return render(request, "Servicios.html")
 
 @login_required
 def EMPRESARIOS(request):
-    crearRegistroAccion(request, "EMPRESARIOS")
     return render(request, "Empresarios.html")
 
 @login_required
 def PQR(request):
-    crearRegistroAccion(request, "PQRS")
     return render(request, "Pqr.html")
 
 @login_required
 def CATENCION(request):
-    crearRegistroAccion(request, "Canales de Atencion")
     return render(request, "Catencion.html")
 
 
