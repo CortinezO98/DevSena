@@ -8,9 +8,12 @@ https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
 """
 
 import os
+import sys
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sena.settings")
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sena.settings")
+sys.path.append('/var/www/html/proyecto/DevSena/sena')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'sena.settings'
 
 application = get_wsgi_application()
