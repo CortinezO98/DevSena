@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load mytags %}
 
 {% block main %}
 <div class="row">
@@ -9,6 +10,10 @@
             Bienestar Al Aprendiz
             </a>
             <a href="{% url 'abrirUrl' 'Apoyo Sostenimiento' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html' %}" class="list-group-item list-group-item-action " target="_blank">Apoyo Sostenimiento</a>
+            
+            <a href="{% url 'abrirUrl2' 'Apoyo Sostenimiento' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Apoyo Sostenimiento</a>
+
+
             <a href="{% url 'abrirUrl' 'Apoyos De Alimentación' 'https://www.gov.co/ficha-tramites-y-servicios/T77744' %}" class="list-group-item list-group-item-action" target="_blank">Apoyos De Alimentación</a>
             <a href="{% url 'abrirUrl' 'Contrato De Aprendizaje' 'https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx' %}" class="list-group-item list-group-item-action" target="_blank">Contrato De Aprendizaje</a>
             <a href="{% url 'abrirUrl' 'Comunidad Aprendiz' 'https://ejecuciondelaformacion.sena.edu.co/comunidad-aprendices' %}" class="list-group-item list-group-item-action" target="_blank">Comunidad Aprendiz</a>

@@ -39,6 +39,7 @@ urlpatterns = [
     path('Catencion', CATENCION, name="Catencion"),
     path('RegistroUser/', REGISTROUSER, name="RegistroUser"),
     path('abrirUrl/<str:accion>/<path:url>', AbrirUrl, name="abrirUrl"),
+    path('abrirUrl2/<str:accion>/<str:url_base64>', AbrirUrl2, name="abrirUrl2"),
     path("accounts/login/", Login, name="login"),
     path('logout/', Logout, name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

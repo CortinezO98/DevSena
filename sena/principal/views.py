@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponsePermanentRedirect
+from django.http import HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect
 from django.contrib import messages
 from datetime import datetime
 from .models import *
@@ -110,9 +110,23 @@ def Califica(request):
 
 @login_required
 def AbrirUrl(request, accion, url):
-    crearRegistroAccion(request, accion)
-    #return redirect(url)
-    return HttpResponsePermanentRedirect(url)
+    print(" --------> url ", url)
+    # crearRegistroAccion(request, accion)
+    if not url.startswith('http://') and not url.startswith('https://'):
+        return redirect(url)
+    else:
+        return HttpResponseRedirect(url)
+    # return HttpResponsePermanentRedirect(url)
+
+import base64
+
+@login_required
+def AbrirUrl2(request, accion, url_base64):
+    # crearRegistroAccion(request, accion)
+    url = base64.b64decode(url_base64).decode()
+    print(" --------> url_base64 ", url_base64)
+    print(" --------> url ", url)
+    return redirect(url)
 
 def crearRegistroAccion(request, accion:str):
     registroAccion = RegistroAccion(
