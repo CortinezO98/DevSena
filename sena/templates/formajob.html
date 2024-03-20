@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load mytags %}
 
 {% block main %}
 <div class="row">
@@ -8,13 +9,13 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
             Formación para el trabajo
             </a>
-            <a href="{% url 'abrirUrl' 'formacion_titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/' %}" class="list-group-item list-group-item-action " target="_blank">Formación Titulada</a>
-            <a href="{% url 'abrirUrl' 'Articulacion Con La Media Tecnica' 'https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx' %}" class="list-group-item list-group-item-action" target="_blank">Articulación Con La Media Tecnica</a>
-            <a href="{% url 'abrirUrl' 'Certificados de formacion' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer' %}" class="list-group-item list-group-item-action" target="_blank">Certificados De Formación</a>
-            <a href="{% url 'abrirUrl' 'Formacion Complemetaria' 'https://ejecuciondelaformacion.sena.edu.co/cursos-cortos' %}" class="list-group-item list-group-item-action" target="_blank">Formación Complementaria</a>
-            <a href="{% url 'abrirUrl' 'Tecnoacademias' 'https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx' %}" class="list-group-item list-group-item-action" target="_blank">Tecnoacademias</a>
-            <a href="{% url 'abrirUrl' 'Bilingüismo' 'https://sena.territorio.la/cms/index.php/ingles' %}" class="list-group-item list-group-item-action" target="_blank">Bilingüismo</a>
-            <a href="{% url 'abrirUrl' 'Formación Titulada Virtual' 'https://sena.territorio.la/cms/index.php/titulada' %}" class="list-group-item list-group-item-action" target="_blank">Formación Titulada Virtual</a>
+            <a href="{% url 'abrirUrl' 'formacion_titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Formación Titulada</a>
+            <a href="{% url 'abrirUrl' 'Articulacion Con La Media Tecnica' 'https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Articulación Con La Media Tecnica</a>
+            <a href="{% url 'abrirUrl' 'Certificados de formacion' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Certificados De Formación</a>
+            <a href="{% url 'abrirUrl' 'Formacion Complemetaria' 'https://ejecuciondelaformacion.sena.edu.co/cursos-cortos'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Formación Complementaria</a>
+            <a href="{% url 'abrirUrl' 'Tecnoacademias' 'https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Tecnoacademias</a>
+            <a href="{% url 'abrirUrl' 'Bilingüismo' 'https://sena.territorio.la/cms/index.php/ingles'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Bilingüismo</a>
+            <a href="{% url 'abrirUrl' 'Formación Titulada Virtual' 'https://sena.territorio.la/cms/index.php/titulada'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Formación Titulada Virtual</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}

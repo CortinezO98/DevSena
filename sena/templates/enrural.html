@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load mytags %}
 
 {% block main %}
 <div class="row">
@@ -8,10 +9,10 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
             Emprendimiento
             </a>
-            <a href="{% url 'abrirUrl' 'Asesoria Creación Empresa' 'https://ape.sena.edu.co/spe-web/spe/registro/buscador#' %}" class="list-group-item list-group-item-action " target="_blank">Asesoria Creación Empresa</a>
-            <a href="{% url 'abrirUrl' 'Fortalecimiento Empresarial' 'https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx' %}" class="list-group-item list-group-item-action" target="_blank">Fortalecimiento Empresarial</a>
-            <a href="{% url 'abrirUrl' 'SER (Sena Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx' %}" class="list-group-item list-group-item-action" target="_blank">SER (Sena Emprende Rural)</a>
-            <a href="{% url 'abrirUrl' 'Fondo Emprender' 'https://www.fondoemprender.com/SitePages/FondoEmprender.aspx' %}" class="list-group-item list-group-item-action" target="_blank">Fondo Emprender</a>
+            <a href="{% url 'abrirUrl' 'Asesoria Creación Empresa' 'https://ape.sena.edu.co/spe-web/spe/registro/buscador#'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Asesoria Creación Empresa</a>
+            <a href="{% url 'abrirUrl' 'Fortalecimiento Empresarial' 'https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Fortalecimiento Empresarial</a>
+            <a href="{% url 'abrirUrl' 'SER (Sena Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">SER (Sena Emprende Rural)</a>
+            <a href="{% url 'abrirUrl' 'Fondo Emprender' 'https://www.fondoemprender.com/SitePages/FondoEmprender.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Fondo Emprender</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
