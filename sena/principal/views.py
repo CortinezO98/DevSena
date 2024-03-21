@@ -88,7 +88,7 @@ def Califica(request):
             recomendacionCanalAtencion = int(request.POST["recomendacionCanalAtencion"]),
             solucionSolicitud = eval(request.POST["solucionSolicitud"]),
             ip = request.META.get('REMOTE_ADDR'),
-            usuario = request.user if request.user else None
+            usuario = request.user if request.user.is_authenticated else None
         )
         encuesta.save()
         messages.success(request, 'La encuesta de satisfacción se ha guardado correctamente.')
