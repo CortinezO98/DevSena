@@ -66,7 +66,7 @@ def REGISTROUSER(request):
         form = RegistroFormulario(request.POST)
         if form.is_valid():
             registro = form.save(commit=False)
-            registro.ip_dispositivo = request.META.get('REMOTE_ADDR')
+            registro.ip_dispositivo = obtenerIpCliente(request)
             registro.save()
             messages.success(request, 'Registro exitoso.')
             return redirect('panel')  # Reemplaza 'panel' con el nombre de la URL de tu página de éxito
@@ -87,7 +87,7 @@ def Califica(request):
             satisfaccionServicioRecibido = int(request.POST["satisfaccionServicioRecibido"]),
             recomendacionCanalAtencion = int(request.POST["recomendacionCanalAtencion"]),
             solucionSolicitud = eval(request.POST["solucionSolicitud"]),
-            ip = request.META.get('REMOTE_ADDR'),
+            ip = obtenerIpCliente(request),
             usuario = request.user if request.user.is_authenticated else None
         )
         encuesta.save()
@@ -115,11 +115,17 @@ def validarUrl(url) -> str:
 def crearRegistroAccion(request, accion:str):
     registroAccion = RegistroAccion(
         accion = obtenerAccion(accion),
-        ip = request.META.get('REMOTE_ADDR'),
+        ip = obtenerIpCliente(request),
         fecha = datetime.now(),
         usuario = request.user if request.user.is_authenticated else None
     )
     registroAccion.save()
+    
+def obtenerIpCliente(request) -> str:
+    ip_publica = request.META.get('REMOTE_ADDR')
+    if 'HTTP_X_FORWARDED_FOR' in request.META:
+        ip_publica = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    return ip_publica
     
 def obtenerAccion(nombre:str) -> Accion:
     accion = Accion.objects.filter(nombre=nombre).first()
