@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -12,56 +11,56 @@ from .forms import RegistroFormulario
 def IndexView(request):
     return render(request, "index.html")
 
-@login_required
+
 def PanelView(request):
     return render(request, "interface2.html")
 
-@login_required
+
 def Formajob(request):
     return render(request, "formajob.html")
 
-@login_required
+
 def Gesples(request):
     return render(request, "gesples.html")
 
-@login_required
+
 def Cercom(request):
     return render(request, "cercom.html")
 
-@login_required
+
 def Setroc(request):
     return render(request, "setroc.html")
 
-@login_required
+
 def Enrural(request):
     return render(request, "enrural.html")
 
-@login_required
+
 def CAMPESENA(request):
     return render(request, "campeSENA.html")
 
-@login_required
+
 def BIENESTAR(request):
     return render(request, "Bienestar.html")
 
-@login_required
+
 def SERVICIOS(request):
     return render(request, "Servicios.html")
 
-@login_required
+
 def EMPRESARIOS(request):
     return render(request, "Empresarios.html")
 
-@login_required
+
 def PQR(request):
     return render(request, "Pqr.html")
 
-@login_required
+
 def CATENCION(request):
     return render(request, "Catencion.html")
 
 
-@login_required
+
 def REGISTROUSER(request):
     if request.method == 'POST':
         form = RegistroFormulario(request.POST)
@@ -80,7 +79,7 @@ def REGISTROUSER(request):
         
     return render(request, 'RegistroUser.html', {'form': form})
 
-@login_required
+
 def Califica(request):
     if request.method == 'POST':
         encuesta = Encuesta(
@@ -96,12 +95,12 @@ def Califica(request):
         return redirect('califica')
     return render(request, "califica.html")
 
-# @login_required
+# 
 # def AbrirUrl(request, accion, url):
 #     crearRegistroAccion(request, accion)
 #     return redirect(url)
 
-@login_required
+
 def AbrirUrl(request, accion, url):
     crearRegistroAccion(request, accion)
     return redirect(validarUrl(url))
