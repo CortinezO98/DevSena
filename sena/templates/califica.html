@@ -6,87 +6,45 @@
     <div class="offset-lg-2 col-lg-8">
         <div class="card shadow">
             <div class="card-body px-4">
-                <h5 class="text-center fw-bold">¡Tu opinion es importante!</h5>
+                <h5 class="text-center fw-bold">¡Tu opinión es importante!</h5>
                 <h6 class="text-start text-justify">Evalúa nuestra atención frente al servicio o trámite solicitado y califica en una escala de 1 a 5, donde 5 es muy satisfecho y 1 es muy insatisfecho:</h6>
                 <form method="POST">
                     {% csrf_token %}
                     <div class="py-3">
                         <label for="dominioPersonaAtendio">
-                            <strong>1. ¿Como calificas el dominio del tema de la persona que te atendió?</strong>
+                            <strong>1. ¿Cómo calificas el dominio del tema de la persona que te atendió?</strong>
                         </label>
                         <br>
+                        {% for i in "12345" %}
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio1" value="1" required>
-                            <label class="form-check-label" for="dominioPersonaAtendio1">1</label>
+                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio{{ i }}" value="{{ i }}" required>
+                            <label class="form-check-label" for="dominioPersonaAtendio{{ i }}">{{ i }}</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio2" value="2">
-                            <label class="form-check-label" for="dominioPersonaAtendio2">2</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio3" value="3">
-                            <label class="form-check-label" for="dominioPersonaAtendio3">3</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio4" value="4">
-                            <label class="form-check-label" for="dominioPersonaAtendio4">4</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dominioPersonaAtendio" id="dominioPersonaAtendio5" value="5">
-                            <label class="form-check-label" for="dominioPersonaAtendio5">5</label>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="py-3">
                         <label for="satisfaccionServicioRecibido">
-                            <strong>2. ¿Que tan satisfecho/a te siente con el servicio recibido?</strong>
+                            <strong>2. ¿Qué tan satisfecho/a te sientes con el servicio recibido?</strong>
                         </label>
                         <br>
+                        {% for i in "12345" %}
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido1" value="1" required>
-                            <label class="form-check-label" for="satisfaccionServicioRecibido1">1</label>
+                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido{{ i }}" value="{{ i }}" required>
+                            <label class="form-check-label" for="satisfaccionServicioRecibido{{ i }}">{{ i }}</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido2" value="2">
-                            <label class="form-check-label" for="satisfaccionServicioRecibido2">2</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido3" value="3">
-                            <label class="form-check-label" for="satisfaccionServicioRecibido3">3</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido" id="satisfaccionServicioRecibido4" value="4">
-                            <label class="form-check-label" for="satisfaccionServicioRecibido4">4</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="satisfaccionServicioRecibido  " id="satisfaccionServicioRecibido5" value="5">
-                            <label class="form-check-label" for="satisfaccionServicioRecibido5">5</label>
-                        </div>
+                        {% endfor %}
                     </div>    
                     <div class="py-3">
                         <label for="recomendacionCanalAtencion">
-                            <strong>3. ¿Recomendarias este canal de atención a algun familiar, conocido o amigo?</strong>
+                            <strong>3. ¿Recomendarías este canal de atención a algún familiar, conocido o amigo?</strong>
                         </label>
                         <br>
+                        {% for i in "12345" %}
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion1" value="1" required>
-                            <label class="form-check-label" for="recomendacionCanalAtencion1">1</label>
+                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion{{ i }}" value="{{ i }}" required>
+                            <label class="form-check-label" for="recomendacionCanalAtencion{{ i }}">{{ i }}</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion2" value="2">
-                            <label class="form-check-label" for="recomendacionCanalAtencion2">2</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion3" value="3">
-                            <label class="form-check-label" for="recomendacionCanalAtencion3">3</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion4" value="4">
-                            <label class="form-check-label" for="recomendacionCanalAtencion4">4</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="recomendacionCanalAtencion" id="recomendacionCanalAtencion5" value="5">
-                            <label class="form-check-label" for="recomendacionCanalAtencion5">5</label>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="py-3">
                         <label for="solucionSolicitud">
@@ -94,12 +52,12 @@
                         </label>
                         <br>
                         <div class="form-check form-check-inline ">
-                            <input class="form-check-input" type="radio" name="solucionSolicitud" id="solucionSolicitud1" value="True" required>
-                            <label class="form-check-label" for="solucionSolicitud1">Si</label>
+                            <input class="form-check-input" type="radio" name="solucionSolicitud" id="solucionSolicitudSi" value="True" required>
+                            <label class="form-check-label" for="solucionSolicitudSi">Sí</label>
                         </div>
                         <div class="form-check form-check-inline ">
-                            <input class="form-check-input" type="radio" name="solucionSolicitud" id="solucionSolicitud2" value="False">
-                            <label class="form-check-label" for="solucionSolicitud2">No</label>
+                            <input class="form-check-input" type="radio" name="solucionSolicitud" id="solucionSolicitudNo" value="False">
+                            <label class="form-check-label" for="solucionSolicitudNo">No</label>
                         </div>                
                     </div>
                     <div class="text-center">
@@ -111,4 +69,4 @@
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div>
-{%endblock%}
+{% endblock %}
