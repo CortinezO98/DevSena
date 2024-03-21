@@ -117,7 +117,7 @@ def crearRegistroAccion(request, accion:str):
         accion = obtenerAccion(accion),
         ip = request.META.get('REMOTE_ADDR'),
         fecha = datetime.now(),
-        usuario = request.user if request.user else None
+        usuario = request.user if request.user.is_authenticated else None
     )
     registroAccion.save()
     
