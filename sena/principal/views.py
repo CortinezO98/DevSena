@@ -37,7 +37,7 @@ def Enrural(request):
 
 
 def CAMPESENA(request):
-    return render(request, "campeSENA.html")
+    return render(request, "CampeSENA.html")
 
 
 def BIENESTAR(request):

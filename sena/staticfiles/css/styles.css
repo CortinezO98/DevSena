@@ -175,3 +175,18 @@ section.links {
 .footer-list-links > p > a {
     text-decoration: none;
 }
+
+
+
+.chatButton {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    right: 20px; /* Ajusta la distancia desde el borde derecho */
+    z-index: 12000;
+    border-radius: 80px 80px 80px 10px;
+    overflow: hidden;
+}
+
+.chatButton > a > img {
+    height: 150px;
+}
