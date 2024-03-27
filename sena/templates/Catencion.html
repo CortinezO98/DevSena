@@ -18,7 +18,7 @@
         </div>
         
         <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Whatsapp' 'https://api.whatsapp.com/send/?phone=573168760255&text&app_absent=0'|base64encode %}" class="a-none" target="_blank">
+            <a href="{% url 'enviar_sms' %}" class="a-none">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fab fa-whatsapp fa-5x text-secondary"></i>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </a>
-        </div>
+        </div>       
 
         <div class="col-sm-6 col-md-4 col-lg-2">
             <a href="{% url 'abrirUrl' 'Te contactamos' 'https://ws-boca.inconcertcc.com/sena-callbackv2/static/'|base64encode %}" class="a-none" target="_blank">
@@ -46,5 +46,4 @@
     {% include 'base/components/botonAtras.html' %}
 
 {% endblock %}
-
 

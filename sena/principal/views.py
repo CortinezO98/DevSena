@@ -6,6 +6,9 @@ from datetime import datetime
 import base64
 from .models import *
 from .forms import RegistroFormulario
+from .sms_utils import sms
+
+
 
 # Pagina principal
 def IndexView(request):
@@ -134,4 +137,25 @@ def obtenerAccion(nombre:str) -> Accion:
         accion.save()
     return accion
         
+
+
+
+
+def SMS(request):
+    if request.method == "POST":
+        numero_telefono = request.POST.get("numero_telefono")
+        mensaje = "https://api.whatsapp.com/send/?phone=573168760255&text&app_absent=0"
+        
+        # Llama a la función para enviar SMS
+        exito = sms(numero_telefono, mensaje)
+        
+        if exito:
+            mensaje_confirmacion = "SMS enviado correctamente."
+        else:
+            mensaje_confirmacion = "Error al enviar el SMS. Por favor, inténtalo de nuevo."
+            
+        return render(request, "enviar_sms.html", {"mensaje_confirmacion": mensaje_confirmacion})
+    else:
+        return render(request, "enviar_sms.html")
+
 
