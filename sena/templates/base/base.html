@@ -24,12 +24,17 @@
     {% endblock %}
 
 
-    <div id="chatButton" class="chatButton">
-        <a id="chatLink" href="https://chatbotisa.sena.edu.co/agenti_lite_senainv/views/login.html?280922" target="_blank">
-            <img src="https://chatbotisa.sena.edu.co/agenti_lite_senainv/img/ISA_Chat.gif" class="img-fluid" alt="logo" style="max-width: 200px;">
-        </a>
-    </div>
-    
+    <script type='text/javascript'>
+        (function() {
+        var proto  = document.location.protocol || 'http:';
+        var node   = document.createElement('script');
+        node.type  = 'text/javascript';
+        node.async = true;
+        node.src   = proto +  '//webchat-cls55-boc.i6.inconcertcc.com/v3/click_to_chat?token=F84265143228CAF044E9F2C57936D6CB';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(node, s);
+        })();
+    </script>
 
     <script src=""></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
