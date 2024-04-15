@@ -188,3 +188,9 @@ section.links {
     height: 120px;
     border-radius: 80px;
 }
+
+.webchatStartButtonContainer {
+    top: calc(95% - 70px) !important;
+}
+
+
