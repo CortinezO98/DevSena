@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'WorkSans';
+    src: url('../fonts/WorkSans-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'WorkSans', sans-serif;
+}
+
+
+.btn-success {
+    --bs-btn-bg: #39a900 !important;
+    --bs-btn-border-color: #39a900 !important;
+    --bs-btn-disabled-bg: #39a900 !important;
+    --bs-btn-disabled-border-color: #39a900 !important;
+}
+
+.header-bar{
+    background-color: #39a900 !important;
+
+}

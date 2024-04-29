@@ -18,15 +18,7 @@ class RegistroAccionResource(resources.ModelResource):
         
 class RegistroAccionAdmin(ImportExportModelAdmin):
     resource_classes = [RegistroAccionResource]
-    
-class EncuestaResource(resources.ModelResource):
-    class Meta:
-        model = Encuesta
         
-class EncuestaAdmin(ImportExportModelAdmin):
-    resource_classes = [EncuestaResource]
-    list_display = ('dominioPersonaAtendio','satisfaccionServicioRecibido', 'recomendacionCanalAtencion', 'solucionSolicitud','ip','usuario',)
-    
 class RegistroDatosUserResource(resources.ModelResource):
     class Meta:
         model = RegistroDatosUser
@@ -38,5 +30,4 @@ class RegistroDatosUserAdmin(ImportExportModelAdmin):
 
 admin.site.register(Accion, AccionAdmin)
 admin.site.register(RegistroAccion, RegistroAccionAdmin)
-admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(RegistroDatosUser, RegistroDatosUserAdmin)

@@ -1,0 +1,67 @@
+{% extends 'encuesta/base/base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container mt-3 pt-3">
+        <div class="row">
+            <div class="col offset-md-3 col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header text-center">
+                        Generador de link de encuesta
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="nombreAgente" class="form-label">Nombre del agente:</label>
+                                <input type="text" class="form-control" id="nombreAgente" name="nombreAgente" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="idInteraccion" class="form-label">ID de interacción:</label>
+                                <input type="text" class="form-control" id="idInteraccion" name="idInteraccion" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Generar Link</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                {% if encuestaLink %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <p id="texto_a_copiar">{{encuestaLink}}</p>
+                        <button id="boton_copiar" class="btn btn-light">Copiar</button>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var botonCopiar = document.getElementById('boton_copiar');
+
+            botonCopiar.addEventListener('click', function() {
+                var textoACopiar = document.getElementById('texto_a_copiar');
+
+                var campoTemporal = document.createElement('textarea');
+                campoTemporal.value = textoACopiar.innerText;
+
+                document.body.appendChild(campoTemporal);
+
+                campoTemporal.select();
+                campoTemporal.setSelectionRange(0, 99999); // Para dispositivos móviles
+
+                document.execCommand('copy');
+
+                document.body.removeChild(campoTemporal);
+
+                alert('El link de la encuesta fue copiado al portapapeles');
+            });
+        });
+    </script>
+{% endblock %}

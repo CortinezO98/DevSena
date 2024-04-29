@@ -8,8 +8,6 @@ from .models import *
 from .forms import RegistroFormulario
 from .sms_utils import sms
 
-
-
 # Pagina principal
 def IndexView(request):
     return render(request, "index.html")

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'import_export',
     "principal.apps.PrincipalConfig",
+    "encuesta.apps.EncuestaConfig",
 ]
 
 MIDDLEWARE = [
