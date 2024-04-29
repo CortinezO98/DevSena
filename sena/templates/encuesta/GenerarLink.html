@@ -2,66 +2,72 @@
 {% load static %}
 
 {% block main %}
-    <div class="container mt-3 pt-3">
-        <div class="row">
-            <div class="col offset-md-3 col-md-6">
-                <div class="card mb-4">
-                    <div class="card-header text-center">
-                        Generador de link de encuesta
-                    </div>
-                    <div class="card-body">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="nombreAgente" class="form-label">Nombre del agente:</label>
-                                <input type="text" class="form-control" id="nombreAgente" name="nombreAgente" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="idInteraccion" class="form-label">ID de interacción:</label>
-                                <input type="text" class="form-control" id="idInteraccion" name="idInteraccion" required>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success">Generar Link</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                {% if encuestaLink %}
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <p id="texto_a_copiar">{{encuestaLink}}</p>
-                        <button id="boton_copiar" class="btn btn-light">Copiar</button>
-                    </div>
-                {% endif %}
-
-            </div>
+<div class="container my-5">
+    <div class="row justify-content-center"> 
+        <div class="col-8 col-md-1 col-lg-1"> 
+            <img src="{% static 'img/logoSena.png' %}" class="img-fluid" alt="logo">
         </div>
     </div>
+</div>
 
-    
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header text-center">
+                    Generador de link de encuesta
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="nombreAgente" class="form-label">Nombre del agente:</label>
+                            <input type="text" class="form-control" id="nombreAgente" name="nombreAgente" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="idInteraccion" class="form-label">ID de interacción:</label>
+                            <input type="text" class="form-control" id="idInteraccion" name="idInteraccion" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Generar Link</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var botonCopiar = document.getElementById('boton_copiar');
+            {% if encuestaLink %}
+            <div class="alert alert-success alert-dismissible fade show mt-4 text-center" role="alert"> <!-- Agrega la clase 'text-center' al div principal -->
+                <p id="texto_a_copiar" class="mb-0">{{ encuestaLink }}</p>
+                <div class="mt-3"> <!-- Agrega un div para centrar el botón -->
+                    <button id="boton_copiar" class="btn btn-light">Copiar</button>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
 
-            botonCopiar.addEventListener('click', function() {
-                var textoACopiar = document.getElementById('texto_a_copiar');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var botonCopiar = document.getElementById('boton_copiar');
 
-                var campoTemporal = document.createElement('textarea');
-                campoTemporal.value = textoACopiar.innerText;
+        botonCopiar.addEventListener('click', function() {
+            var textoACopiar = document.getElementById('texto_a_copiar');
 
-                document.body.appendChild(campoTemporal);
+            var campoTemporal = document.createElement('textarea');
+            campoTemporal.value = textoACopiar.innerText;
 
-                campoTemporal.select();
-                campoTemporal.setSelectionRange(0, 99999); // Para dispositivos móviles
+            document.body.appendChild(campoTemporal);
 
-                document.execCommand('copy');
+            campoTemporal.select();
+            campoTemporal.setSelectionRange(0, 99999); // Para dispositivos móviles
 
-                document.body.removeChild(campoTemporal);
+            document.execCommand('copy');
 
-                alert('El link de la encuesta fue copiado al portapapeles');
-            });
+            document.body.removeChild(campoTemporal);
+
+            alert('El link de la encuesta fue copiado al portapapeles');
         });
-    </script>
+    });
+</script>
 {% endblock %}
