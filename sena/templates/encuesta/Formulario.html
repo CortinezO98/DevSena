@@ -1,14 +1,25 @@
 {% extends 'encuesta/base/base.html' %}
 {% load static %}
 
-{% block main %}
-<div class="container mt-5 mb-2">
-    <div class="row justify-content-center"> 
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2"> 
-            <img src="{% static 'img/logoSena.png' %}" class="img-fluid" alt="logo">
+{% block header %}
+<header>
+    <div class="header-bar py-1 mb-4">
+        <div class="container text-light">
+            <div class="row">
+                <div class="col">
+                    <img src="{% static 'img/logoSena-blanco.png' %}" class="logo-header" alt="logo">
+                </div>
+                <div class="col">
+                    <h4 class="text-center pt-2">Encuesta - SENA</h4>
+                </div>
+                <div class="col"></div>
+            </div>
         </div>
     </div>
-</div>
+</header>
+{% endblock %}
+
+{% block main %}
 <div class="row ">
     <div class="offset-lg-2 col-lg-8">
         <h5 class="text-center fw-bold text-secondary">¡Tu opinión es importante!</h5>
