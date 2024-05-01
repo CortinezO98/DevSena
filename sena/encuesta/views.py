@@ -11,15 +11,18 @@ def GenerarLink(request):
             token = ''.join(secrets.choice(caracteres) for _ in range(10)),
             fechaExpiracionLink = datetime.now()  + timedelta(hours=24),
             nombreAgente = request.POST["nombreAgente"],
-            idInteraccion = request.POST["idInteraccion"]
+            idInteraccion = request.POST["idInteraccion"],
+            seleccionarCanal = request.POST["seleccionarCanal"]
         )
         encuesta.save()
-        
-        dominio_actual = request.get_host()
-        esquema = request.scheme
-        encuestaLink = esquema + "://" + dominio_actual + "/encuesta/Formulario/" + encuesta.token
-        return render(request, 'encuesta/GenerarLink.html', {'encuestaLink':encuestaLink})
+        return redirect('encuesta:GenerarLinkRedirect', encuesta.token)
     return render(request, 'encuesta/GenerarLink.html')
+
+def GenerarLinkRedirect(request, token):
+    dominio_actual = request.get_host()
+    esquema = request.scheme
+    encuestaLink = esquema + "://" + dominio_actual + "/encuesta/Formulario/" + token
+    return render(request, 'encuesta/GenerarLink.html', {'encuestaLink': encuestaLink})
 
 def Formulario(request, token):
     encuesta = Encuesta.objects.filter(token=token).first()
