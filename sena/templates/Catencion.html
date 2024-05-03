@@ -57,6 +57,27 @@
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
+    <script>
+        
+        let tiempoInactividad = 30000; 
+        let temporizadorInactivo;
+
+        function reiniciarTemporizador() {
+            clearTimeout(temporizadorInactivo);
+            temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+        }
+
+        function redirigirAlIndex() {
+            window.location.href = "{% url 'index' %}";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            reiniciarTemporizador();
+            document.addEventListener("mousemove", reiniciarTemporizador);
+            document.addEventListener("keydown", reiniciarTemporizador);
+            document.addEventListener("click", reiniciarTemporizador);
+        });
+    </script>
 
 {% endblock %}
 

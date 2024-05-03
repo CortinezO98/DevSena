@@ -8,6 +8,7 @@ from .models import *
 from .forms import RegistroFormulario
 from .sms_utils import sms
 
+
 # Pagina principal
 def IndexView(request):
     return render(request, "index.html")
@@ -70,7 +71,7 @@ def REGISTROUSER(request):
             registro.ip_dispositivo = obtenerIpCliente(request)
             registro.save()
             messages.success(request, 'Registro exitoso.')
-            return redirect('panel')  # Reemplaza 'panel' con el nombre de la URL de tu página de éxito
+            return redirect('panel') 
         else:
             for field, errors in form.errors.items():
                 for error in errors:
@@ -157,3 +158,18 @@ def SMS(request):
         return render(request, "enviar_sms.html")
 
 
+
+def PanelView(request):
+    mensaje_bienvenida = None
+    if request.method == 'POST':
+        form = RegistroFormulario(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombres']
+            apellido = form.cleaned_data['apellidos']
+            mensaje_bienvenida = f"{nombre} {apellido}"
+            request.session['nombre_usuario'] = mensaje_bienvenida
+    else:
+        form = RegistroFormulario()
+        mensaje_bienvenida = request.session.get('nombre_usuario', None)
+
+    return render(request, "interface2.html", {'form': form, 'mensaje_bienvenida': mensaje_bienvenida})

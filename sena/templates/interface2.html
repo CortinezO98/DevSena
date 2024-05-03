@@ -4,6 +4,16 @@
 
 {% block main %}
     <div class="row animate__animated animate__fadeIn">
+        <div class="row p-0">
+            <div class="col text-end mt-3 p-0">
+                {% if mensaje_bienvenida %}
+                    <div class="mensaje-bienvenida">
+                        Bienvenido, <strong>{{ mensaje_bienvenida }}</strong>
+                        <a href="{% url 'index' %}" class="btn btn-outline-danger btn-sm ms-2">Cerrar sesión</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
         <div class="col-6 col-md-4 col-lg-2">
             <a href="{% url 'abrirUrl' 'Lenguaje de señas' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senawebTs?token=727066304B0F6D1C8BA8A82A5483A073'|base64encode %}" class="a-none" target="_blank">
                 <div class="card border-success card-link">
@@ -164,8 +174,27 @@
                 </div>
             </a>
         </div>
+    </div> 
+    <script>
+        
+        let tiempoInactividad = 30000; 
+        let temporizadorInactivo;
 
-    </div>
+        function reiniciarTemporizador() {
+            clearTimeout(temporizadorInactivo);
+            temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+        }
 
+        function redirigirAlIndex() {
+            window.location.href = "{% url 'index' %}";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            reiniciarTemporizador();
+            document.addEventListener("mousemove", reiniciarTemporizador);
+            document.addEventListener("keydown", reiniciarTemporizador);
+            document.addEventListener("click", reiniciarTemporizador);
+        });
+    </script>
 
 {% endblock %}
