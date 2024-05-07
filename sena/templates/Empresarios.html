@@ -5,18 +5,39 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
+        <div class="list-group">
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Empresarios
+                Empresarios
             </a>
-            <a href="{% url 'abrirUrl' 'Empresarios' 'https://www.sena.edu.co/es-co/Empresarios/Paginas/default.aspx'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Empresarios</a>
-            <a href="{% url 'abrirUrl' 'Portal Autogestión' 'https://autogestionprd.powerappsportals.com/SignIn?ReturnUrl=%2F'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Portal Autogestión</a>
-            <a href="{% url 'abrirUrl' 'Certificados Aportes Y Fic' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Certificados Aportes Y Fic</a>
-            <a href="{% url 'abrirUrl' 'Facilidad de Pago' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Facilidad de Pago</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Empresarios' 'https://www.sena.edu.co/es-co/Empresarios/Paginas/default.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Empresarios</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Portal Autogestión' 'https://autogestionprd.powerappsportals.com/SignIn?ReturnUrl=%2F'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Portal Autogestión</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Certificados Aportes Y Fic' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Certificados Aportes Y Fic</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Facilidad de Pago' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Facilidad de Pago</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
-</div> 
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var enlaces = document.querySelectorAll('.abrir-ventana');
+    enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+        });
+    });
+
+    function abrirVentanaEmergente(url) {
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+    }
+});
+</script>
 <script>
         
     let tiempoInactividad = 30000; 

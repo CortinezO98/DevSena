@@ -5,17 +5,42 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
+        <div class="list-group">
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Certificación de Competencias
+                Certificación de Competencias
             </a>
-            <a href="{% url 'abrirUrl' 'Evaluación y Certificación de Competencias' 'https://dsnft.sena.edu.co/Candidatos/servlet/com.senaws.hlogin'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Evaluación y Certificación de Competencias</a>
-            <a href="{% url 'abrirUrl' 'Mesas Sectoriales' 'https://competencias.sena.edu.co/page?3,plantilla,consulta-mesas-sectoriales,O,es,0,'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Mesas Sectoriales</a>
-            <a href="{% url 'abrirUrl' 'Normalización de Competencias Laborales' 'https://competencias.sena.edu.co/'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Normalización de Competencias Laborales</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Evaluación y Certificación de Competencias' 'https://dsnft.sena.edu.co/Candidatos/servlet/com.senaws.hlogin'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Evaluación y Certificación de Competencias</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Mesas Sectoriales' 'https://competencias.sena.edu.co/page?3,plantilla,consulta-mesas-sectoriales,O,es,0,'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Mesas Sectoriales</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Normalización de Competencias Laborales' 'https://competencias.sena.edu.co/'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Normalización de Competencias Laborales</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div> 
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var enlaces = document.querySelectorAll('.abrir-ventana');
+        enlaces.forEach(function(enlace) {
+            enlace.addEventListener('click', function(event) {
+                event.preventDefault(); // Evitar que el enlace cambie la URL
+                var url = this.getAttribute('data-url');
+                abrirVentanaEmergente(url);
+            });
+        });
+    
+        function abrirVentanaEmergente(url) {
+            var width = 800;
+            var height = 600;
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2;
+    
+            // Abrir la ventana emergente
+            window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+        }
+    });
+    </script>
+
+
 <script>
         
     let tiempoInactividad = 30000; 

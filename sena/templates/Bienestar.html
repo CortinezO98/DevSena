@@ -5,18 +5,38 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Bienestar Al Aprendiz
-            </a>            
-            <a href="{% url 'abrirUrl' 'Apoyo Sostenimiento' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Apoyo Sostenimiento</a>
-            <a href="{% url 'abrirUrl' 'Apoyos De Alimentación' 'https://www.gov.co/ficha-tramites-y-servicios/T77744'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Apoyos De Alimentación</a>
-            <a href="{% url 'abrirUrl' 'Contrato De Aprendizaje' 'https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Contrato De Aprendizaje</a>
-            <a href="{% url 'abrirUrl' 'Comunidad Aprendiz' 'https://ejecuciondelaformacion.sena.edu.co/comunidad-aprendices'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Comunidad Aprendiz</a>
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action active" aria-current="true" style="background-color:#00af00;">
+                Bienestar Al Aprendiz
+            </a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Apoyo Sostenimiento' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Apoyo Sostenimiento</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Apoyos De Alimentación' 'https://www.gov.co/ficha-tramites-y-servicios/T77744'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Apoyos De Alimentación</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Contrato De Aprendizaje' 'https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Contrato De Aprendizaje</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Comunidad Aprendiz' 'https://ejecuciondelaformacion.sena.edu.co/comunidad-aprendices'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Comunidad Aprendiz</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var enlaces = document.querySelectorAll('.abrir-ventana');
+    enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+        });
+    });
+
+    function abrirVentanaEmergente(url) {
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+    }
+});
+</script>
 <script>
         
     let tiempoInactividad = 30000; 

@@ -5,18 +5,39 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
+        <div class="list-group">
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Emprendimiento
+                Emprendimiento
             </a>
-            <a href="{% url 'abrirUrl' 'Asesoria Creación Empresa' 'https://ape.sena.edu.co/spe-web/spe/registro/buscador#'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Asesoria Creación Empresa</a>
-            <a href="{% url 'abrirUrl' 'Fortalecimiento Empresarial' 'https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Fortalecimiento Empresarial</a>
-            <a href="{% url 'abrirUrl' 'SER (Sena Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">SER (Sena Emprende Rural)</a>
-            <a href="{% url 'abrirUrl' 'Fondo Emprender' 'https://www.fondoemprender.com/SitePages/FondoEmprender.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Fondo Emprender</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Asesoria Creación Empresa' 'https://ape.sena.edu.co/spe-web/spe/registro/buscador#'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Asesoria Creación Empresa</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Fortalecimiento Empresarial' 'https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Fortalecimiento Empresarial</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'SER (Sena Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">SER (Sena Emprende Rural)</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Fondo Emprender' 'https://www.fondoemprender.com/SitePages/FondoEmprender.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Fondo Emprender</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var enlaces = document.querySelectorAll('.abrir-ventana');
+    enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+        });
+    });
+
+    function abrirVentanaEmergente(url) {
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+    }
+});
+</script>
 <script>
         
     let tiempoInactividad = 30000; 

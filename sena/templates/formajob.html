@@ -5,21 +5,42 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
+        <div class="list-group">
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Formación para el trabajo
+                Formación para el trabajo
             </a>
-            <a href="{% url 'abrirUrl' 'formacion_titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Formación Titulada</a>
-            <a href="{% url 'abrirUrl' 'Articulacion Con La Media Tecnica' 'https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Articulación Con La Media Tecnica</a>
-            <a href="{% url 'abrirUrl' 'Certificados de formacion' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Certificados De Formación</a>
-            <a href="{% url 'abrirUrl' 'Formacion Complemetaria' 'https://ejecuciondelaformacion.sena.edu.co/cursos-cortos'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Formación Complementaria</a>
-            <a href="{% url 'abrirUrl' 'Tecnoacademias' 'https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Tecnoacademias</a>
-            <a href="{% url 'abrirUrl' 'Bilingüismo' 'https://sena.territorio.la/cms/index.php/ingles'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Bilingüismo</a>
-            <a href="{% url 'abrirUrl' 'Formación Titulada Virtual' 'https://sena.territorio.la/cms/index.php/titulada'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Formación Titulada Virtual</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'formacion_titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Titulada</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Articulacion Con La Media Tecnica' 'https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Articulación Con La Media Tecnica</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Certificados de formacion' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Certificados De Formación</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Formacion Complemetaria' 'https://ejecuciondelaformacion.sena.edu.co/cursos-cortos'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Complementaria</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Tecnoacademias' 'https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Tecnoacademias</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Bilingüismo' 'https://sena.territorio.la/cms/index.php/ingles'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Bilingüismo</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Formación Titulada Virtual' 'https://sena.territorio.la/cms/index.php/titulada'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Titulada Virtual</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var enlaces = document.querySelectorAll('.abrir-ventana');
+    enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+        });
+    });
+
+    function abrirVentanaEmergente(url) {
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+    }
+});
+</script>
 <script>
         
     let tiempoInactividad = 30000; 

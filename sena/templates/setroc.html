@@ -5,22 +5,45 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-2 col-lg-8">
-        <div class="list-group " >
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Senatronica
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action active" aria-current="true" style="background-color:#00af00;">
+                Senatronica
             </a>
-            <a href="{% url 'abrirUrl' 'Certificados y Constancias Académicas' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Certificados y Constancias Académicas</a>
-            <a href="{% url 'abrirUrl' 'Consulta de Certificados de Competencia Laboral' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Consulta de Certificados de Competencia Laboral</a>
-            <a href="{% url 'abrirUrl' 'Consulta Virtual de Perfiles y Aspirantes para Contrato de Aprendizaje' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Consulta Virtual de Perfiles y Aspirantes para Contrato de Aprendizaje</a>
-            <a href="{% url 'abrirUrl' 'Evaluación y Certificación de Competencias Laborales' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Evaluación y Certificación de Competencias Laborales</a>
-            <a href="{% url 'abrirUrl' 'Inscripción, Selección y Matrícula de Aspirantes a Programas de Formación Profesional' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Inscripción, Selección y Matrícula de Aspirantes a Programas de Formación Profesional</a>
-            <a href="{% url 'abrirUrl' 'Certificado Aportes Parafiscales y Fondo de Industria y la Construcción-FIC' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Certificado Aportes Parafiscales y Fondo de Industria y la Construcción-FIC </a>
-            <a href="{% url 'abrirUrl' 'Solicitud de Trámite Académico o Administrativo del Aprendiz SENA Durante su Proceso Formativo' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Solicitud de Trámite Académico o Administrativo del Aprendiz SENA Durante su Proceso Formativo </a>
-            <a href="{% url 'abrirUrl' 'Cartelera de Vacantes de la Agencia Pública de Empleo' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Cartelera de Vacantes de la Agencia Pública de Empleo</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Certificados y Constancias Académicas' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Certificados y Constancias Académicas</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Consulta de Certificados de Competencia Laboral' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Consulta de Certificados de Competencia Laboral</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Consulta Virtual de Perfiles y Aspirantes para Contrato de Aprendizaje' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Consulta Virtual de Perfiles y Aspirantes para Contrato de Aprendizaje</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Evaluación y Certificación de Competencias Laborales' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Evaluación y Certificación de Competencias Laborales</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Inscripción, Selección y Matrícula de Aspirantes a Programas de Formación Profesional' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Inscripción, Selección y Matrícula de Aspirantes a Programas de Formación Profesional</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Certificado Aportes Parafiscales y Fondo de Industria y la Construcción-FIC' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Certificado Aportes Parafiscales y Fondo de Industria y la Construcción-FIC </a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Solicitud de Trámite Académico o Administrativo del Aprendiz SENA Durante su Proceso Formativo' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Solicitud de Trámite Académico o Administrativo del Aprendiz SENA Durante su Proceso Formativo </a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Cartelera de Vacantes de la Agencia Pública de Empleo' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Cartelera de Vacantes de la Agencia Pública de Empleo</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var enlaces = document.querySelectorAll('.abrir-ventana');
+    enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+        });
+    });
+
+    function abrirVentanaEmergente(url) {
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+    }
+});
+</script>
+
+
 <script>
         
     let tiempoInactividad = 30000; 

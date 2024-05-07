@@ -5,16 +5,37 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
+        <div class="list-group">
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Servicios
+                Servicios
             </a>
-            <a href="{% url 'abrirUrl' 'Aulas Moviles' 'https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx'|base64encode %}" class="list-group-item list-group-item-action " target="_blank">Aulas Moviles</a>
-            <a href="{% url 'abrirUrl' 'Sennova' 'http://sennova.senaedu.edu.co/'|base64encode %}" class="list-group-item list-group-item-action" target="_blank">Sennova</a>
+            <a href="#" data-url="https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Aulas Moviles</a>
+            <a href="#" data-url="http://sennova.senaedu.edu.co/" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Sennova</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var enlaces = document.querySelectorAll('.abrir-ventana');
+    enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+        });
+    });
+
+    function abrirVentanaEmergente(url) {
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+    }
+});
+</script>
 <script>
         
     let tiempoInactividad = 30000; 

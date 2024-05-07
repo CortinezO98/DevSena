@@ -3,60 +3,82 @@
 {% load mytags %}
 
 {% block main %}
-    <div class="row justify-content-center animate__animated animate__fadeIn ">
-        <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Llamada de voz' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senac2cTs?token=3B7AAB88F1F54997BE80211122ECC564'|base64encode %}" class="a-none" target="_blank">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-phone-volume fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Llamada de voz
-                    </div>
+<div class="row justify-content-center animate__animated animate__fadeIn ">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <a href="#" data-url="{% url 'abrirUrl' 'Llamada de voz' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senac2cTs?token=3B7AAB88F1F54997BE80211122ECC564'|base64encode %}" class="a-none abrir-ventana" target="_blank">
+            <div class="card border-success card-link">
+                <div class="card-body rounded-top text-center py-4">
+                    <i class="fa-solid fa-phone-volume fa-5x text-secondary"></i>
                 </div>
-            </a>
-        </div>
-        
-        <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="{% url 'enviar_sms' %}" class="a-none">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fab fa-whatsapp fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Whatsapp
-                    </div>
+                <div class="card-footer text-bg-success">
+                    Llamada de voz
                 </div>
-            </a>
-        </div>       
-
-        <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Te contactamos' 'https://ws-boca.inconcertcc.com/sena-callbackv2/static/'|base64encode %}" class="a-none" target="_blank">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-headset fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Te contactamos
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Llámanos' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senac2cTs?token=3B7AAB88F1F54997BE80211122ECC564'|base64encode %}" class="a-none" target="_blank">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-square-phone-flip fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Llámanos
-                    </div>
-                </div>
-            </a>
-        </div>
+            </div>
+        </a>
     </div>
-    {% include 'base/components/botonAtras.html' %}
+    
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <a href="{% url 'enviar_sms' %}" class="a-none">
+            <div class="card border-success card-link">
+                <div class="card-body rounded-top text-center py-4">
+                    <i class="fa-solid fab fa-whatsapp fa-5x text-secondary"></i>
+                </div>
+                <div class="card-footer text-bg-success">
+                    Whatsapp
+                </div>
+            </div>
+        </a>
+    </div>       
+
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <a href="#" data-url="{% url 'abrirUrl' 'Te contactamos' 'https://ws-boca.inconcertcc.com/sena-callbackv2/static/'|base64encode %}" class="a-none abrir-ventana" target="_blank">
+            <div class="card border-success card-link">
+                <div class="card-body rounded-top text-center py-4">
+                    <i class="fa-solid fa-headset fa-5x text-secondary"></i>
+                </div>
+                <div class="card-footer text-bg-success">
+                    Te contactamos
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <a href="#" data-url="{% url 'abrirUrl' 'Llámanos' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senac2cTs?token=3B7AAB88F1F54997BE80211122ECC564'|base64encode %}" class="a-none abrir-ventana" target="_blank">
+            <div class="card border-success card-link">
+                <div class="card-body rounded-top text-center py-4">
+                    <i class="fa-solid fa-square-phone-flip fa-5x text-secondary"></i>
+                </div>
+                <div class="card-footer text-bg-success">
+                    Llámanos
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% include 'base/components/botonAtras.html' %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+var enlaces = document.querySelectorAll('.abrir-ventana');
+enlaces.forEach(function(enlace) {
+    enlace.addEventListener('click', function(event) {
+        event.preventDefault();
+        var url = this.getAttribute('data-url');
+        abrirVentanaEmergente(url);
+    });
+});
+
+function abrirVentanaEmergente(url) {
+    var width = 800;
+    var height = 600;
+    var left = (screen.width - width) / 2;
+    var top = (screen.height - height) / 2;
+    window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+}
+});
+</script>
+
     <script>
         
         let tiempoInactividad = 30000; 

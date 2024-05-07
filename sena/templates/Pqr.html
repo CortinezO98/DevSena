@@ -4,17 +4,39 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
+        <div class="list-group">
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            PQRS
+                PQRS
             </a>
-            <a href="https://sciudadanos.sena.edu.co/wausuarios.aspx" class="list-group-item list-group-item-action " target="_blank">Radicar</a>
-            <a href="https://sciudadanos.sena.edu.co/waconsultaopciones.aspx" class="list-group-item list-group-item-action" target="_blank">Consultar</a>
-            <a href="https://www.sena.edu.co/es-co/ciudadano/Paginas/Denuncias_Corrupcion.aspx" class="list-group-item list-group-item-action" target="_blank">Denuncias</a>
+            <a href="#" data-url="https://sciudadanos.sena.edu.co/wausuarios.aspx" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Radicar</a>
+            <a href="#" data-url="https://sciudadanos.sena.edu.co/waconsultaopciones.aspx" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Consultar</a>
+            <a href="#" data-url="https://www.sena.edu.co/es-co/ciudadano/Paginas/Denuncias_Corrupcion.aspx" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Denuncias</a>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var enlaces = document.querySelectorAll('.abrir-ventana');
+    enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+        });
+    });
+
+    function abrirVentanaEmergente(url) {
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+    }
+});
+</script>
+
 <script>
         
     let tiempoInactividad = 30000; 

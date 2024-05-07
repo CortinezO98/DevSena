@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Lenguaje de señas' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senawebTs?token=727066304B0F6D1C8BA8A82A5483A073'|base64encode %}" class="a-none" target="_blank">
+            <a href="#" data-url="{% url 'abrirUrl' 'Lenguaje de señas' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senawebTs?token=727066304B0F6D1C8BA8A82A5483A073'|base64encode %}" class="a-none abrir-ventana">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-hands-asl-interpreting fa-5x text-secondary"></i>
@@ -174,7 +174,28 @@
                 </div>
             </a>
         </div>
-    </div> 
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var enlaces = document.querySelectorAll('.abrir-ventana');
+            enlaces.forEach(function(enlace) {
+                enlace.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var url = this.getAttribute('data-url');
+                    abrirVentanaEmergente(url);
+                });
+            });
+        
+            function abrirVentanaEmergente(url) {
+                var width = 800;
+                var height = 600;
+                var left = (screen.width - width) / 2;
+                var top = (screen.height - height) / 2;
+                window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+            }
+        });
+        </script>
     <script>
         
         let tiempoInactividad = 30000; 
