@@ -5,41 +5,65 @@
 {% block main %}
 <div class="row">
     <div class="offset-lg-3 col-lg-6">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action active" aria-current="true" style="background-color:#00af00;">
-                CAMPESENA
+        <div class="list-group" >
+            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
+            CAMPESENA
             </a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Formación' 'https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Formación</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Emprendimiento' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Emprendimiento</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Certificación de Competencias Laborales' 'https://www.sena.edu.co/es-co/Noticias/Documents/OFERTA_DE_SERVICIOS_Y_NORMAS_CAMPESENA.pdf'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Certificación de Competencias Laborales</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Agrosena' 'https://www.sena.edu.co/es-co/formacion/Paginas/agro_sena.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana">Agrosena</a>
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+            data-bs-whatever="https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx">Formación</button>
+
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+            data-bs-whatever="https://www.fondoemprender.com/SitePages/senaemprenderural.aspx">Emprendimiento</button>
+            
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+            data-bs-whatever="https://www.sena.edu.co/es-co/Noticias/Documents/OFERTA_DE_SERVICIOS_Y_NORMAS_CAMPESENA.pdf">Certificación de Competencias Laborales</button>
+            
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+            data-bs-whatever="https://www.sena.edu.co/es-co/formacion/Paginas/agro_sena.aspx">Agrosena</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </div> 
+<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var enlaces = document.querySelectorAll('.abrir-ventana');
-        enlaces.forEach(function(enlace) {
-            enlace.addEventListener('click', function(event) {
-                event.preventDefault();
-                var url = this.getAttribute('data-url');
-                abrirVentanaEmergente(url);
-            });
+document.addEventListener("DOMContentLoaded", function() {
+    var enlaces = document.querySelectorAll('.abrir-ventana');
+    enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
         });
-    
-        function abrirVentanaEmergente(url) {
-            var width = 800;
-            var height = 600;
-            var left = (screen.width - width) / 2;
-            var top = (screen.height - height) / 2;
-            window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
-        }
     });
-    </script>
 
-
+    function abrirVentanaEmergente(url) {
+        var width = 800;
+        var height = 600;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+    }
+});
+</script>
 <script>
         
     let tiempoInactividad = 30000; 
@@ -60,6 +84,21 @@
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
     });
-</script>       
+
+    
+    const iframeModal = document.getElementById('iframeModal')
+        if (iframeModal) {
+        iframeModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const url = button.getAttribute('data-bs-whatever')
+            const btnText = button.innerText;
+            const modalTitle = iframeModal.querySelector('.modal-title')
+            const modalBodyInput = iframeModal.querySelector('.modal-body iframe')
+
+            modalTitle.textContent = `${btnText}`
+            modalBodyInput.src = url
+        })
+    }
+</script>      
 {%endblock%}
 

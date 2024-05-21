@@ -9,16 +9,58 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
                 Formación para el trabajo
             </a>
-            <a href="#" data-url="{% url 'abrirUrl' 'formacion_titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Titulada</a>
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+            data-bs-whatever="https://oferta.senasofiaplus.edu.co/sofia-oferta/">Formación Titulada</button>
+            
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
+            data-bs-whatever="https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx">Articulación Con La MediaTecnica</button>
+
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
+            data-bs-whatever="https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer">Certificados De Formación</button>
+
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
+            data-bs-whatever="https://ejecuciondelaformacion.sena.edu.co/cursos-cortos">Formación Complementaria</button>
+            
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
+            data-bs-whatever="https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx">Tecnoacademias</button>
+
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
+            data-bs-whatever="https://zajuna.sena.edu.co/zajuna">Bilingüismo</button>
+
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
+            data-bs-whatever="https://zajuna.sena.edu.co/zajuna/ ">Formación Titulada Virtual</button>
+
+
+            <!--<a href="#" data-url="{% url 'abrirUrl' 'formacion_titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Titulada</a>
             <a href="#" data-url="{% url 'abrirUrl' 'Articulacion Con La Media Tecnica' 'https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Articulación Con La Media Tecnica</a>
             <a href="#" data-url="{% url 'abrirUrl' 'Certificados de formacion' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Certificados De Formación</a>
             <a href="#" data-url="{% url 'abrirUrl' 'Formacion Complemetaria' 'https://ejecuciondelaformacion.sena.edu.co/cursos-cortos'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Complementaria</a>
             <a href="#" data-url="{% url 'abrirUrl' 'Tecnoacademias' 'https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Tecnoacademias</a>
+
             <a href="#" data-url="{% url 'abrirUrl' 'Bilingüismo' 'https://sena.territorio.la/cms/index.php/ingles'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Bilingüismo</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Formación Titulada Virtual' 'https://sena.territorio.la/cms/index.php/titulada'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Titulada Virtual</a>
+            <a href="#" data-url="{% url 'abrirUrl' 'Formación Titulada Virtual' 'https://sena.territorio.la/cms/index.php/titulada'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Titulada Virtual</a> -->
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
+
+<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </div>
 
 <script>
@@ -43,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 300000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -61,8 +103,21 @@ document.addEventListener("DOMContentLoaded", function() {
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
     });
+
+    
+    const iframeModal = document.getElementById('iframeModal')
+        if (iframeModal) {
+        iframeModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const url = button.getAttribute('data-bs-whatever')
+            const btnText = button.innerText;
+            const modalTitle = iframeModal.querySelector('.modal-title')
+            const modalBodyInput = iframeModal.querySelector('.modal-body iframe')
+
+            modalTitle.textContent = `${btnText}`
+            modalBodyInput.src = url
+        })
+    }
 </script>
 
 {%endblock%}
-
-
