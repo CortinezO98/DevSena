@@ -12,7 +12,8 @@ def GenerarLink(request):
             fechaExpiracionLink = datetime.now()  + timedelta(hours=24),
             nombreAgente = request.POST["nombreAgente"],
             idInteraccion = request.POST["idInteraccion"],
-            seleccionarCanal = request.POST["seleccionarCanal"]
+            seleccionarCanal = request.POST["seleccionarCanal"],
+            fecha_creacion = datetime.now()
         )
         encuesta.save()
         return redirect('encuesta:GenerarLinkRedirect', encuesta.token)

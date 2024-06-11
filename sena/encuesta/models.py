@@ -10,3 +10,4 @@ class Encuesta(models.Model):
     nombreAgente = models.CharField(max_length=150)
     token = models.CharField(max_length=50)
     fechaExpiracionLink = models.DateTimeField()
+    fecha_creacion = models.DateTimeField(null=True)
