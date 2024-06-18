@@ -27,5 +27,23 @@
             </div>
         </div>
     </div>
-</div>        
+</div>   
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const sedeContactoField = document.getElementById("id_sede_contacto");
+
+        // Load saved value from localStorage if available
+        const savedSedeContacto = localStorage.getItem("sede_contacto");
+        if (savedSedeContacto) {
+            sedeContactoField.value = savedSedeContacto;
+        }
+
+        // Save the selected value to localStorage on change
+        sedeContactoField.addEventListener("change", function() {
+            localStorage.setItem("sede_contacto", sedeContactoField.value);
+        });
+    });
+</script>
+
 {% endblock %}

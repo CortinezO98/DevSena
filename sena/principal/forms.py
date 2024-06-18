@@ -52,7 +52,7 @@ class RegistroFormulario(forms.ModelForm):
     numero_documento = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '10'}))
     nombres = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}))
     apellidos = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}))
-    sede_contacto = forms.ChoiceField(choices=SEDE_CONTACTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
+    sede_contacto = forms.ChoiceField(choices=SEDE_CONTACTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select', 'id': 'id_sede_contacto'}))
 
     class Meta:
         model = RegistroDatosUser
