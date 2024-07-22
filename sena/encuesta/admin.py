@@ -10,6 +10,6 @@ class EncuestaResource(resources.ModelResource):
 class EncuestaAdmin(ImportExportModelAdmin):
     resource_classes = [EncuestaResource]
     list_display = ('token','dominioPersonaAtendio','satisfaccionServicioRecibido', 'recomendacionCanalAtencion', 'solucionSolicitud','nombreAgente','idInteraccion','seleccionarCanal','fecha_creacion','fechaExpiracionLink',)
-    list_filter = ('fecha_creacion',)
+    list_filter = ('fecha_creacion','seleccionarCanal')
     
 admin.site.register(Encuesta, EncuestaAdmin)
