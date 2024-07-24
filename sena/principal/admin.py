@@ -19,7 +19,7 @@ class RegistroAccionResource(resources.ModelResource):
 class RegistroAccionAdmin(ImportExportModelAdmin):
     resource_classes = [RegistroAccionResource]
     list_display = ('accion','usuario','ip','fecha')
-    search_fields = ('fecha')
+    search_fields = ['fecha'] 
         
 class RegistroDatosUserResource(resources.ModelResource):
     class Meta:
