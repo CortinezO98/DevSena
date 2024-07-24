@@ -22,6 +22,6 @@ class RegistroDatosUserAdmin(ImportExportModelAdmin):
     search_fields = ['numero_documento','nombres','apellidos','sede_contacto','ip_dispositivo']
     list_filter = ['numero_documento','sede_contacto','ip_dispositivo']
 
-admin.site.register(Accion, AccionAdmin)
+admin.site.register(Accion)
 admin.site.register(RegistroAccion, RegistroAccionAdmin)
 admin.site.register(RegistroDatosUser, RegistroDatosUserAdmin)
