@@ -10,7 +10,7 @@ class RegistroAccionResource(resources.ModelResource):
 class RegistroAccionAdmin(ImportExportModelAdmin):
     resource_classes = [RegistroAccionResource]
     list_display = ('accion','ip','fecha')
-    list_filter = ['fecha','ip'] 
+    list_filter = ['fecha'] 
         
 class RegistroDatosUserResource(resources.ModelResource):
     class Meta:
@@ -18,9 +18,9 @@ class RegistroDatosUserResource(resources.ModelResource):
         
 class RegistroDatosUserAdmin(ImportExportModelAdmin):
     resource_classes = [RegistroDatosUserResource]
-    list_display = ('tipo_contacto','tipo_documento','numero_documento','nombres','apellidos','sede_contacto','ip_dispositivo',)
+    list_display = ('tipo_contacto','tipo_documento','numero_documento','nombres','apellidos','sede_contacto','ip_dispositivo','fecha_registro')
     search_fields = ['numero_documento','nombres','apellidos','sede_contacto','ip_dispositivo']
-    list_filter = ['numero_documento','sede_contacto','ip_dispositivo']
+    list_filter = ['fecha_registro']
 
 admin.site.register(Accion)
 admin.site.register(RegistroAccion, RegistroAccionAdmin)
