@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.http import HttpResponse
 from import_export import resources, fields
-from import_export.widgets import ForeignKeyWidget
+from import_export.widgets import ForeignKeyWidget, DateTimeWidget
+from django.utils import timezone
 from import_export.admin import ImportExportModelAdmin
 from .models import *
 
@@ -23,14 +24,58 @@ class CustomRegistroAccionResource(resources.ModelResource):
         attribute='accion',
         widget=ForeignKeyWidget(Accion, 'nombre'))
     
-    datos_usuario = fields.Field(
-        column_name='usuario',
+    tipo_contacto = fields.Field(
+        column_name='Tipo Contacto',
+        attribute='usuario',
+        widget=ForeignKeyWidget(RegistroDatosUser, 'tipo_contacto'))
+    
+    tipo_documento = fields.Field(
+        column_name='Tipo Documento',
+        attribute='usuario',
+        widget=ForeignKeyWidget(RegistroDatosUser, 'tipo_documento'))
+    
+    numero_documento = fields.Field(
+        column_name='Número Documento',
+        attribute='usuario',
+        widget=ForeignKeyWidget(RegistroDatosUser, 'numero_documento'))
+    
+    nombres = fields.Field(
+        column_name='Nombres',
         attribute='usuario',
         widget=ForeignKeyWidget(RegistroDatosUser, 'nombres'))
+    
+    apellidos = fields.Field(
+        column_name='Apellidos',
+        attribute='usuario',
+        widget=ForeignKeyWidget(RegistroDatosUser, 'apellidos'))
+    
+    sede_contacto = fields.Field(
+        column_name='Sede Contacto',
+        attribute='usuario',
+        widget=ForeignKeyWidget(RegistroDatosUser, 'sede_contacto'))
+    
+    ip_dispositivo = fields.Field(
+        column_name='IP Dispositivo',
+        attribute='usuario',
+        widget=ForeignKeyWidget(RegistroDatosUser, 'ip_dispositivo'))
+    
+    fecha_registro = fields.Field(
+        column_name='Fecha Registro',
+        attribute='usuario',
+        widget=DateTimeWidget(format='%Y-%m-%d %H:%M:%S'))
+    
+    fecha = fields.Field(
+        column_name='Fecha de accion',
+        attribute='fecha',
+        widget=DateTimeWidget(format='%Y-%m-%d %H:%M:%S'))
+    
     class Meta:
         model = RegistroAccion
-        fields = ('accion_nombre','ip','fecha','datos_usuario',)
-            
+        fields = ('accion_nombre', 'ip', 'tipo_contacto', 'tipo_documento', 'numero_documento', 'nombres', 'apellidos', 'sede_contacto', 'ip_dispositivo', 'fecha_registro')
+
+    def dehydrate_fecha_registro(self, registroaccion):
+        return timezone.localtime(registroaccion.usuario.fecha_registro).strftime('%Y-%m-%d %H:%M:%S')
+        
 class RegistroAccionAdmin(ImportExportModelAdmin):
     resource_class = DefaultRegistroAccionResource
     list_display = ('accion','ip','fecha')

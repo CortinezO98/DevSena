@@ -26,7 +26,7 @@ class RegistroDatosUser(models.Model):
 class RegistroAccion(models.Model):
     accion = models.ForeignKey(Accion, on_delete=models.CASCADE)
     ip = models.CharField(max_length=100)
-    fecha = models.DateTimeField()
+    fecha = models.DateTimeField(null=True)
     usuario = models.ForeignKey(RegistroDatosUser, on_delete=models.CASCADE, null=True, blank=True)
     class Meta:
         verbose_name = 'Registro de acción'
