@@ -73,11 +73,15 @@ class CustomRegistroAccionResource(resources.ModelResource):
         model = RegistroAccion
         fields = ('accion_nombre', 'ip', 'tipo_contacto', 'tipo_documento', 'numero_documento', 'nombres', 'apellidos', 'sede_contacto', 'ip_dispositivo', 'fecha_registro')
 
-    def dehydrate_fecha_registro(self, registroaccion,):
-        return timezone.localtime(registroaccion.usuario.fecha_registro).strftime('%Y-%m-%d %H:%M:%S')
-        
+    def dehydrate_fecha_registro(self, registroaccion):
+        if registroaccion.usuario is not None and registroaccion.usuario.fecha_registro is not None:
+            return timezone.localtime(registroaccion.usuario.fecha_registro).strftime('%Y-%m-%d %H:%M:%S')
+        return ''
+
     def dehydrate_fecha(self, registroaccion):
-        return timezone.localtime(registroaccion.fecha).strftime('%Y-%m-%d %H:%M:%S')    
+        if registroaccion.fecha is not None:
+            return timezone.localtime(registroaccion.fecha).strftime('%Y-%m-%d %H:%M:%S')
+        return ''    
         
 class RegistroAccionAdmin(ImportExportModelAdmin):
     resource_class = DefaultRegistroAccionResource
