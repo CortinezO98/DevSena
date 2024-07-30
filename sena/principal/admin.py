@@ -71,7 +71,7 @@ class CustomRegistroAccionResource(resources.ModelResource):
     
     class Meta:
         model = RegistroAccion
-        fields = ('accion_nombre', 'ip', 'tipo_contacto', 'tipo_documento', 'numero_documento', 'nombres', 'apellidos', 'sede_contacto', 'ip_dispositivo', 'fecha_registro')
+        fields = ('accion_nombre', 'tipo_contacto', 'tipo_documento', 'numero_documento', 'nombres', 'apellidos', 'sede_contacto', 'ip_dispositivo', 'fecha_registro')
 
     def dehydrate_fecha_registro(self, registroaccion):
         if registroaccion.usuario is not None and registroaccion.usuario.fecha_registro is not None:
