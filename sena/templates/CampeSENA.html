@@ -10,16 +10,16 @@
             CAMPESENA
             </a>
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx">Formación</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Formación' 'https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx'|base64encode %}">Formación</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.fondoemprender.com/SitePages/senaemprenderural.aspx">Emprendimiento</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Emprendimiento' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}">Emprendimiento</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.sena.edu.co/es-co/Noticias/Documents/OFERTA_DE_SERVICIOS_Y_NORMAS_CAMPESENA.pdf">Certificación de Competencias Laborales</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Certificación de Competencias Laborales' 'https://www.sena.edu.co/es-co/Noticias/Documents/OFERTA_DE_SERVICIOS_Y_NORMAS_CAMPESENA.pdf'|base64encode %}">Certificación de Competencias Laborales</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.sena.edu.co/es-co/formacion/Paginas/agro_sena.aspx">Agrosena</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Agrosena' 'https://www.sena.edu.co/es-co/formacion/Paginas/agro_sena.aspx'|base64encode %}">Agrosena</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 45000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {

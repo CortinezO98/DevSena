@@ -9,17 +9,6 @@ class Accion(models.Model):
         verbose_name_plural = 'Acciones'
     def __str__(self):
         return "{}".format(self.nombre)
-
-class RegistroAccion(models.Model):
-    accion = models.ForeignKey(Accion, on_delete=models.CASCADE)
-    ip = models.CharField(max_length=100)
-    fecha = models.DateTimeField()
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    class Meta:
-        verbose_name = 'Registro de acción'
-        verbose_name_plural = 'Registro de acciones'
-    def __str__(self):
-        return "{} - {} - {} - {}".format(self.id, self.accion.nombre, self.ip, self.usuario, self.fecha)
     
 class RegistroDatosUser(models.Model):
     tipo_contacto = models.CharField(max_length=20)
@@ -30,7 +19,17 @@ class RegistroDatosUser(models.Model):
     sede_contacto = models.CharField(max_length=100)
     ip_dispositivo = models.CharField(max_length=100)
     fecha_registro = models.DateTimeField(null=True)
-    
 
     def __str__(self):
         return f'{self.nombres} {self.apellidos}'
+    
+class RegistroAccion(models.Model):
+    accion = models.ForeignKey(Accion, on_delete=models.CASCADE)
+    ip = models.CharField(max_length=100)
+    fecha = models.DateTimeField()
+    usuario = models.ForeignKey(RegistroDatosUser, on_delete=models.CASCADE, null=True, blank=True)
+    class Meta:
+        verbose_name = 'Registro de acción'
+        verbose_name_plural = 'Registro de acciones'
+    def __str__(self):
+        return "{} - {} - {} - {}".format(self.id, self.accion.nombre, self.ip, self.usuario, self.fecha)

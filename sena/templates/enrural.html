@@ -10,16 +10,16 @@
                 Emprendimiento
             </a>
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://ape.sena.edu.co/spe-web/spe/registro/buscador#">Asesoria Creación Empresa</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Asesoria Creación Empresa' 'https://ape.sena.edu.co/spe-web/spe/registro/buscador#'|base64encode %}">Asesoria Creación Empresa</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx">Fortalecimiento Empresarial</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Fortalecimiento Empresarial' 'https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx'|base64encode %}">Fortalecimiento Empresarial</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.fondoemprender.com/SitePages/senaemprenderural.aspx">SER (Sena Emprende Rural)</button>
+            data-bs-whatever="{% url 'abrirUrl' 'SER (Sena Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}">SER (Sena Emprende Rural)</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.fondoemprender.com/SitePages/FondoEmprender.aspx">Fondo Emprender</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Fondo Emprender' 'https://www.fondoemprender.com/SitePages/FondoEmprender.aspx'|base64encode %}">Fondo Emprender</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 45000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {

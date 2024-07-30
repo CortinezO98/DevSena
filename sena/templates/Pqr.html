@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load mytags %}
 
 {% block main %}
 <div class="row">
@@ -9,13 +10,13 @@
                 PQRS
             </a>
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sciudadanos.sena.edu.co/wausuarios.aspx">Radicar</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Radicar' 'https://sciudadanos.sena.edu.co/wausuarios.aspx'|base64encode %}">Radicar</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sciudadanos.sena.edu.co/waconsultaopciones.aspx">Consultar</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Consultar' 'https://sciudadanos.sena.edu.co/waconsultaopciones.aspx'|base64encode %}">Consultar</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.sena.edu.co/es-co/ciudadano/Paginas/Denuncias_Corrupcion.aspx">Denuncias</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Denuncias' 'https://www.sena.edu.co/es-co/ciudadano/Paginas/Denuncias_Corrupcion.aspx'|base64encode %}">Denuncias</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -39,8 +40,6 @@
 </div>
 
 
-</div>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var enlaces = document.querySelectorAll('.abrir-ventana');
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 45000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -72,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {

@@ -29,5 +29,6 @@ urlpatterns = [
     path('abrirUrl/<str:accion>/<str:url>/', AbrirUrl, name="abrirUrl"),
     #path("accounts/login/", Login, name="login"),
     #path('salir/', Logout, name='logout'),
+    path('cerrarSesion/', CerrarSesion, name='cerrarSesion'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT_SERVER)
 

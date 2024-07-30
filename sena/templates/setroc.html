@@ -10,28 +10,28 @@
                 Senatronica
             </a>
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx">Certificados y Constancias Académicas</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Certificados y Constancias Académicas' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}">Certificados y Constancias Académicas</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx">Consulta de Certificados de Competencia Laboral</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Consulta de Certificados de Competencia Laboral' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}">Consulta de Certificados de Competencia Laboral</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx">Consulta Virtual de Perfiles y Aspirantes para Contrato de Aprendizaje</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Consulta Virtual de Perfiles y Aspirantes para Contrato de Aprendizaje' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}">Consulta Virtual de Perfiles y Aspirantes para Contrato de Aprendizaje</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx">Evaluación y Certificación de Competencias Laborales</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Evaluación y Certificación de Competencias Laborales' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}">Evaluación y Certificación de Competencias Laborales</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx">Inscripción, Selección y Matrícula de Aspirantes a Programas de Formación Profesional</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Inscripción, Selección y Matrícula de Aspirantes a Programas de Formación Profesional' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}">Inscripción, Selección y Matrícula de Aspirantes a Programas de Formación Profesional</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx">Certificado Aportes Parafiscales y Fondo de Industria y la Construcción-FIC</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Certificado Aportes Parafiscales y Fondo de Industria y la Construcción-FIC' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}">Certificado Aportes Parafiscales y Fondo de Industria y la Construcción-FIC</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx">Solicitud de Trámite Académico o Administrativo del Aprendiz SENA Durante su Proceso Formativo</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Solicitud de Trámite Académico o Administrativo del Aprendiz SENA Durante su Proceso Formativo' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}">Solicitud de Trámite Académico o Administrativo del Aprendiz SENA Durante su Proceso Formativo</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx">Cartelera de Vacantes de la Agencia Pública de Empleo</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Cartelera de Vacantes de la Agencia Pública de Empleo  ' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}">Cartelera de Vacantes de la Agencia Pública de Empleo</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 45000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {

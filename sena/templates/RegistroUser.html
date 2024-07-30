@@ -9,7 +9,7 @@
                 <h5 class="mb-0">Por favor, digita tu número de documento o escanea tu documento:</h5>
             </div>
             <div class="card-body shadow">
-                <form method="POST" action="{% url 'panel' %}">
+                <form method="POST">
                     {% csrf_token %}
                     {% for field in form %}
                     <div class="mb-3">

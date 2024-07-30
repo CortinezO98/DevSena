@@ -10,13 +10,13 @@
                 Gestión para el Empleo Sena
             </a>
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://ape.sena.edu.co/spe-web/spe/login">Tramite de Inscripción Hoja de Vida</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Tramite de Inscripción Hoja de Vida' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Tramite de Inscripción Hoja de Vida</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://ape.sena.edu.co/spe-web/spe/login">Consecución Empleo</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Consecución Empleo' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Consecución Empleo</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://ape.sena.edu.co/spe-web/spe/login">Formación-Cualificación</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Formación-Cualificación' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Formación-Cualificación</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 45000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {

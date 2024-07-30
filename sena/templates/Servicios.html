@@ -10,10 +10,10 @@
             Servicios
             </a>
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx">Aulas Moviles</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Aulas Moviles' 'https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx'|base64encode %}">Aulas Moviles</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="http://sennova.senaedu.edu.co/">Sennova</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Sennova' 'http://sennova.senaedu.edu.co/'|base64encode %}">Sennova</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 45000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {

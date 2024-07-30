@@ -10,13 +10,13 @@
                 Certificación de Competencias
             </a>
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://dsnft.sena.edu.co/Candidatos/servlet/com.senaws.hlogin">Evaluación y Certificación de Competencias</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Evaluación y Certificación de Competencias' 'https://dsnft.sena.edu.co/Candidatos/servlet/com.senaws.hlogin'|base64encode %}">Evaluación y Certificación de Competencias</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://competencias.sena.edu.co/page?3,plantilla,consulta-mesas-sectoriales,O,es,0,">Mesas Sectoriales</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Mesas Sectoriales' 'https://competencias.sena.edu.co/page?3,plantilla,consulta-mesas-sectoriales,O,es,0,'|base64encode %}">Mesas Sectoriales</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://competencias.sena.edu.co/">Normalización de Competencias Laborales</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Normalización de Competencias Laborales' 'https://competencias.sena.edu.co/'|base64encode %}">Normalización de Competencias Laborales</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 45000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {

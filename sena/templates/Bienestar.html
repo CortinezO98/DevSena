@@ -10,13 +10,13 @@
                 Bienestar Al Aprendiz
             </a>
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html">Apoyo Sostenimiento</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Apoyo Sostenimiento' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html'|base64encode %}">Apoyo Sostenimiento</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx">Contrato De Aprendizaje</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Contrato De Aprendizaje' 'https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx'|base64encode %}">Contrato De Aprendizaje</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://ejecuciondelaformacion.sena.edu.co/comunidad-aprendices">Comunidad Aprendiz</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Comunidad Aprendiz' 'https://ejecuciondelaformacion.sena.edu.co/comunidad-aprendices'|base64encode %}">Comunidad Aprendiz</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 45000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {

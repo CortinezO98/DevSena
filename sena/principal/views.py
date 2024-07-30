@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib import messages
+from django.db import transaction
 from datetime import datetime
 import base64
 from .models import *
@@ -61,16 +62,26 @@ def PQR(request):
 def CATENCION(request):
     return render(request, "Catencion.html")
 
-
-
+@transaction.atomic
 def REGISTROUSER(request):
     if request.method == 'POST':
         form = RegistroFormulario(request.POST)
         if form.is_valid():
-            registro = form.save(commit=False)
-            registro.ip_dispositivo = obtenerIpCliente(request)
-            registro.save()
-            messages.success(request, 'Registro exitoso.')
+            try:
+                with transaction.atomic():
+                    registro = form.save(commit=False)
+                    registro.ip_dispositivo = obtenerIpCliente(request) 
+                    registro.fecha_registro = datetime.now()
+                    registro.save()
+                    request.session['usuarioActual'] = {
+                        'id': registro.id,
+                        'nombre': '{} {}'.format(registro.nombres, registro.apellidos),
+                    }
+                messages.success(request, 'Registro exitoso.')
+            except Exception as ex:
+                print("Exception: ", ex)
+                messages.error(request, 'Ocurrió un error. Intente de nuevo.')
+                
             return redirect('panel') 
         else:
             for field, errors in form.errors.items():
@@ -115,11 +126,12 @@ def validarUrl(url) -> str:
         return url
 
 def crearRegistroAccion(request, accion:str):
+    usuarioActual = request.session.get('usuarioActual', None)
     registroAccion = RegistroAccion(
         accion = obtenerAccion(accion),
         ip = obtenerIpCliente(request),
         fecha = datetime.now(),
-        usuario = request.user if request.user.is_authenticated else None
+        usuario_id = usuarioActual['id'] if usuarioActual else None
     )
     registroAccion.save()
     
@@ -136,9 +148,6 @@ def obtenerAccion(nombre:str) -> Accion:
         accion.save()
     return accion
         
-
-
-
 
 def SMS(request):
     if request.method == "POST":
@@ -158,18 +167,14 @@ def SMS(request):
         return render(request, "enviar_sms.html")
 
 
-
 def PanelView(request):
-    mensaje_bienvenida = None
-    if request.method == 'POST':
-        form = RegistroFormulario(request.POST)
-        if form.is_valid():
-            nombre = form.cleaned_data['nombres']
-            apellido = form.cleaned_data['apellidos']
-            mensaje_bienvenida = f"{nombre} {apellido}"
-            request.session['nombre_usuario'] = mensaje_bienvenida
+    usuarioActual = request.session.get('usuarioActual', None)
+    print('usuarioActual', usuarioActual)
+    if usuarioActual:
+        return render(request, "interface2.html")
     else:
-        form = RegistroFormulario()
-        mensaje_bienvenida = request.session.get('nombre_usuario', None)
+        return redirect('RegistroUser')
 
-    return render(request, "interface2.html", {'form': form, 'mensaje_bienvenida': mensaje_bienvenida})
+def CerrarSesion(request):
+    request.session['usuarioActual'] = None
+    return redirect('index')
