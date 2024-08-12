@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
-            <a href="#" data-bs-whatever="{% url 'abrirUrl' 'Lenguaje de señas' 'https://webrtc.inconcertcc.com/iq/sena/videocall/index.html'|base64encode %}" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal">
+            <a href="#" data-url="{% url 'abrirUrl' 'Lenguaje de señas' 'https://webrtc.inconcertcc.com/iq/sena/videocall/index.html'|base64encode %}" class="a-none abrir-ventana">
                 <div class="card border-success card-link">
                     <div class="card-body rounded-top text-center py-4">
                         <i class="fa-solid fa-hands-asl-interpreting fa-5x text-secondary"></i>
@@ -176,7 +176,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+    <!--<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header">
@@ -184,25 +184,33 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+                    <iframe src="" frameborder="0" width="100%" height="100%"allow="camera; microphone;"></iframe>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var enlaces = document.querySelectorAll('.abrir-ventana');
             enlaces.forEach(function(enlace) {
                 enlace.addEventListener('click', function(event) {
-                    event.preventDefault();
+                    event.preventDefault(); 
                     var url = this.getAttribute('data-url');
                     abrirVentanaEmergente(url);
                 });
             });
+        
+            function abrirVentanaEmergente(url) {
+                var width = 800;
+                var height = 600;
+                var left = (screen.width - width) / 2;
+                var top = (screen.height - height) / 2;
+                window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+            }
         });
     </script>
     <script>
@@ -229,7 +237,7 @@
 
     </script>
 
-    <script>
+    <!--<script>
         
         const iframeModal = document.getElementById('iframeModal');
         if (iframeModal) {
@@ -242,8 +250,9 @@
     
                 modalTitle.textContent = `${btnText}`;
                 modalBodyInput.src = url;
+                modalBodyInput.allow = "microphone; camera";
             });
         }
-    </script>
+    </script>-->
 
 {% endblock %}

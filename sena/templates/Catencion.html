@@ -5,7 +5,7 @@
 {% block main %}
 <div class="row justify-content-center animate__animated animate__fadeIn ">
     <div class="col-sm-6 col-md-4 col-lg-2">
-        <a href="#" data-bs-whatever="{% url 'abrirUrl' 'Llamada de voz' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senac2cTs?token=3B7AAB88F1F54997BE80211122ECC564'|base64encode %}" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal">
+        <a href="#" data-url="{% url 'abrirUrl' 'Llamada de voz' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senac2cTs?token=3B7AAB88F1F54997BE80211122ECC564'|base64encode %}" class="a-none abrir-ventana">
             <div class="card border-success card-link">
                 <div class="card-body rounded-top text-center py-4">
                     <i class="fa-solid fa-phone-volume fa-5x text-secondary"></i>
@@ -31,7 +31,7 @@
     </div>       
 
     <div class="col-sm-6 col-md-4 col-lg-2">
-        <a href="#" data-bs-whatever="{% url 'abrirUrl' 'Te contactamos' 'https://ws-boca.inconcertcc.com/sena-callbackv2/static/'|base64encode %}" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal">
+        <a href="#" data-url="{% url 'abrirUrl' 'Te contactamos' 'https://ws-boca.inconcertcc.com/sena-callbackv2/static/'|base64encode %}"class="a-none abrir-ventana">
             <div class="card border-success card-link">
                 <div class="card-body rounded-top text-center py-4">
                     <i class="fa-solid fa-headset fa-5x text-secondary"></i>
@@ -44,7 +44,7 @@
     </div>
 
     <div class="col-sm-6 col-md-4 col-lg-2">
-        <a href="#" data-bs-whatever="{% url 'abrirUrl' 'Llámanos' 'https://webrtc.inconcertcc.com/iq/sena/c2c/index.html'|base64encode %}" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal">
+        <a href="#" data-url="{% url 'abrirUrl' 'Llámanos' 'https://webrtc.inconcertcc.com/iq/sena/c2c/index.html'|base64encode %}" class="a-none abrir-ventana">
             <div class="card border-success card-link">
                 <div class="card-body rounded-top text-center py-4">
                     <i class="fa-solid fa-square-phone-flip fa-5x text-secondary"></i>
@@ -58,7 +58,7 @@
     {% include 'base/components/botonAtras.html' %}
 </div>
 
-<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
@@ -73,21 +73,29 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 
-    <script>
+<script>
     document.addEventListener("DOMContentLoaded", function() {
-    var enlaces = document.querySelectorAll('.abrir-ventana');
-    enlaces.forEach(function(enlace) {
-        enlace.addEventListener('click', function(event) {
-            event.preventDefault();
-            var url = this.getAttribute('data-url');
-            abrirVentanaEmergente(url);
+        var enlaces = document.querySelectorAll('.abrir-ventana');
+        enlaces.forEach(function(enlace) {
+            enlace.addEventListener('click', function(event) {
+                event.preventDefault(); 
+                var url = this.getAttribute('data-url');
+                abrirVentanaEmergente(url);
+            });
         });
+    
+        function abrirVentanaEmergente(url) {
+            var width = 800;
+            var height = 600;
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2;
+            window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+        }
     });
-    });
-    </script>
+</script>
 
     <script>
         
@@ -111,7 +119,7 @@
         });
     </script>
 
-    <script>
+    <!--<script>
         
         const iframeModal = document.getElementById('iframeModal');
         if (iframeModal) {
@@ -126,7 +134,7 @@
                 modalBodyInput.src = url;
             });
         }
-    </script>
+    </script>-->
 
 
 {% endblock %}
