@@ -20,14 +20,36 @@
                         {% endif %}
                     </div>
                     {% endfor %}
-                    <div class="text-center">
+                    
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scannerModal">
+                            Escanea tu documento aquí
+                        </button>
                         <button type="submit" class="btn btn-success">Continuar</button>
+                        
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>   
+</div>
+
+<div class="modal fade" id="scannerModal" tabindex="-1" aria-labelledby="scannerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="scannerModalLabel">Escanear Documento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="modalScannerInput" class="form-control" autocomplete="off">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -43,7 +65,63 @@
         sedeContactoField.addEventListener("change", function() {
             localStorage.setItem("sede_contacto", sedeContactoField.value);
         });
+        
     });
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const modalScannerInput = document.getElementById('modalScannerInput');
+        const scannerModal = document.getElementById('scannerModal');
+        scannerModal.addEventListener('shown.bs.modal', function () {
+            modalScannerInput.focus();
+        });
+    
+        // Función para procesar la entrada del escáner y cerrar el modal
+        function handleScannerInput() {
+            let dataString = modalScannerInput.value.trim();
+            
+            if (dataString) {
+                let dataSplited = dataString.split(" ");
+                dataSplited = dataSplited.map(palabra => {
+                    return palabra.toLowerCase().charAt(0).toUpperCase() + palabra.toLowerCase().slice(1);
+                });
+                console.log(dataSplited);
+                let nCedula = dataSplited[0];
+                let nombres = "";
+                let apellidos = "";
+                if (dataSplited.length == 5) {
+                    nombres =  `${dataSplited[1]} ${dataSplited[2]}`;
+                    apellidos =  `${dataSplited[3]} ${dataSplited[4]}`;
+                } else if (dataSplited.length == 4) {
+                    nombres =  `${dataSplited[1]}`;
+                    apellidos =  `${dataSplited[2]} ${dataSplited[3]}`;
+                } else {
+                    nombres =  `${dataSplited[1]}`;
+                    Swal.fire({
+                        title: "Atención!",
+                        text: "Por favor ingrese sus apellidos manualmente!",
+                        icon: "info"
+                    });
+                }
+
+                document.getElementById('id_numero_documento').value = nCedula;
+                document.getElementById('id_nombres').value = nombres;
+                document.getElementById('id_apellidos').value = apellidos;
+                modalScannerInput.value = '';
+                const modal = bootstrap.Modal.getInstance(scannerModal);
+                modal.hide();
+            } else {
+                console.error('No se encontraron datos válidos en la entrada del escáner.');
+            }
+        }
+        
+        
+        let timeout;
+        modalScannerInput.addEventListener('input', () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(handleScannerInput, 500);
+        });
+    });
+</script>
 {% endblock %}
