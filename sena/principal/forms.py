@@ -49,7 +49,7 @@ class RegistroFormulario(forms.ModelForm):
 
     tipo_contacto = forms.ChoiceField(choices=TIPO_CONTACTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
     tipo_documento = forms.ChoiceField(choices=TIPO_DOCUMENTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
-    numero_documento = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '10'}))
+    numero_documento = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     nombres = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}))
     apellidos = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}))
     sede_contacto = forms.ChoiceField(choices=SEDE_CONTACTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select', 'id': 'id_sede_contacto'}))
@@ -65,3 +65,4 @@ class RegistroFormulario(forms.ModelForm):
             'apellidos': {'required': 'Este campo es requerido'},
             'sede_contacto': {'required': 'Este campo es requerido'},
         }
+
