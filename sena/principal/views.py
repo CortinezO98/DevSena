@@ -6,7 +6,7 @@ from django.db import transaction
 from datetime import datetime
 import base64
 from .models import *
-from .forms import RegistroFormulario
+from .forms import RegistroFormulario, RegistroUsuarioForm
 from .sms_utils import sms
 
 
@@ -65,13 +65,14 @@ def CATENCION(request):
 @transaction.atomic
 def REGISTROUSER(request):
     if request.method == 'POST':
-        form = RegistroFormulario(request.POST)
+        form = RegistroUsuarioForm(request.POST)
         if form.is_valid():
+            ipSede = ObtenerIpSede(request, request.POST["ip_sede"])
             try:
                 with transaction.atomic():
                     registro = form.save(commit=False)
-                    registro.ip_dispositivo = obtenerIpCliente(request) 
                     registro.fecha_registro = datetime.now()
+                    registro.ip_sede = ipSede
                     registro.save()
                     request.session['usuarioActual'] = {
                         'id': registro.id,
@@ -81,17 +82,37 @@ def REGISTROUSER(request):
             except Exception as ex:
                 print("Exception: ", ex)
                 messages.error(request, 'Ocurrió un error. Intente de nuevo.')
-                
-            return redirect('panel') 
+            
+            response = redirect('/panel/')
+            if not request.COOKIES.get('sedeId') or request.COOKIES.get('sedeId') != ipSede.sede.id:
+                response.set_cookie('sedeId', ipSede.sede.id, max_age=315360000)  
+            return response
         else:
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f"Error en el campo {field}: {error}")
     else:
-        form = RegistroFormulario()
-        
-    return render(request, 'RegistroUser.html', {'form': form})
+        sedes = Sede.objects.all()
+        form = RegistroUsuarioForm()
+    
+    context = {
+        'form': form, 
+        'sedes': sedes,
+        'ipSede': ObtenerIpSede(request, request.COOKIES.get('sedeId'))
+    }
+    return render(request, 'RegistroUser.html', context)
 
+def ObtenerIpSede(request, sedeId):
+    ip_cliente = obtenerIpCliente(request)
+    ipSede = IpSede.objects.filter(direccion_ip=ip_cliente).first()
+    sede = Sede.objects.filter(id=sedeId).first()
+    if not ipSede and sede:
+        ipSede = IpSede(
+            direccion_ip=ip_cliente,
+            sede_id=sedeId
+        )
+        ipSede.save()
+    return ipSede
 
 def Califica(request):
     if request.method == 'POST':
@@ -108,12 +129,6 @@ def Califica(request):
         return redirect('califica')
     return render(request, "califica.html")
 
-# 
-# def AbrirUrl(request, accion, url):
-#     crearRegistroAccion(request, accion)
-#     return redirect(url)
-
-
 def AbrirUrl(request, accion, url):
     crearRegistroAccion(request, accion)
     return redirect(validarUrl(url))
@@ -127,9 +142,8 @@ def validarUrl(url) -> str:
 
 def crearRegistroAccion(request, accion:str):
     usuarioActual = request.session.get('usuarioActual', None)
-    registroAccion = RegistroAccion(
+    registroAccion = RegistroAccionUsuario(
         accion = obtenerAccion(accion),
-        ip = obtenerIpCliente(request),
         fecha = datetime.now(),
         usuario_id = usuarioActual['id'] if usuarioActual else None
     )

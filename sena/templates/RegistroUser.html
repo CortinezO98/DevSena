@@ -20,6 +20,20 @@
                         {% endif %}
                     </div>
                     {% endfor %}
+                    <div class="pt-2 pb-4">
+                        <label for="ip_sede">Sede contacto</label>
+                        {% if ipSede %}
+                            <input type="text" class="form-control" value="{{ipSede.sede.nombre}}" disabled>
+                            <input type="hidden" name="ip_sede" id="ip_sede" value="{{ipSede.id}}" >
+                        {% else %}
+                            <select name="ip_sede" id="ip_sede" class="form-control" required>
+                                <option value="" disabled selected>--------</option>
+                                {% for sede in sedes %}
+                                    <option value="{{sede.id}}">{{sede.nombre}}</option>
+                                {% endfor %}
+                            </select>
+                        {% endif %}
+                    </div>
                     
                     <div class="d-flex justify-content-between">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scannerModal">

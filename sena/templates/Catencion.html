@@ -18,7 +18,7 @@
     </div>
     
     <div class="col-sm-6 col-md-4 col-lg-2">
-        <a href="{% url 'enviar_sms' %}" class="a-none">
+        <a href="{% url 'abrirUrl' 'Whatsapp' 'enviar_sms'|base64encode %}" class="a-none">
             <div class="card border-success card-link">
                 <div class="card-body rounded-top text-center py-4">
                     <i class="fa-solid fab fa-whatsapp fa-5x text-secondary"></i>

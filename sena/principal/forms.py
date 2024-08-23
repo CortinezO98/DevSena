@@ -1,5 +1,5 @@
 from django import forms
-from .models import RegistroDatosUser
+from .models import RegistroDatosUser, RegistroUsuario
 
 class RegistroFormulario(forms.ModelForm):
     TIPO_CONTACTO_CHOICES = (
@@ -65,4 +65,30 @@ class RegistroFormulario(forms.ModelForm):
             'apellidos': {'required': 'Este campo es requerido'},
             'sede_contacto': {'required': 'Este campo es requerido'},
         }
+
+class RegistroUsuarioForm(forms.ModelForm):
+    class Meta:
+        model = RegistroUsuario
+        fields = [
+            'tipo_contacto',
+            'tipo_documento',
+            'numero_documento',
+            'nombres',
+            'apellidos',
+        ]
+        widgets = {
+            'tipo_contacto': forms.Select(attrs={'class': 'form-select'}, choices=RegistroUsuario.TIPO_CONTACTO_CHOICES),
+            'tipo_documento': forms.Select(attrs={'class': 'form-select'}, choices=RegistroUsuario.TIPO_DOCUMENTO_CHOICES),
+            'numero_documento': forms.TextInput(attrs={'class': 'form-control', 'maxlength': '10'}),
+            'nombres': forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}),
+        }
+        error_messages = {
+            'tipo_contacto': {'required': 'Este campo es requerido'},
+            'tipo_documento': {'required': 'Este campo es requerido'},
+            'numero_documento': {'required': 'Este campo es requerido'},
+            'nombres': {'required': 'Este campo es requerido'},
+            'apellidos': {'required': 'Este campo es requerido'},
+        }
+
 

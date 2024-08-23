@@ -5,6 +5,7 @@ from import_export.widgets import ForeignKeyWidget, DateTimeWidget
 from django.utils import timezone
 from import_export.admin import ImportExportModelAdmin
 from .models import *
+from .customReports import *
 
 
 class AccionResource(resources.ModelResource):
@@ -13,75 +14,83 @@ class AccionResource(resources.ModelResource):
 
 class AccionAdmin(ImportExportModelAdmin):
     resource_class = AccionResource
-    
+
+class DepartamentoResource(resources.ModelResource):
+    class Meta:
+        model = Departamento
+
+class DepartamentoAdmin(ImportExportModelAdmin):
+    resource_class = DepartamentoResource
+
+class MunicipioResource(resources.ModelResource):
+    class Meta:
+        model = Municipio
+
+class MunicipioAdmin(ImportExportModelAdmin):
+    resource_class = MunicipioResource
+
+class SedeResource(resources.ModelResource):
+    class Meta:
+        model = Sede
+
+class SedeAdmin(ImportExportModelAdmin):
+    resource_class = SedeResource
+
+class IpSedeResource(resources.ModelResource):
+    class Meta:
+        model = IpSede
+
+class IpSedeAdmin(ImportExportModelAdmin):
+    resource_class = IpSedeResource
+
+class RegistroUsuarioResource(resources.ModelResource):
+    class Meta:
+        model = RegistroUsuario
+
+class RegistroUsuarioAdmin(ImportExportModelAdmin):
+    resource_class = RegistroUsuarioResource
+    list_display = ('numero_documento','nombres','apellidos','ip_sede',)
+    search_fields = ['numero_documento']
+
+    def get_actions(self, request):
+        actions = super().get_actions(request)
+        actions['export_custom'] = (self.export_custom, 'export_custom', 'Generar reporte de registro usuarios')
+        return actions
+
+    def export_custom(self, request, queryset, modeladmin):
+        resource = CustomRegistroUsuarioResource()
+        dataset = resource.export(queryset, format='xlsx')
+        response = HttpResponse(dataset.xlsx, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = 'attachment; filename="Reporte registro usuarios.xlsx"'
+        return response
+
+    export_custom.short_description = "Generar reporte de registro usuarios"
+
+class RegistroAccionUsuarioResource(resources.ModelResource):
+    class Meta:
+        model = RegistroAccionUsuario
+
+class RegistroAccionUsuarioAdmin(ImportExportModelAdmin):
+    resource_class = RegistroAccionUsuarioResource
+    list_display = ('accion','usuario','fecha',)
+
+    def get_actions(self, request):
+        actions = super().get_actions(request)
+        actions['export_custom'] = (self.export_custom, 'export_custom', 'Generar reporte de acciones')
+        return actions
+
+    def export_custom(self, request, queryset, modeladmin):
+        resource = CustomRegistroAccionUsuarioResource()
+        dataset = resource.export(queryset, format='xlsx')
+        response = HttpResponse(dataset.xlsx, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = 'attachment; filename="Reporte Acciones.xlsx"'
+        return response
+
+    export_custom.short_description = "Generar reporte de acciones"
+
 class DefaultRegistroAccionResource(resources.ModelResource):
     class Meta:
         model = RegistroAccion
-
-class CustomRegistroAccionResource(resources.ModelResource):
-    accion_nombre = fields.Field(
-        column_name='Acción',
-        attribute='accion',
-        widget=ForeignKeyWidget(Accion, 'nombre'))
-    
-    tipo_contacto = fields.Field(
-        column_name='Tipo Contacto',
-        attribute='usuario',
-        widget=ForeignKeyWidget(RegistroDatosUser, 'tipo_contacto'))
-    
-    tipo_documento = fields.Field(
-        column_name='Tipo Documento',
-        attribute='usuario',
-        widget=ForeignKeyWidget(RegistroDatosUser, 'tipo_documento'))
-    
-    numero_documento = fields.Field(
-        column_name='Número Documento',
-        attribute='usuario',
-        widget=ForeignKeyWidget(RegistroDatosUser, 'numero_documento'))
-    
-    nombres = fields.Field(
-        column_name='Nombres',
-        attribute='usuario',
-        widget=ForeignKeyWidget(RegistroDatosUser, 'nombres'))
-    
-    apellidos = fields.Field(
-        column_name='Apellidos',
-        attribute='usuario',
-        widget=ForeignKeyWidget(RegistroDatosUser, 'apellidos'))
-    
-    sede_contacto = fields.Field(
-        column_name='Sede Contacto',
-        attribute='usuario',
-        widget=ForeignKeyWidget(RegistroDatosUser, 'sede_contacto'))
-    
-    ip_dispositivo = fields.Field(
-        column_name='IP Dispositivo',
-        attribute='usuario',
-        widget=ForeignKeyWidget(RegistroDatosUser, 'ip_dispositivo'))
-    
-    fecha_registro = fields.Field(
-        column_name='Fecha Registro',
-        attribute='usuario',
-        widget=DateTimeWidget(format='%Y-%m-%d %H:%M:%S'))
-    
-    fecha = fields.Field(
-        column_name='Fecha de accion',
-        attribute='fecha',
-        widget=DateTimeWidget(format='%Y-%m-%d %H:%M:%S'))
-    
-    class Meta:
-        model = RegistroAccion
-        fields = ('accion_nombre', 'tipo_contacto', 'tipo_documento', 'numero_documento', 'nombres', 'apellidos', 'sede_contacto', 'ip_dispositivo', 'fecha_registro')
-
-    def dehydrate_fecha_registro(self, registroaccion):
-        if registroaccion.usuario is not None and registroaccion.usuario.fecha_registro is not None:
-            return timezone.localtime(registroaccion.usuario.fecha_registro).strftime('%Y-%m-%d %H:%M:%S')
-        return ''
-
-    def dehydrate_fecha(self, registroaccion):
-        if registroaccion.fecha is not None:
-            return timezone.localtime(registroaccion.fecha).strftime('%Y-%m-%d %H:%M:%S')
-        return ''    
         
 class RegistroAccionAdmin(ImportExportModelAdmin):
     resource_class = DefaultRegistroAccionResource
@@ -90,7 +99,7 @@ class RegistroAccionAdmin(ImportExportModelAdmin):
     
     def get_actions(self, request):
         actions = super().get_actions(request)
-        actions['export_custom'] = (self.export_custom, 'export_custom', 'Generar reporte de acciones')
+        actions['export_custom'] = (self.export_custom, 'export_custom', 'Generar reporte acciones')
         return actions
 
     def export_custom(self, request, queryset, modeladmin):
@@ -100,7 +109,7 @@ class RegistroAccionAdmin(ImportExportModelAdmin):
         response['Content-Disposition'] = 'attachment; filename="Reporte Acciones.xlsx"'
         return response
 
-    export_custom.short_description = "Generar reporte de acciones"
+    export_custom.short_description = "Generar reporte acciones"
         
 class RegistroDatosUserResource(resources.ModelResource):
     class Meta:
@@ -113,5 +122,11 @@ class RegistroDatosUserAdmin(ImportExportModelAdmin):
     list_filter = ['fecha_registro']
 
 admin.site.register(Accion, AccionAdmin)
+admin.site.register(Departamento, DepartamentoAdmin)
+admin.site.register(Municipio, MunicipioAdmin)
+admin.site.register(Sede, SedeAdmin)
+admin.site.register(IpSede, IpSedeAdmin)
+admin.site.register(RegistroUsuario, RegistroUsuarioAdmin)
+admin.site.register(RegistroAccionUsuario, RegistroAccionUsuarioAdmin)
 admin.site.register(RegistroAccion, RegistroAccionAdmin)
 admin.site.register(RegistroDatosUser, RegistroDatosUserAdmin)
