@@ -73,7 +73,9 @@ class RegistroAccionUsuarioResource(resources.ModelResource):
 class RegistroAccionUsuarioAdmin(ImportExportModelAdmin):
     resource_class = RegistroAccionUsuarioResource
     list_display = ('accion','usuario','fecha',)
-
+    list_filter = ['fecha']
+    search_fields = ['fecha','usuario','accion',]
+    
     def get_actions(self, request):
         actions = super().get_actions(request)
         actions['export_custom'] = (self.export_custom, 'export_custom', 'Generar reporte de acciones')
