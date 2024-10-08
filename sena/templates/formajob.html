@@ -9,14 +9,12 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
                 Formación para el trabajo
             </a>
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Formacion Titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}">Formación Titulada</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Formacion Titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}">Formación Titulada</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
             data-bs-whatever="{% url 'abrirUrl' 'Articulación Con La MediaTecnica' 'https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx'|base64encode %}">Articulación Con La MediaTecnica</button>
 
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
-            data-bs-whatever="{% url 'abrirUrl' 'Certificados De Formación' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}">Certificados De Formación</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Certificados De Formación' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}">Certificados De Formación</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
             data-bs-whatever="{% url 'abrirUrl' 'Formación Complementaria' 'https://ejecuciondelaformacion.sena.edu.co/cursos-cortos'|base64encode %}">Formación Complementaria</button>
