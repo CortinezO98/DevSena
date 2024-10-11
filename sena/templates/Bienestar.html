@@ -12,14 +12,12 @@
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
             data-bs-whatever="{% url 'abrirUrl' 'Apoyo Sostenimiento' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html'|base64encode %}">Apoyo Sostenimiento</button>
 
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Apoyos de Alimentación' 'https://www.gov.co/ficha-tramites-y-servicios/T77744'|base64encode %}">Apoyos de Alimentación</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Apoyos de Alimentación' 'https://www.gov.co/ficha-tramites-y-servicios/T77744'|base64encode %}">Apoyos de Alimentación</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
             data-bs-whatever="{% url 'abrirUrl' 'Contrato De Aprendizaje' 'https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx'|base64encode %}">Contrato De Aprendizaje</button>
             
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Comunidad Aprendiz' 'https://ejecuciondelaformacion.sena.edu.co/comunidad-aprendices'|base64encode %}">Comunidad Aprendiz</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Comunidad Aprendiz' 'https://ejecuciondelaformacion.sena.edu.co/comunidad-aprendices'|base64encode %}">Comunidad Aprendiz</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}

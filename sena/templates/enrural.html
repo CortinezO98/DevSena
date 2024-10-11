@@ -9,17 +9,13 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
                 Emprendimiento
             </a>
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Asesoria Creación Empresa' 'https://www.fondoemprender.com/SitePages/Home.aspx'|base64encode %}">Asesoria Creación Empresa</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Asesoria Creación Empresa' 'https://www.fondoemprender.com/SitePages/Home.aspx'|base64encode %}">Asesoria Creación Empresa</button>
 
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Fortalecimiento Empresarial' 'https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx'|base64encode %}">Fortalecimiento Empresarial</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Fortalecimiento Empresarial' 'https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx'|base64encode %}">Fortalecimiento Empresarial</button>
             
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'SER (Sena Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}">SER (Sena Emprende Rural)</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'SER (Sena Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}">SER (Sena Emprende Rural)</button>
             
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Fondo Emprender' 'https://www.fondoemprender.com/SitePages/FondoEmprender.aspx'|base64encode %}">Fondo Emprender</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Fondo Emprender' 'https://www.fondoemprender.com/SitePages/FondoEmprender.aspx'|base64encode %}">Fondo Emprender</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
