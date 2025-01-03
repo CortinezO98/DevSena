@@ -30,6 +30,7 @@ def Formulario(request, token):
     if request.method == 'POST':
         encuesta.dominioPersonaAtendio = int(request.POST["dominioPersonaAtendio"])
         encuesta.satisfaccionServicioRecibido = int(request.POST["satisfaccionServicioRecibido"])
+        encuesta.tiempoEsperaServicio = int(request.POST["tiempoEsperaServicio"])
         encuesta.recomendacionCanalAtencion = int(request.POST["recomendacionCanalAtencion"])
         encuesta.solucionSolicitud = eval(request.POST["solucionSolicitud"])
         encuesta.fechaExpiracionLink = datetime.now()
