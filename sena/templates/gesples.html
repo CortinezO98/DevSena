@@ -9,14 +9,11 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
                 Gestión para el Empleo Sena
             </a>
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Tramite de Inscripción Hoja de Vida' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Tramite de Inscripción Hoja de Vida</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Tramite de Inscripción Hoja de Vida' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Tramite de Inscripción Hoja de Vida</button>
 
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Consecución Empleo' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Consecución Empleo</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Consecución Empleo' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Consecución Empleo</button>
             
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Formación-Cualificación' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Formación-Cualificación</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Formación-Cualificación' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Formación-Cualificación</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
