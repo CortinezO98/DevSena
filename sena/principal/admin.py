@@ -49,22 +49,18 @@ class RegistroUsuarioResource(resources.ModelResource):
 
 class RegistroUsuarioAdmin(ImportExportModelAdmin):
     resource_class = RegistroUsuarioResource
-    list_display = ('numero_documento','nombres','apellidos','ip_sede',)
+    list_display = ('numero_documento', 'nombres', 'apellidos', 'ip_sede')
     search_fields = ['numero_documento']
 
-    def get_actions(self, request):
-        actions = super().get_actions(request)
-        actions['export_custom'] = (self.export_custom, 'export_custom', 'Generar reporte de registro usuarios')
-        return actions
-
-    def export_custom(self, request, queryset, modeladmin):
+    @admin.action(description="Generar reporte de registro usuarios")
+    def export_custom(self, request, queryset):
         resource = CustomRegistroUsuarioResource()
         dataset = resource.export(queryset, format='xlsx')
         response = HttpResponse(dataset.xlsx, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response['Content-Disposition'] = 'attachment; filename="Reporte registro usuarios.xlsx"'
         return response
 
-    export_custom.short_description = "Generar reporte de registro usuarios"
+    actions = [export_custom]
 
 class RegistroAccionUsuarioResource(resources.ModelResource):
     class Meta:
@@ -72,55 +68,51 @@ class RegistroAccionUsuarioResource(resources.ModelResource):
 
 class RegistroAccionUsuarioAdmin(ImportExportModelAdmin):
     resource_class = RegistroAccionUsuarioResource
-    list_display = ('accion','usuario','fecha',)
+    list_display = ('accion', 'usuario', 'fecha')
     list_filter = ['fecha']
-    search_fields = ['fecha','usuario','accion',]
-    
-    def get_actions(self, request):
-        actions = super().get_actions(request)
-        actions['export_custom'] = (self.export_custom, 'export_custom', 'Generar reporte de acciones')
-        return actions
+    search_fields = ['fecha', 'usuario', 'accion']
 
-    def export_custom(self, request, queryset, modeladmin):
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related('accion', 'usuario').only('accion', 'usuario', 'fecha')
+
+    @admin.action(description="Generar reporte de acciones")
+    def export_custom(self, request, queryset):
+        queryset = queryset.filter(fecha__gte="2025-01-01").only("accion", "usuario", "fecha")
         resource = CustomRegistroAccionUsuarioResource()
         dataset = resource.export(queryset, format='xlsx')
         response = HttpResponse(dataset.xlsx, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response['Content-Disposition'] = 'attachment; filename="Reporte Acciones.xlsx"'
         return response
 
-    export_custom.short_description = "Generar reporte de acciones"
+    actions = [export_custom]
 
 class DefaultRegistroAccionResource(resources.ModelResource):
     class Meta:
         model = RegistroAccion
-        
+
 class RegistroAccionAdmin(ImportExportModelAdmin):
     resource_class = DefaultRegistroAccionResource
-    list_display = ('accion','ip','fecha')
+    list_display = ('accion', 'ip', 'fecha')
     list_filter = ['fecha']
-    
-    def get_actions(self, request):
-        actions = super().get_actions(request)
-        actions['export_custom'] = (self.export_custom, 'export_custom', 'Generar reporte acciones')
-        return actions
 
-    def export_custom(self, request, queryset, modeladmin):
+    @admin.action(description="Generar reporte acciones")
+    def export_custom(self, request, queryset):
         resource = CustomRegistroAccionResource()
         dataset = resource.export(queryset, format='xlsx')
         response = HttpResponse(dataset.xlsx, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response['Content-Disposition'] = 'attachment; filename="Reporte Acciones.xlsx"'
         return response
 
-    export_custom.short_description = "Generar reporte acciones"
-        
+    actions = [export_custom]
+
 class RegistroDatosUserResource(resources.ModelResource):
     class Meta:
         model = RegistroDatosUser
-        
+
 class RegistroDatosUserAdmin(ImportExportModelAdmin):
-    resource_classes = [RegistroDatosUserResource]
-    list_display = ('tipo_contacto','tipo_documento','numero_documento','nombres','apellidos','sede_contacto','ip_dispositivo','fecha_registro')
-    search_fields = ['numero_documento','nombres','apellidos','sede_contacto','ip_dispositivo']
+    resource_class = RegistroDatosUserResource
+    list_display = ('tipo_contacto', 'tipo_documento', 'numero_documento', 'nombres', 'apellidos', 'sede_contacto', 'ip_dispositivo', 'fecha_registro')
+    search_fields = ['numero_documento', 'nombres', 'apellidos', 'sede_contacto', 'ip_dispositivo']
     list_filter = ['fecha_registro']
 
 admin.site.register(Accion, AccionAdmin)
