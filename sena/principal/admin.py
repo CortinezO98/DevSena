@@ -77,7 +77,7 @@ class RegistroAccionUsuarioAdmin(ImportExportModelAdmin):
 
     @admin.action(description="Generar reporte de acciones")
     def export_custom(self, request, queryset):
-        queryset = queryset.filter(fecha__gte="2025-01-01").only("accion", "usuario", "fecha")
+        queryset = queryset.filter(fecha__gte="2024-01-01").only("accion", "usuario", "fecha")
         resource = CustomRegistroAccionUsuarioResource()
         dataset = resource.export(queryset, format='xlsx')
         response = HttpResponse(dataset.xlsx, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
