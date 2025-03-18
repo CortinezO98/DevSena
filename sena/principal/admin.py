@@ -17,18 +17,21 @@ class MonthYearFilter(SimpleListFilter):
 
     def lookups(self, request, model_admin):
         qs = model_admin.get_queryset(request)
-        dates = qs.order_by('fecha').values_list('fecha', flat=True)
+        dates = qs.exclude(fecha__isnull=True).order_by('fecha').values_list('fecha', flat=True)
         months = {(d.year, d.month) for d in dates if d is not None}
         lookups = [
             (f"{year}-{month:02d}", datetime.date(year, month, 1).strftime("%B %Y"))
-            for year, month in months
+            for year, month in sorted(months, reverse=True)
         ]
-        return sorted(lookups, reverse=True)
+        return lookups
 
     def queryset(self, request, queryset):
         if self.value():
-            year, month = map(int, self.value().split('-'))
-            return queryset.filter(fecha__year=year, fecha__month=month)
+            try:
+                year, month = map(int, self.value().split('-'))
+                return queryset.filter(fecha__year=year, fecha__month=month)
+            except (ValueError, IndexError):
+                return queryset
         return queryset
 
 
@@ -94,8 +97,7 @@ class RegistroAccionUsuarioResource(resources.ModelResource):
 class RegistroAccionUsuarioAdmin(ImportExportModelAdmin):
     resource_class = RegistroAccionUsuarioResource
     list_display = ('accion', 'usuario', 'fecha')
-    list_filter = ['fecha']
-    list_filter = [MonthYearFilter]
+    list_filter = ['fecha', MonthYearFilter]
     search_fields = ['fecha', 'usuario', 'accion']
 
     def get_queryset(self, request):
