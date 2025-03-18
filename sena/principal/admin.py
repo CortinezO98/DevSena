@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin import SimpleListFilter
 from django.http import HttpResponse
 from import_export import resources, fields
 from import_export.widgets import ForeignKeyWidget, DateTimeWidget
@@ -6,6 +7,29 @@ from django.utils import timezone
 from import_export.admin import ImportExportModelAdmin
 from .models import *
 from .customReports import *
+import datetime
+
+
+
+class MonthYearFilter(SimpleListFilter):
+    title = 'Mes y Año'           
+    parameter_name = 'month_year'  
+
+    def lookups(self, request, model_admin):
+        qs = model_admin.get_queryset(request)
+        dates = qs.order_by('fecha').values_list('fecha', flat=True)
+        months = {(d.year, d.month) for d in dates if d is not None}
+        lookups = [
+            (f"{year}-{month:02d}", datetime.date(year, month, 1).strftime("%B %Y"))
+            for year, month in months
+        ]
+        return sorted(lookups, reverse=True)
+
+    def queryset(self, request, queryset):
+        if self.value():
+            year, month = self.value().split('-')
+            return queryset.filter(fecha__year=year, fecha__month=month)
+        return queryset
 
 
 class AccionResource(resources.ModelResource):
@@ -70,6 +94,7 @@ class RegistroAccionUsuarioAdmin(ImportExportModelAdmin):
     resource_class = RegistroAccionUsuarioResource
     list_display = ('accion', 'usuario', 'fecha')
     list_filter = ['fecha']
+    list_filter = [MonthYearFilter]
     search_fields = ['fecha', 'usuario', 'accion']
 
     def get_queryset(self, request):
