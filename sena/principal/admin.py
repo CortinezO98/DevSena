@@ -17,23 +17,30 @@ class MonthYearFilter(SimpleListFilter):
 
     def lookups(self, request, model_admin):
         qs = model_admin.get_queryset(request)
+        print("QuerySet en lookups:", qs)  # Depuración
         dates = qs.exclude(fecha__isnull=True).order_by('fecha').values_list('fecha', flat=True)
+        print("Fechas en lookups:", list(dates))  # Depuración
         months = {(d.year, d.month) for d in dates if d is not None}
+        print("Meses en lookups:", months)  # Depuración
         lookups = [
             (f"{year}-{month:02d}", datetime.date(year, month, 1).strftime("%B %Y"))
-            for year, month in sorted(months, reverse=True)
+            for year, month in months
         ]
-        return lookups
+        print("Opciones de filtrado en lookups:", lookups)  # Depuración
+        return sorted(lookups, reverse=True)
 
     def queryset(self, request, queryset):
+        print("Valor seleccionado en queryset:", self.value())  # Depuración
         if self.value():
-            month, year = map(int, self.value().split('-'))
-            start_date = timezone.make_aware(datetime.datetime(year, month, 1))
-            if month == 12:
-                end_date = timezone.make_aware(datetime.datetime(year + 1, 1, 1))
-            else:
-                end_date = timezone.make_aware(datetime.datetime(year, month + 1, 1))
-            return queryset.filter(fecha__gte=start_date, fecha__lt=end_date)
+            try:
+                year, month = map(int, self.value().split('-'))
+                print("Año y mes en queryset:", year, month)  # Depuración
+                filtered_queryset = queryset.filter(fecha__year=year, fecha__month=month)
+                print("QuerySet filtrado en queryset:", filtered_queryset)  # Depuración
+                return filtered_queryset
+            except (ValueError, IndexError) as e:
+                print("Error en queryset:", e)  # Depuración
+                return queryset
         return queryset
 
 
