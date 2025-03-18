@@ -12,36 +12,38 @@ import datetime
 
 
 class MonthYearFilter(SimpleListFilter):
-    title = 'Mes y Año'           
-    parameter_name = 'month_year'  
+    title = 'Mes y Año'
+    parameter_name = 'month_year'
 
     def lookups(self, request, model_admin):
         qs = model_admin.get_queryset(request)
-        print("QuerySet en lookups:", qs)  # Depuración
         dates = qs.exclude(fecha__isnull=True).order_by('fecha').values_list('fecha', flat=True)
-        print("Fechas en lookups:", list(dates))  # Depuración
         months = {(d.year, d.month) for d in dates if d is not None}
-        print("Meses en lookups:", months)  # Depuración
         lookups = [
             (f"{year}-{month:02d}", datetime.date(year, month, 1).strftime("%B %Y"))
             for year, month in months
         ]
-        print("Opciones de filtrado en lookups:", lookups)  # Depuración
         return sorted(lookups, reverse=True)
 
     def queryset(self, request, queryset):
-        print("Valor seleccionado en queryset:", self.value())  # Depuración
         if self.value():
             try:
                 year, month = map(int, self.value().split('-'))
-                print("Año y mes en queryset:", year, month)  # Depuración
-                filtered_queryset = queryset.filter(fecha__year=year, fecha__month=month)
-                print("QuerySet filtrado en queryset:", filtered_queryset)  # Depuración
-                return filtered_queryset
-            except (ValueError, IndexError) as e:
-                print("Error en queryset:", e)  # Depuración
+                naive_start = datetime.datetime(year, month, 1)
+                naive_end = datetime.datetime(year, month + 1, 1) if month < 12 else datetime.datetime(year + 1, 1, 1)
+                local_tz = timezone.get_default_timezone()
+                aware_start = timezone.make_aware(naive_start, local_tz)
+                aware_end = timezone.make_aware(naive_end, local_tz)
+                start_date = aware_start.astimezone(timezone.utc)
+                end_date = aware_end.astimezone(timezone.utc)
+                
+                return queryset.filter(fecha__gte=start_date, fecha__lt=end_date)
+            except Exception as e:
+                print("Error en el filtro MonthYearFilter:", e)
                 return queryset
         return queryset
+
+
 
 
 
@@ -108,7 +110,7 @@ class RegistroAccionUsuarioResource(resources.ModelResource):
 class RegistroAccionUsuarioAdmin(ImportExportModelAdmin):
     resource_class = RegistroAccionUsuarioResource
     list_display = ('accion', 'usuario', 'fecha')
-    list_filter = ['fecha', MonthYearFilter]
+    list_filter = [MonthYearFilter]
     search_fields = ['fecha', 'usuario', 'accion']
 
     def get_queryset(self, request):
