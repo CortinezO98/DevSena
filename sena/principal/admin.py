@@ -27,9 +27,10 @@ class MonthYearFilter(SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value():
-            year, month = self.value().split('-')
+            year, month = map(int, self.value().split('-'))
             return queryset.filter(fecha__year=year, fecha__month=month)
         return queryset
+
 
 
 class AccionResource(resources.ModelResource):
