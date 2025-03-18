@@ -29,19 +29,17 @@ class MonthYearFilter(SimpleListFilter):
         if self.value():
             try:
                 year, month = map(int, self.value().split('-'))
-                naive_start = datetime.datetime(year, month, 1)
-                naive_end = datetime.datetime(year, month + 1, 1) if month < 12 else datetime.datetime(year + 1, 1, 1)
-                local_tz = timezone.get_default_timezone()
-                aware_start = timezone.make_aware(naive_start, local_tz)
-                aware_end = timezone.make_aware(naive_end, local_tz)
-                start_date = aware_start.astimezone(timezone.utc)
-                end_date = aware_end.astimezone(timezone.utc)
-                
+                start_date = timezone.make_aware(datetime.datetime(year, month, 1))
+                if month == 12:
+                    end_date = timezone.make_aware(datetime.datetime(year + 1, 1, 1))
+                else:
+                    end_date = timezone.make_aware(datetime.datetime(year, month + 1, 1))
                 return queryset.filter(fecha__gte=start_date, fecha__lt=end_date)
             except Exception as e:
                 print("Error en el filtro MonthYearFilter:", e)
                 return queryset
         return queryset
+
 
 
 
