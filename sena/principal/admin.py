@@ -27,15 +27,15 @@ class MonthYearFilter(SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value():
-            year, month = map(int, self.value().split('-'))
-            tz = timezone.get_current_timezone()
-            start_date = tz.localize(datetime.datetime(year, month, 1))
+            month, year = map(int, self.value().split('-'))
+            start_date = timezone.make_aware(datetime.datetime(year, month, 1))
             if month == 12:
-                end_date = tz.localize(datetime.datetime(year + 1, 1, 1))
+                end_date = timezone.make_aware(datetime.datetime(year + 1, 1, 1))
             else:
-                end_date = tz.localize(datetime.datetime(year, month + 1, 1))
+                end_date = timezone.make_aware(datetime.datetime(year, month + 1, 1))
             return queryset.filter(fecha__gte=start_date, fecha__lt=end_date)
         return queryset
+
 
 
 
