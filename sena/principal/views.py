@@ -192,3 +192,14 @@ def PanelView(request):
 def CerrarSesion(request):
     request.session['usuarioActual'] = None
     return redirect('index')
+
+
+
+def lenguaje(request):
+    return render(request, 'lenguaje.html')
+
+def inscribete(request):
+    return render(request, 'inscribete.html')
+
+def egresados(request):
+    return render(request, 'egresados.html')

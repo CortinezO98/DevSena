@@ -3,256 +3,183 @@
 {% load mytags %}
 
 {% block main %}
-    <div class="row animate__animated animate__fadeIn">
-        <div class="row p-0">
-            <div class="col text-end mt-3 p-0">                
+<div class="wave-section animate__animated animate__fadeIn">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col text-center my-4">
+                <img src="{% static 'img/logoPanel2.png' %}" alt="Banner" class="img-fluid ">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-end mt-3">
                 {% if request.session.usuarioActual %}
-                    <div class="mensaje-bienvenida">
-                        Bienvenido, <strong>{{ request.session.usuarioActual.nombre }}</strong>
-                        <a href="{% url 'cerrarSesion' %}" class="btn btn-outline-danger btn-sm ms-2">Cerrar sesión</a>
-                    </div>
+                <div class="mensaje-bienvenida">
+                    Bienvenido, <strong>{{ request.session.usuarioActual.nombre }}</strong>
+                    <a href="{% url 'cerrarSesion' %}" class="btn btn-outline-danger btn-sm ms-2">Cerrar sesión</a>
+                </div>
                 {% endif %}
             </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="#" data-url="{% url 'abrirUrl' 'Lenguaje de señas' 'https://webrtc.inconcertcc.com/iq/sena/videocall/index.html'|base64encode %}" class="a-none abrir-ventana">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-hands-asl-interpreting fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Lengua de señas
-                    </div>
-                </div>
-            </a>
-        </div>
-        
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Formación para el trabajo' 'formajob' %}" class="a-none">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-graduation-cap fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Formación para el trabajo
-                    </div>
-                </div>
-            </a>
-        </div>
 
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Gestión para el empleo Sena' 'gesples' %}" class="a-none">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-business-time fa-5x text-secondary"></i>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-3">
+            <div class="col">
+                <a href="{% url  'lenguaje' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/videollamada.png' %}" alt="Videollamada" class="mb-2">
+                        <p class="title">Videollamada lengua de señas</p>
                     </div>
-                    <div class="card-footer text-bg-success">
-                        Gestión para el empleo Sena
+                </a>
+            </div>
+            
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Contáctate con nosotros' 'Catencion' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/contactanos.png' %}" alt="Contáctanos" class="mb-2">
+                        <p class="title">Contáctate con nosotros</p>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Inscríbete a nuestra oferta' 'inscribete' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/oferta.png' %}" alt="Oferta" class="mb-2">
+                        <p class="title">Inscríbete a nuestra oferta</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Certificado por competencia laboral' 'cercom' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/competencialaboral.png' %}" alt="Competencia Laboral" class="mb-2">
+                        <p class="title">Certificado por competencia laboral</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Bienestar al aprendiz' 'Bienestar' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/bienestar.png' %}" alt="Bienestar" class="mb-2">
+                        <p class="title">Bienestar al aprendiz</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Egresados' 'egresados' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/egresados.png' %}" alt="Egresados" class="mb-2">
+                        <p class="title">Egresados</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Fondo Emprender' 'enrural' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/fondoemprender.png' %}" alt="Fondo Emprender" class="mb-2">
+                        <p class="title">Fondo Emprender</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Agencia Pública Empleo' 'ape' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/agenciapublicaempleo.png' %}" alt="Agencia Pública de Empleo" class="mb-2">
+                        <p class="title">Agencia Pública Empleo</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Formatos aprendices' 'formatos' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/formatosaprendices.png' %}" alt="Formatos Aprendices" class="mb-2">
+                        <p class="title">Formatos aprendices</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'CampeSENA' 'CampeSENA' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/campesena_logo2.png' %}" alt="CampeSENA" class="mb-2">
+                        <p class="title">CampeSENA</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Empresarios' 'Empresarios' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/empresarios.png' %}" alt="Empresarios" class="mb-2">
+                        <p class="title">Empresarios</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Descarga tus Certificados' 'descert' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/certificados.png' %}" alt="Descarga Certificados" class="mb-2">
+                        <p class="title">Descarga tus Certificados</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Radica tus PQRSD' 'Pqr' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/pqrsd.png' %}" alt="PQRSD" class="mb-2">
+                        <p class="title">Radica tus PQRSD</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'abrirUrl' 'Otros servicios' 'Servicios' %}" class="text-decoration-none">
+                    <div class="option-card">
+                        <img src="{% static 'img/otrosservicios.png' %}" alt="Otros Servicios" class="mb-2">
+                        <p class="title">Otros servicios</p>
+                    </div>
+                </a>
+            </div>
 
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Certificación de competencias' 'cercom' %}" class="a-none">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-file-circle-check fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Certificación de competencias
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!--<div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Senatronica' 'setroc' %}" class="a-none">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-microchip fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Senatronica
-                    </div>
-                </div>
-            </a>
-        </div>!-->
-
-
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'CampeSENA' 'CampeSENA' %}" class="a-none" >
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        
-                        <img src="{% static 'img/campesena_logo2.png' %}" class="" height="81px" alt="logo">
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        CampeSENA
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Emprendimiento emprende rural' 'enrural' %}" class="a-none">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-regular fa-lightbulb fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Emprendimiento emprende rural
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Bienestar al aprendiz' 'Bienestar' %}" class="a-none" >
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-heart-pulse fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Bienestar al aprendiz
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Otros servicios' 'Servicios' %}" class="a-none" >
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-hand-holding-heart fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Otros servicios
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Empresarios' 'Empresarios' %}" class="a-none" >
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-users fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Empresarios
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'PQRS' 'Pqr' %}" class="a-none" >
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-headset fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        PQRS
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="col-6 col-md-4 col-lg-2">
-            <a href="{% url 'abrirUrl' 'Canales de Atencion' 'Catencion' %}" class="a-none">
-                <div class="card border-success card-link">
-                    <div class="card-body rounded-top text-center py-4">
-                        <i class="fa-solid fa-square-phone fa-5x text-secondary"></i>
-                    </div>
-                    <div class="card-footer text-bg-success">
-                        Canales de Atención
-                    </div>
-                </div>
-            </a>
         </div>
     </div>
-
-    <!--<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <iframe src="" frameborder="0" width="100%" height="100%"allow="camera; microphone;"></iframe>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var enlaces = document.querySelectorAll('.abrir-ventana');
-            enlaces.forEach(function(enlace) {
-                enlace.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-                    var url = this.getAttribute('data-url');
-                    abrirVentanaEmergente(url);
-                });
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var enlaces = document.querySelectorAll('.abrir-ventana');
+        enlaces.forEach(function(enlace) {
+            enlace.addEventListener('click', function(event) {
+                event.preventDefault();
+                var url = this.getAttribute('data-url');
+                abrirVentanaEmergente(url);
             });
-        
-            function abrirVentanaEmergente(url) {
-                var width = 1400;
-                var height = 1400;
-                var left = (screen.width - width) / 2;
-                var top = (screen.height - height) / 2;
-                window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
-            }
         });
-    </script>
-    <script>
-        
-        let tiempoInactividad = 300000; 
-        let temporizadorInactivo;
-
-        function reiniciarTemporizador() {
-            clearTimeout(temporizadorInactivo);
-            temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+        function abrirVentanaEmergente(url) {
+            var width = 1400;
+            var height = 1400;
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2;
+            window.open(
+                url,
+                'ventana_emergente',
+                'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top
+            );
         }
+    });
+</script>
+<script>
+    let tiempoInactividad = 600000; // 5 minutos
+    let temporizadorInactivo;
 
-        function redirigirAlIndex() {
-            window.location.href = "{% url 'cerrarSesion' %}";
-        }
+    function reiniciarTemporizador() {
+        clearTimeout(temporizadorInactivo);
+        temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+    }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            reiniciarTemporizador();
-            document.addEventListener("mousemove", reiniciarTemporizador);
-            document.addEventListener("keydown", reiniciarTemporizador);
-            document.addEventListener("click", reiniciarTemporizador);
-        });
+    function redirigirAlIndex() {
+        window.location.href = "{% url 'cerrarSesion' %}";
+    }
 
-
-    </script>
-
-    <!--<script>
-        
-        const iframeModal = document.getElementById('iframeModal');
-        if (iframeModal) {
-            iframeModal.addEventListener('show.bs.modal', event => {
-                const button = event.relatedTarget;
-                const url = button.getAttribute('data-bs-whatever');
-                const btnText = button.innerText;
-                const modalTitle = iframeModal.querySelector('.modal-title');
-                const modalBodyInput = iframeModal.querySelector('.modal-body iframe');
-    
-                modalTitle.textContent = `${btnText}`;
-                modalBodyInput.src = url;
-                modalBodyInput.allow = "microphone; camera";
-            });
-        }
-    </script>-->
-
+    document.addEventListener("DOMContentLoaded", function() {
+        reiniciarTemporizador();
+        document.addEventListener("mousemove", reiniciarTemporizador);
+        document.addEventListener("keydown", reiniciarTemporizador);
+        document.addEventListener("click", reiniciarTemporizador);
+    });
+</script>
 {% endblock %}

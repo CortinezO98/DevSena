@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load mytags %}
+
+{% block main %}
+    <header class="header-banner position-relative">
+        <img src="{% static 'img/lenguaje.jpg' %}" alt="Banner" class="img-fluid w-100">
+        <div class="logo-container position-absolute">
+            <img src="{% static 'img/logoSena.png' %}" alt="Logo SENA" class="logo-sena">
+        </div>
+    </header>
+
+    <div class="container py-4 mt-4">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-5 text-center text-md-start mb-3">
+            <h1 class="fw-bold text-center">Videollamada Lengua de señas</h1>
+            <a href="#" data-url="{% url 'abrirUrl' 'Lenguaje de señas' 'https://webrtc.inconcertcc.com/iq/sena/videocall/index.html'|base64encode %}" class="text-decoration-none abrir-ventana" aria-label="Llámanos">
+                <div class="option-card-lenguaje d-flex align-items-center justify-content-between px-4 py-2">
+                <span class="fw-bold">Llámanos</span>
+                <img src="{% static 'img/phone.png' %}" alt="Icono de teléfono" class="icono-telefono">
+                </div>
+            </a>
+            </div>
+            <div class="col-md-5 text-center">
+            <img src="{% static 'img/lenguaje_senas.png' %}" alt="Ilustración de lenguaje de señas" class="img-fluid rounded shadow-lg max-img-size">
+            </div>
+        </div>
+        {% include 'base/components/botonAtras.html' %}
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var enlaces = document.querySelectorAll('.abrir-ventana');
+        enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+        });
+        });
+        function abrirVentanaEmergente(url) {
+        var width = 1400;
+        var height = 1400;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        window.open(
+            url,
+            'ventana_emergente',
+            'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top
+        );
+        }
+    });
+    </script>
+
+    <script>
+    let tiempoInactividad = 300000; // 10 minutos
+    let temporizadorInactivo;
+    function reiniciarTemporizador() {
+        clearTimeout(temporizadorInactivo);
+        temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+    }
+    function redirigirAlIndex() {
+        window.location.href = "{% url 'cerrarSesion' %}";
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        reiniciarTemporizador();
+        document.addEventListener("mousemove", reiniciarTemporizador);
+        document.addEventListener("keydown", reiniciarTemporizador);
+        document.addEventListener("click", reiniciarTemporizador);
+    });
+    </script>
+{% endblock %}

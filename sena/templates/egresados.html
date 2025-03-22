@@ -1,0 +1,98 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load mytags %}
+
+{% block main %}
+    <section class="egresados-section position-relative min-vh-100">
+        <header class="header-egresados position-absolute w-100">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fw-bold mb-4 titulo-egresados">Egresados</h1>
+                    </div>
+                    <div class="col text-end">
+                        <img src="{% static 'img/egresado_siempre.png' %}" alt="Egresado SENA Siempre" class="logo-egresados">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container position-relative">
+            <div class="row w-100 justify-content">
+                <div class="col-md-6 mb-4">
+                    <div class="d-flex flex-column gap-3">
+                        <button type="button"
+                                class="option-card-egresados" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Conoce nuestros convenios' 'URL_1'|base64encode %}">
+                            Conoce nuestros Convenios
+                        </button>
+
+                        <button type="button"
+                                class="option-card-egresados" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Postula tu Hoja de Vida' 'URL_2'|base64encode %}">
+                            Postula tu Hoja de Vida
+                        </button>
+
+                        <button type="button"
+                                class="option-card-egresados" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Descarga tu Certificado' 'URL_3'|base64encode %}">
+                            Descarga tu Certificado
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'base/components/botonAtras.html' %}
+    </section>
+
+    <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const iframeModal = document.getElementById('iframeModal');
+        if (iframeModal) {
+            iframeModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget;
+            const url = button.getAttribute('data-bs-whatever');
+            const btnText = button.innerText;
+            const modalTitle = iframeModal.querySelector('.modal-title');
+            const modalBodyIframe = iframeModal.querySelector('.modal-body iframe');
+            modalTitle.textContent = btnText;
+            modalBodyIframe.src = url;
+            });
+        }
+        });
+    </script>
+
+    <script>
+        let tiempoInactividad = 300000; // 5 minutos
+        let temporizadorInactivo;
+
+        function reiniciarTemporizador() {
+        clearTimeout(temporizadorInactivo);
+        temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+        }
+
+        function redirigirAlIndex() {
+        window.location.href = "{% url 'cerrarSesion' %}";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+        reiniciarTemporizador();
+        document.addEventListener("mousemove", reiniciarTemporizador);
+        document.addEventListener("keydown", reiniciarTemporizador);
+        document.addEventListener("click", reiniciarTemporizador);
+        });
+    </script>
+{% endblock %}

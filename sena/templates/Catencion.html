@@ -3,139 +3,82 @@
 {% load mytags %}
 
 {% block main %}
-<div class="row justify-content-center animate__animated animate__fadeIn ">
-    <!--<div class="col-sm-6 col-md-4 col-lg-2">
-        <a href="#" data-url="{% url 'abrirUrl' 'Llamada de voz' 'https://chat2-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/senac2cTs?token=3B7AAB88F1F54997BE80211122ECC564'|base64encode %}" class="a-none abrir-ventana">
-            <div class="card border-success card-link">
-                <div class="card-body rounded-top text-center py-4">
-                    <i class="fa-solid fa-phone-volume fa-5x text-secondary"></i>
-                </div>
-                <div class="card-footer text-bg-success">
-                    Llamada de voz
-                </div>
-            </div>
-        </a>
-    </div>-->
-    
-    <div class="col-sm-6 col-md-4 col-lg-2">
-        <a href="{% url 'abrirUrl' 'Whatsapp' 'enviar_sms'|base64encode %}" class="a-none">
-            <div class="card border-success card-link">
-                <div class="card-body rounded-top text-center py-4">
-                    <i class="fa-solid fab fa-whatsapp fa-5x text-secondary"></i>
-                </div>
-                <div class="card-footer text-bg-success">
-                    Whatsapp 
+    <section class="contact-section position-relative min-vh-100">
+        <header class="header-banner position-absolute w-100">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="fw-bold mb-4" style="color: #5a5b5a;">Centro de Contacto</h1>
+                    </div>
+                    <div class="col text-end">
+                        <img src="{% static 'img/logoSena.png' %}" alt="Logo SENA" class="logo-sena">
+                    </div>
                 </div>
             </div>
-        </a>
-    </div>       
-
-    <div class="col-sm-6 col-md-4 col-lg-2">
-        <a href="#" data-url="{% url 'abrirUrl' 'Clic para llamarte' 'https://ws-boca.inconcertcc.com/sena-callbackv4/static/'|base64encode %}"class="a-none abrir-ventana">
-            <div class="card border-success card-link">
-                <div class="card-body rounded-top text-center py-4">
-                    <i class="fa-solid fa-headset fa-5x text-secondary"></i>
+        </header>
+        <div class="container position-relative">
+            <div class="row w-100 justify-content-center">
+                <div class="col-md-10 text-center text-md-start">
+                    <div class="d-flex flex-column gap-3">
+                        <a href="#" 
+                            data-url="{% url 'abrirUrl' 'Llámanos' 'https://chat1-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/KioskoC2C?token=61243A17D661DCBEE85F7A83CB60CC91'|base64encode %}" class="text-decoration-none abrir-ventana" aria-label="Llámanos">
+                            <div class="option-card-contact d-flex align-items-center justify-content-between px-4 py-2">
+                                <span class="fw-bold">Llámanos</span>
+                                <img src="{% static 'img/phone.png' %}" alt="Teléfono" class="icono-contacto">
+                            </div>
+                        </a>
+                        <a href="#" data-url="{% url 'abrirUrl' 'Clic para llamarte' 'https://ws-boca.inconcertcc.com/sena-callbackv4/static/'|base64encode %}" class="text-decoration-none abrir-ventana" aria-label="Clic para llamarte">
+                            <div class="option-card-contact d-flex align-items-center justify-content-between px-4 py-2">
+                                <span class="fw-bold">Clic para llamarte</span>
+                                <img src="{% static 'img/headset.png' %}" alt="Headset" class="icono-contacto">
+                            </div>
+                        </a>
+                        <a href="{% url 'abrirUrl' 'Whatsapp' 'enviar_sms'|base64encode %}" class="text-decoration-none" aria-label="WhatsApp">
+                            <div class="option-card-contact d-flex align-items-center justify-content-between px-4 py-2">
+                                <span class="fw-bold">WhatsApp</span>
+                                <img src="{% static 'img/whatsapp.png' %}" alt="WhatsApp" class="icono-contacto">
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="card-footer text-bg-success">
-                    Clic para llamarte
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-sm-6 col-md-4 col-lg-2">
-        <a href="#" data-url="{% url 'abrirUrl' 'Llámanos' 'https://chat1-cls55-boc.i6.inconcertcc.com/inconcert/apps/webdesigner/KioskoC2C?token=61243A17D661DCBEE85F7A83CB60CC91'|base64encode %}" class="a-none abrir-ventana">
-            <div class="card border-success card-link">
-                <div class="card-body rounded-top text-center py-4">
-                    <i class="fa-solid fa-square-phone-flip fa-5x text-secondary"></i>
-                </div>
-                <div class="card-footer text-bg-success">
-                    Llámanos
-                </div>
-            </div>
-        </a>
-    </div>
-    {% include 'base/components/botonAtras.html' %}
-</div>
-
-<!--<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
-    </div>
-</div>-->
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var enlaces = document.querySelectorAll('.abrir-ventana');
-        enlaces.forEach(function(enlace) {
+        {% include 'base/components/botonAtras.html' %}
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.abrir-ventana').forEach(function(enlace) {
             enlace.addEventListener('click', function(event) {
-                event.preventDefault(); 
-                var url = this.getAttribute('data-url');
-                abrirVentanaEmergente(url);
+            event.preventDefault();
+            var url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
             });
         });
-    
         function abrirVentanaEmergente(url) {
-            var width = 1400;
-            var height = 1400;
-            var left = (screen.width - width) / 2;
-            var top = (screen.height - height) / 2;
+            var width = 1400,
+                height = 1400,
+                left = (screen.width - width) / 2,
+                top = (screen.height - height) / 2;
             window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
         }
-    });
-</script>
-
-    <script>
-        
-        let tiempoInactividad = 300000; 
-        let temporizadorInactivo;
-
-        function reiniciarTemporizador() {
-            clearTimeout(temporizadorInactivo);
-            temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
-        }
-
-        function redirigirAlIndex() {
-            window.location.href = "{% url 'cerrarSesion' %}";
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            reiniciarTemporizador();
-            document.addEventListener("mousemove", reiniciarTemporizador);
-            document.addEventListener("keydown", reiniciarTemporizador);
-            document.addEventListener("click", reiniciarTemporizador);
         });
     </script>
 
-    <!--<script>
-        
-        const iframeModal = document.getElementById('iframeModal');
-        if (iframeModal) {
-            iframeModal.addEventListener('show.bs.modal', event => {
-                const button = event.relatedTarget;
-                const url = button.getAttribute('data-bs-whatever');
-                const btnText = button.innerText;
-                const modalTitle = iframeModal.querySelector('.modal-title');
-                const modalBodyInput = iframeModal.querySelector('.modal-body iframe');
-    
-                modalTitle.textContent = `${btnText}`;
-                modalBodyInput.src = url;
-            });
+    <script>
+        let tiempoInactividad = 300000; // 5 minutos
+        let temporizadorInactivo;
+        function reiniciarTemporizador() {
+        clearTimeout(temporizadorInactivo);
+        temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
         }
-    </script>-->
-
-
+        function redirigirAlIndex() {
+        window.location.href = "{% url 'cerrarSesion' %}";
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+        reiniciarTemporizador();
+        document.addEventListener("mousemove", reiniciarTemporizador);
+        document.addEventListener("keydown", reiniciarTemporizador);
+        document.addEventListener("click", reiniciarTemporizador);
+        });
+    </script>
 {% endblock %}
-

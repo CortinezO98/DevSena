@@ -14,16 +14,10 @@
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
 </head>
 <body>
-    {% block header %}
-        {% include 'base/header.html' %}
-    {% endblock %}
+    
     <div class="container pt-2">    
         {% block main %}{% endblock %}
     </div>
-    <br><br>
-    {% block footer %}
-        {% include 'base/footer.html' %}
-    {% endblock %}
 
     <script type='text/javascript'>
         (function() {
