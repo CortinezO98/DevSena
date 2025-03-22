@@ -596,6 +596,10 @@ html, body {
     background: url("../img/egresados_bg.jpg") no-repeat center center;
     background-size: cover;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .header-egresados {
@@ -641,6 +645,4 @@ html, body {
     padding: 10px 15px;
     }
 }
-
-
 /* FIN */
