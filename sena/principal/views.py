@@ -211,3 +211,7 @@ def agenciaEmpleo(request):
 
 def formatos(request):
     return render(request, 'formatos.html')
+
+
+def certificados(request):
+    return render(request, 'certificados.html')

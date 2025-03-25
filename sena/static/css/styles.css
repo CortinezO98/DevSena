@@ -61,6 +61,23 @@ body {
     color: #39a900; 
 }
 
+.btn-success {
+    --bs-btn-bg: #39a900 !important;
+    --bs-btn-border-color: #39a900 !important;
+    --bs-btn-disabled-bg: #39a900 !important;
+    --bs-btn-disabled-border-color: #39a900 !important;
+}
+
+.btn-outline-success {
+    --bs-btn-color: #39a900;
+    --bs-btn-border-color: #39a900;
+    --bs-btn-hover-bg: #39a900;
+    --bs-btn-hover-border-color: #39a900;
+    --bs-btn-active-bg: #39a900;
+    --bs-btn-active-border-color: #39a900;
+    --bs-btn-disabled-color: #39a900;
+    --bs-btn-disabled-border-color: #39a900;
+}
 
 .btn-outline-danger {
     --bs-btn-color: #dc3545;
@@ -866,7 +883,7 @@ html, body {
 }
 
 .option-card-campesena {
-    background: linear-gradient(to right, #f8f8f8, white);
+    background: linear-gradient(to right, #e4e5e4, #feffff);
     border: none;
     border-radius: 12px;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
@@ -945,7 +962,7 @@ html, body {
 }
 
 .option-card-empresarios {
-    background: linear-gradient(to right, #f8f8f8, white);
+    background: linear-gradient(to right, #e4e5e4, #feffff);
     border: none;
     border-radius: 12px;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
@@ -976,3 +993,258 @@ html, body {
 
 
 /* FIN EMPRESARIOS */
+
+
+
+/* CERTIFICADOS */
+
+.certificados-section {
+    min-height: 100vh;
+    background: url("../img/certificados_bg.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-certificados {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.titulo-certificados {
+    color: #5a5b5a;
+}
+
+.logo-certificados {
+    max-width: 300px;
+    height: auto;
+}
+
+
+.option-card-certificados {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 30px; 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    /* width: 300px;   si quiero un ancho fijo */
+}
+
+.option-card-certificados:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+}
+
+.nota-certificados {
+    font-size: 15px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .logo-certificados {
+        max-width: 200px; 
+    }
+    .option-card-certificados {
+        font-size: 16px;      
+        padding: 15px 25px;   
+    }
+    .nota-certificados {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-certificados {
+        max-width: 130px; 
+    }
+    .option-card-certificados {
+        font-size: 14px;
+        padding: 10px 20px; 
+    }
+    .nota-certificados {
+        font-size: 13px;
+    }
+}
+
+/* FIN CERTIFICADOS */
+
+
+
+
+/* PQRSD */
+
+.pqr-section {
+    min-height: 100vh;
+    background: url("../img/pqr_person.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-pqr {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.titulo-pqr {
+    color: #5a5b5a;
+    margin: 0;
+}
+
+.logo-pqr {
+    max-width: 120px;
+    height: auto;
+}
+
+
+.pqr-person-img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+
+.option-card-pqr {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 400px; 
+}
+
+.option-card-pqr:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+}
+
+
+@media (max-width: 768px) {
+    .pqr-section {
+        justify-content: flex-start;
+    }
+    .option-card-pqr {
+        font-size: 16px;
+        padding: 15px 20px;
+        width: 220px;
+    }
+    .header-pqr {
+        padding: 10px 0;
+    }
+    .logo-pqr {
+        max-width: 90px;
+    }
+}
+
+/* FIN PQRSD */
+
+/* SERVICIOS */
+
+.servicios-section {
+    min-height: 200vh;
+    background: url("../img/servicios_bg.png") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-servicios {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.titulo-servicios {
+    color: #5a5b5a;
+}
+
+.logo-servicios {
+    max-width: 120px;
+    height: auto;
+}
+
+.subtitulo-servicios {
+    color: #002b5c;
+    margin-bottom: 1rem;
+}
+
+.servicios-img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.botones-container {
+    display: flex;
+    flex-direction: row;  
+    gap: 30px;  
+    justify-content: center;
+    align-items: center;
+    margin-top: 400px; 
+    flex-wrap: wrap; 
+}
+.option-card-servicios {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 30px 40px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 400px; 
+} 
+
+.option-card-servicios:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .botones-container {
+        flex-direction: column;  
+        gap: 15px;
+    }
+    
+    .option-card-servicios {
+        width: 100%;  
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+    
+    .logo-servicios {
+        max-width: 80px;
+    }
+}
+
+/* FIN SERVICIOS */

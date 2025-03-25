@@ -3,21 +3,28 @@
 {% load mytags %}
 
 {% block main %}
-<div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            Servicios
-            </a>
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Aulas Moviles' 'https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx'|base64encode %}">Aulas Moviles</button>
-
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Sennova' 'http://sennova.senaedu.edu.co/'|base64encode %}">Sennova</button>
+<section class="servicios-section position-relative min-vh-100">
+    <header class="header-servicios position-absolute w-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <h1 class="fw-bold mb-4 titulo-servicios">Otros servicios</h1>
+                </div>
+                <div class="col text-end">
+                    <img src="{% static 'img/logoSena.png' %}" alt="Logo SENA" class="logo-servicios">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container -flex flex-column justify-content-center align-items-center h-100">
+        <div class="botones-container">
+            <button type="button" class="option-card-servicios abrir-ventana" data-url="{% url 'abrirUrl' 'Aulas Moviles' 'https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx'|base64encode %}"> Aulas Móviles </button>
+            <button type="button" class="option-card-servicios abrir-ventana" data-url="{% url 'abrirUrl' 'Sennova' 'http://sennova.senaedu.edu.co/'|base64encode %}"> Sennova </button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
-</div>   
+</section>
+
 
 <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
@@ -35,8 +42,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 <script>

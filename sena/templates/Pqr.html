@@ -3,24 +3,28 @@
 {% load mytags %}
 
 {% block main %}
-<div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-                PQRS
-            </a>
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Radicar' 'https://sciudadanos.sena.edu.co/wausuarios.aspx'|base64encode %}">Radicar</button>
-            
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Consultar' 'https://sciudadanos.sena.edu.co/waconsultaopciones.aspx'|base64encode %}">Consultar</button>
-            
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Denuncias' 'https://www.sena.edu.co/es-co/ciudadano/Paginas/Denuncias_Corrupcion.aspx'|base64encode %}">Denuncias</button>
+<section class="pqr-section position-relative min-vh-100">
+    <header class="header-pqr position-absolute w-100">
+        <div class="container">
+            <div class="row align-items-center justify-content-end">
+                <div class="col-auto text-end">
+                    <img src="{% static 'img/logoSena.png' %}" alt="Logo SENA" class="logo-pqr">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container position-relative h-100">
+        <div class="row h-100 justify-content-end align-items-center">
+            <div class="col-md-6 d-flex flex-column gap-3 align-items-center mt-4">
+                <h1 class="fw-bold mb-4 titulo-pqr mt-5">Portal PQRSD</h1>
+                <button type="button" class="option-card-pqr abrir-ventana" data-url="{% url 'abrirUrl' 'Radica tu PQRSD' 'https://sciudadanos.sena.edu.co/wausuarios.aspx'|base64encode %}"> Radica tu PQRSD </button>
+                <button type="button" class="option-card-pqr abrir-ventana" data-url="{% url 'abrirUrl' 'Consulta tu PQRSD' 'https://sciudadanos.sena.edu.co/waconsultaopciones.aspx'|base64encode %}"> Consulta tu PQRSD </button>
+            </div>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
-</div>
+</section>
 
 <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">

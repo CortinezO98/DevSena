@@ -29,6 +29,7 @@ urlpatterns = [
     path('egresados/', egresados, name='egresados'),
     path('agenciaEmpleo/', agenciaEmpleo, name='agenciaEmpleo'),
     path('formatos/', formatos, name='formatos'),
+    path('certificados/', certificados, name='certificados'),
     path('RegistroUser/', REGISTROUSER, name="RegistroUser"),
     # path('abrirUrl/<str:accion>/<path:url>', AbrirUrl, name="abrirUrl"),
     path('abrirUrl/<str:accion>/<str:url>/', AbrirUrl, name="abrirUrl"),
