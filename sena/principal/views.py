@@ -203,3 +203,11 @@ def inscribete(request):
 
 def egresados(request):
     return render(request, 'egresados.html')
+
+
+def agenciaEmpleo(request):
+    return render(request, 'agenciaEmpleo.html')
+
+
+def formatos(request):
+    return render(request, 'formatos.html')

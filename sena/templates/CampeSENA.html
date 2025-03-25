@@ -3,26 +3,23 @@
 {% load mytags %}
 
 {% block main %}
-<div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group" >
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-            CAMPESENA
-            </a>
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Formación' 'https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx'|base64encode %}">Formación</button>
-
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Emprendimiento' 'https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx'|base64encode %}">Emprendimiento</button>
-            
-            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Certificación de Competencias Laborales' 'https://www.sena.edu.co/es-co/Noticias/Documents/OFERTA_DE_SERVICIOS_Y_NORMAS_CAMPESENA.pdf'|base64encode %}">Certificación de Competencias Laborales</button>
-            
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Agrosena' 'https://www.sena.edu.co/es-co/formacion/Paginas/agro_sena.aspx'|base64encode %}">Agrosena</button>
+<section class="campesena-section position-relative min-vh-100">
+    <header class="header-formatos position-absolute w-100">
+        <div class="container">
+            <div class="row align-items-center justify-content-end">
+                <div class="col-auto text-end">
+                    <img src="{% static 'img/campesena.png' %}" alt="Campesino" class="img-fluid campe-person-img">
+                </div>
+            </div>
         </div>
+    </header>
+    <div class="campesena-buttons d-flex flex-column gap-3">
+        <button type="button" class="option-card-campesena abrir-ventana" data-url="{% url 'abrirUrl' 'Inscríbete aquí' 'URL_1'|base64encode %}"> Inscríbete aquí </button>
+        <button type="button" class="option-card-campesena abrir-ventana" data-url="{% url 'abrirUrl' 'Conoce el programa' 'URL_2'|base64encode %}"> Conoce el programa</button>
     </div>
     {% include 'base/components/botonAtras.html' %}
-</div> 
+</section> 
+
 <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
@@ -41,7 +38,6 @@
 </div>
 
 
-</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

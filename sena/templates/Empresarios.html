@@ -3,24 +3,36 @@
 {% load mytags %}
 
 {% block main %}
-<div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-                Empresarios
-            </a>
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="{% url 'abrirUrl' 'Empresarios2' 'https://www.sena.edu.co/es-co/Empresarios/Paginas/default.aspx'|base64encode %}">Empresarios</button>
 
-            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Portal Autogestión' 'https://autogestionprd.powerappsportals.com/SignIn?ReturnUrl=%2F'|base64encode %}">Portal Autogestión</button>
-            
-            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Certificados Aportes Y Fic' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}">Certificados Aportes Y Fic</button>
-
-            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Facilidad de Pago' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}">Facilidad de Pago</button>
+<section class="empresarios-section position-relative min-vh-100">
+    <header class="header-empresarios position-absolute w-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <h1 class="fw-bold mb-4 titulo-empresarios">Empresarios</h1>
+                </div>
+                <div class="col text-end">
+                    <img src="{% static 'img/logoSena.png' %}" alt="Logo SENA" class="logo-empresarios">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container position-relative">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-5 mb-4">
+                <div class="d-flex flex-column gap-3">
+                    <!-- Botón 1: Certificados aportes y FIC -->
+                    <button type="button" class="option-card-empresarios abrir-ventana" data-url="{% url 'abrirUrl' 'Certificados Aportes y FIC' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}"> Certificados aportes y FIC </button>
+                    <!-- Botón 2: Facilidad de pago -->
+                    <button type="button" class="option-card-empresarios abrir-ventana" data-url="{% url 'abrirUrl' 'Facilidad de pago' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}"> Facilidad de pago </button>
+                    <!-- Botón 3: Portal autogestión -->
+                    <button type="button" class="option-card-empresarios abrir-ventana" data-url="{% url 'abrirUrl' 'Portal Autogestión' 'https://autogestionprd.powerappsportals.com/SignIn?ReturnUrl=%2F'|base64encode %}"> Portal autogestión </button>
+                </div>
+            </div>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
-</div>
+</section>
 
 <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
@@ -39,8 +51,6 @@
     </div>
 </div>
 
-
-</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
