@@ -17,37 +17,51 @@
             </div>
         </header>
         <div class="container position-relative">
-            <div class="row w-100 justify-content">
-                <div class="col-md-6 mb-4">
-                    <div class="d-flex flex-column gap-3">
-                        <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-                            data-bs-whatever="{% url 'abrirUrl' 'Regístrate en SofiaPlus' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/registro.html'|base64encode %}">
+            <div class="row">
+            <!-- Columna izquierda que contendrá los botones -->
+                <div class="col-md-6">
+                    <div class="row">
+                        <!-- Botón 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+                                data-bs-whatever="{% url 'abrirUrl' 'Regístrate en SofiaPlus' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/registro.html'|base64encode %}">
                             <span class="fw-bold">Regístrate en SofiaPlus</span>
+                            </div>
                         </div>
-
-                        <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-                            data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Programas Titulados Presenciales' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/buscar-oferta-educativa.html?radio=opcion200&amp;buscador_texto=Ej%3A+Cocina%2C+Contabilidad&amp;ofertaDisponible=on&amp;ffv=-1&amp;amp;ciudad=Ej%3A+Cali%2C+Cartagena&amp;campoEmpresa=&amp;amp;nfct=-1#fix-opcion200'|base64encode %}">
-                            <span class="fw-bold">Inscríbete a Programas Titulados Presenciales</span>
-                        </div>
-
-                        <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-                            data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Programas Titulados Virtuales' 'https://zajuna.sena.edu.co/titulada.php'|base64encode %}">
+                        <!-- Botón 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+                                data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Programas Titulados Virtuales' 'https://zajuna.sena.edu.co/titulada.php'|base64encode %}">
                             <span class="fw-bold">Inscríbete a Programas Titulados Virtuales</span>
+                            </div>
                         </div>
-
-                        <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-                            data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Cursos Complementarios Virtuales' 'https://comunidades.netlab-sena.net/cursos-cortos'|base64encode %}">
+                        <!-- Botón 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+                                data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Programas Titulados Presenciales' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/buscar-oferta-educativa.html?radio=opcion200&amp;buscador_texto=Ej%3A+Cocina%2C+Contabilidad&amp;ofertaDisponible=on&amp;ffv=-1&amp;amp;ciudad=Ej%3A+Cali%2C+Cartagena&amp;campoEmpresa=&amp;amp;nfct=-1#fix-opcion200'|base64encode %}">
+                            <span class="fw-bold">Inscríbete a Programas Titulados Presenciales</span>
+                            </div>
+                        </div>
+                        <!-- Botón 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+                                data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Cursos Complementarios Virtuales' 'https://comunidades.netlab-sena.net/cursos-cortos'|base64encode %}">
                             <span class="fw-bold">Inscríbete a Cursos Complementarios Virtuales</span>
+                            </div>
                         </div>
-
-                        <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-                            data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Cursos Cortos Presenciales' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/buscar-oferta-educativa.html?radio=opcion201&buscador_texto=Ej%3A+Cocina%2C+Contabilidad&ofertaDisponible=on&ffv=-1&ciudad=Ej%3A+Cali%2C+Cartagena&campoEmpresa=&nfct=-1'|base64encode %}">
+                        <!-- Botón 5 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+                                data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Cursos Cortos Presenciales' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/buscar-oferta-educativa.html?radio=opcion201&buscador_texto=Ej%3A+Cocina%2C+Contabilidad&ofertaDisponible=on&ffv=-1&ciudad=Ej%3A+Cali%2C+Cartagena&campoEmpresa=&nfct=-1'|base64encode %}">
                             <span class="fw-bold">Inscríbete a Cursos Cortos Presenciales</span>
+                            </div>
                         </div>
-
-                        <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-                            data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Cursos de Inglés Virtual - Bilingüismo' 'https://zajuna.sena.edu.co/bilinguismo.php'|base64encode %}">
+                        <!-- Botón 6 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="option-card-inscribete" data-bs-toggle="modal" data-bs-target="#iframeModal" 
+                                data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a Cursos de Inglés Virtual - Bilingüismo' 'https://zajuna.sena.edu.co/bilinguismo.php'|base64encode %}">
                             <span class="fw-bold">Inscríbete a Cursos de Inglés Virtual - Bilingüismo</span>
+                            </div>
                         </div>
                     </div>
                 </div>
