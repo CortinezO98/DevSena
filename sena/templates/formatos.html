@@ -22,25 +22,10 @@
             <div class="col-md-5 mb-4">
                 <h2 class="fw-bold subtitulo-formatos">Descarga tus formatos</h2>
                 <div class="d-flex flex-column gap-3">
-                    <!-- Botón 1: Ficha de matrícula -->
-                    <button type="button" class="option-card-formatos abrir-ventana" data-url="{% url 'abrirUrl' 'Ficha de matrícula' 'URL_1'|base64encode %}">
-                    Ficha de matrícula
-                    </button>
-
-                    <!-- Botón 2: Compromiso del Aprendiz -->
-                    <button type="button" class="option-card-formatos abrir-ventana" data-url="{% url 'abrirUrl' 'Compromiso del Aprendiz' 'URL_2'|base64encode %}">
-                    Compromiso del Aprendiz
-                    </button>
-
-                    <!-- Botón 3: Bitácoras Etapa Productiva -->
-                    <button type="button" class="option-card-formatos abrir-ventana" data-url="{% url 'abrirUrl' 'Bitácoras Etapa Productiva' 'URL_3'|base64encode %}">
-                    Bitácoras Etapa Productiva
-                    </button>
-
-                    <!-- Botón 4: Tratamiento de datos (sólo menores de edad) -->
-                    <button type="button" class="option-card-formatos abrir-ventana" data-url="{% url 'abrirUrl' 'Tratamiento de datos (sólo menores de edad)' 'URL_4'|base64encode %}">
-                    Tratamiento de datos (sólo menores de edad)
-                    </button>
+                    <button type="button" class="option-card-formatos" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Ficha de matrícula' 'https://elblogcga.blogspot.com/p/ingreso-y-seleccion.html?m=1#'|base64encode %}"> Ficha de matrícula</button>
+                    <button type="button" class="option-card-formatos" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Compromiso del Aprendiz' 'https://elblogcga.blogspot.com/p/ingreso-y-seleccion.html?m=1#'|base64encode %}"> Compromiso del Aprendiz </button>
+                    <button type="button" class="option-card-formatos" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Bitácoras Etapa Productiva' 'https://elblogcga.blogspot.com/p/etapa-productiva-2021.html?m=1'|base64encode %}"> Bitácoras Etapa Productiva</button>
+                    <button type="button" class="option-card-formatos" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Tratamiento de datos (sólo menores de edad)' 'https://elblogcga.blogspot.com/p/ingreso-y-seleccion.html?m=1#'|base64encode %}"> Tratamiento de datos (sólo menores de edad) </button>
                 </div>
             </div>
         </div>

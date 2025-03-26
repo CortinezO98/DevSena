@@ -14,8 +14,8 @@
         </div>
     </header>
     <div class="campesena-buttons d-flex flex-column gap-3">
-        <button type="button" class="option-card-campesena abrir-ventana" data-url="{% url 'abrirUrl' 'Inscríbete aquí' 'URL_1'|base64encode %}"> Inscríbete aquí </button>
-        <button type="button" class="option-card-campesena abrir-ventana" data-url="{% url 'abrirUrl' 'Conoce el programa' 'URL_2'|base64encode %}"> Conoce el programa</button>
+        <button type="button" class="option-card-campesena abrir-ventana" data-url="{% url 'abrirUrl' 'Inscríbete aquí' 'https://www.sena.edu.co/es-co/Noticias/Documents/OFERTA_DE_SERVICIOS_Y_NORMAS_CAMPESENA.pdf'|base64encode %}"> Inscríbete aquí </button>
+        <button type="button" class="option-card-campesena" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Conoce el programa' 'https://www.sena.edu.co/es-co/campesena/Paginas/index.aspx'|base64encode %}"> Conoce el programa</button>
     </div>
     {% include 'base/components/botonAtras.html' %}
 </section> 

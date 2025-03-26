@@ -18,7 +18,7 @@
     </header>
     <div class="container -flex flex-column justify-content-center align-items-center h-100">
         <div class="botones-container">
-            <button type="button" class="option-card-servicios abrir-ventana" data-url="{% url 'abrirUrl' 'Aulas Moviles' 'https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx'|base64encode %}"> Aulas Móviles </button>
+            <button type="button" class="option-card-servicios" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Aulas Moviles' 'https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx'|base64encode %}"> Aulas Móviles </button>
             <button type="button" class="option-card-servicios abrir-ventana" data-url="{% url 'abrirUrl' 'Sennova' 'http://sennova.senaedu.edu.co/'|base64encode %}"> Sennova </button>
         </div>
     </div>

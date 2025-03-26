@@ -18,25 +18,10 @@
         <div class="row justify-content-between align-items-center">
             <div class="col-md-5 mb-4">
                 <div class="d-flex flex-column gap-3">
-                    <!-- Botón 1: Inscribe tu Hoja de Vida -->
-                    <button type="button" class="option-card-ape abrir-ventana" data-url="{% url 'abrirUrl' 'Inscribe tu Hoja de Vida' 'URL_1'|base64encode %}">
-                        Inscribe tu Hoja de Vida
-                    </button>
-
-                    <!-- Botón 2: Restablece tu contraseña -->
-                    <button type="button" class="option-card-ape abrir-ventana" data-url="{% url 'abrirUrl' 'Restablece tu contraseña' 'URL_2'|base64encode %}">
-                        Restablece tu contraseña
-                    </button>
-
-                    <!-- Botón 3: Conoce las convocatorias laborales -->
-                    <button type="button" class="option-card-ape abrir-ventana" data-url="{% url 'abrirUrl' 'Conoce las convocatorias laborales' 'URL_3'|base64encode %}">
-                        Conoce las convocatorias laborales
-                    </button>
-
-                    <!-- Botón 4: Conoce nuestras Oficinas -->
-                    <button type="button" class="option-card-ape abrir-ventana" data-url="{% url 'abrirUrl' 'Conoce nuestras Oficinas' 'URL_4'|base64encode %}">
-                        Conoce nuestras Oficinas
-                    </button>
+                    <button type="button" class="option-card-ape" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Inscribe tu Hoja de Vida' 'https://agenciapublicadeempleo.sena.edu.co/spe-web/spe/registro/buscador#'|base64encode %}"> Inscribe tu Hoja de Vida </button>
+                    <button type="button" class="option-card-ape" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Restablece tu contraseña' 'https://agenciapublicadeempleo.sena.edu.co/spe-web/spe/usuarioClave/reestablecerClave'|base64encode %}"> Restablece tu contraseña </button>
+                    <button type="button" class="option-card-ape abrir-ventana " data-url="{% url 'abrirUrl' 'Conoce las convocatorias laborales' 'https://ape.sena.edu.co/Paginas/Inicio.aspx'|base64encode %}"> Conoce las convocatorias laborales </button>
+                    <button type="button" class="option-card-ape abrir-ventana " data-url="{% url 'abrirUrl' 'Conoce nuestras Oficinas' 'https://ape.sena.edu.co/Paginas/DirectorioAPE.aspx'|base64encode %}"> Conoce nuestras Oficinas </button>
                 </div>
             </div>
         </div>

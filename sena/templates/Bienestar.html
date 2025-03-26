@@ -18,20 +18,11 @@
         </header>
         <div class="container mt-7 ">
             <div class="botones-container">
-                <button type="button"
-                        class="option-card-bienestar" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' '¿Qué es Bienestar al Aprendiz?' ' '|base64encode %}">
-                    ¿Qué es Bienestar al Aprendiz?
-                </button>
+                <button type="button" class="option-card-bienestar abrir-ventana" data-url="{% url 'abrirUrl' '¿Qué es Bienestar al Aprendiz?' 'https://www.sena.edu.co/es-co/comunidades/aprendices/Paginas/bienestarAprendiz.aspx'|base64encode %}"> ¿Qué es Bienestar al Aprendiz? </button>
 
-                <button type="button"
-                        class="option-card-bienestar" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a la convocatoria de apoyo sostenimiento' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html'|base64encode %}">
-                    Inscríbete a la convocatoria de apoyo sostenimiento
-                </button>
+                <button type="button" class="option-card-bienestar" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Inscríbete a la convocatoria de apoyo sostenimiento' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/inscripcion-apoyo-sostenimiento.html'|base64encode %}"> Inscríbete a la convocatoria de apoyo sostenimiento </button>
 
-                <button type="button"
-                        class="option-card-bienestar abrir-ventana" data-url="{% url 'abrirUrl' 'Conoce los apoyos de alimentación' 'https://www.gov.co/ficha-tramites-y-servicios/T77744'|base64encode %}">
-                    Conoce los apoyos de alimentación
-                </button>
+                <button type="button" class="option-card-bienestar abrir-ventana" data-url="{% url 'abrirUrl' 'Conoce los apoyos de alimentación' 'https://www.gov.co/ficha-tramites-y-servicios/T77744'|base64encode %}"> Conoce los apoyos de alimentación </button>
             </div>
         </div>
         {% include 'base/components/botonAtras.html' %}
@@ -89,23 +80,23 @@
     </script>
 
     <script>
-    let tiempoInactividad = 300000; // 5 minutos
-    let temporizadorInactivo;
+        let tiempoInactividad = 300000; // 5 minutos
+        let temporizadorInactivo;
 
-    function reiniciarTemporizador() {
-    clearTimeout(temporizadorInactivo);
-    temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
-    }
+        function reiniciarTemporizador() {
+        clearTimeout(temporizadorInactivo);
+        temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+        }
 
-    function redirigirAlIndex() {
-    window.location.href = "{% url 'cerrarSesion' %}";
-    }
+        function redirigirAlIndex() {
+        window.location.href = "{% url 'cerrarSesion' %}";
+        }
 
-    document.addEventListener("DOMContentLoaded", function () {
-    reiniciarTemporizador();
-    document.addEventListener("mousemove", reiniciarTemporizador);
-    document.addEventListener("keydown", reiniciarTemporizador);
-    document.addEventListener("click", reiniciarTemporizador);
-    });
+        document.addEventListener("DOMContentLoaded", function () {
+        reiniciarTemporizador();
+        document.addEventListener("mousemove", reiniciarTemporizador);
+        document.addEventListener("keydown", reiniciarTemporizador);
+        document.addEventListener("click", reiniciarTemporizador);
+        });
     </script>
 {% endblock %}

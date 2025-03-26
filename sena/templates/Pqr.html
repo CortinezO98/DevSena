@@ -18,8 +18,8 @@
         <div class="row h-100 justify-content-end align-items-center">
             <div class="col-md-6 d-flex flex-column gap-3 align-items-center mt-4">
                 <h1 class="fw-bold mb-4 titulo-pqr mt-5">Portal PQRSD</h1>
-                <button type="button" class="option-card-pqr abrir-ventana" data-url="{% url 'abrirUrl' 'Radica tu PQRSD' 'https://sciudadanos.sena.edu.co/wausuarios.aspx'|base64encode %}"> Radica tu PQRSD </button>
-                <button type="button" class="option-card-pqr abrir-ventana" data-url="{% url 'abrirUrl' 'Consulta tu PQRSD' 'https://sciudadanos.sena.edu.co/waconsultaopciones.aspx'|base64encode %}"> Consulta tu PQRSD </button>
+                <button type="button" class="option-card-pqr" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Radica tu PQRSD' 'https://sciudadanos.sena.edu.co/wausuarios.aspx'|base64encode %}"> Radica tu PQRSD </button>
+                <button type="button" class="option-card-pqr" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Consulta tu PQRSD' 'https://sciudadanos.sena.edu.co/waconsultaopciones.aspx'|base64encode %}"> Consulta tu PQRSD </button>
             </div>
         </div>
     </div>

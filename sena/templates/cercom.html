@@ -20,20 +20,20 @@
             <div class="row w-100 justify-content">
                 <div class="col-md-6 mb-4">
                     <div class="d-flex flex-column gap-3">
-                        <button type="button"
-                                class="option-card-competencias" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Certifícate por competencia laboral' 'https://dsnft.sena.edu.co/Candidatos/servlet/com.senaws.hlogin'|base64encode %}">
-                            Certifícate por competencia laboral
-                        </button>
+                        <div class="option-card-competencias abrir-ventana" 
+                            data-url="{% url 'abrirUrl' 'Certifícate por competencia laboral' 'https://dsnft.sena.edu.co/Candidatos/servlet/com.senaws.hlogin'|base64encode %}">
+                            <span class="fw-bold">Certifícate por competencia laboral</span>
+                        </div>
 
-                        <button type="button"
-                                class="option-card-competencias" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Descarga tu certificado' 'https://competencias.sena.edu.co/page?3,plantilla,consulta-mesas-sectoriales,O,es,0,'|base64encode %}">
-                            Descarga tu certificado
-                        </button>
+                        <div class="option-card-competencias abrir-ventana" 
+                            data-url="{% url 'abrirUrl' 'Descarga tu certificado' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}">
+                            <span class="fw-bold">Descarga tu certificado</span>
+                        </div>
 
-                        <button type="button"
-                                class="option-card-competencias" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Conoce la norma' 'https://competencias.sena.edu.co/'|base64encode %}">
-                            Conoce la norma
-                        </button>
+                        <div class="option-card-competencias abrir-ventana" 
+                            data-url="{% url 'abrirUrl' 'Conoce la norma' 'https://competencias.sena.edu.co/page?3,plantilla,productos-aprobados,O,es,0,'|base64encode %}">
+                            <span class="fw-bold">Conoce la norma</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,6 +41,7 @@
 
         {% include 'base/components/botonAtras.html' %}
     </section>
+
 
 
     <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
@@ -61,40 +62,58 @@
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.abrir-ventana').forEach(function(enlace) {
+            enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            const url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+            });
+        });
+    
+        function abrirVentanaEmergente(url) {
+            const width = 800;
+            const height = 600;
+            const left = (screen.width - width) / 2;
+            const top = (screen.height - height) / 2;
+            window.open(url, 'ventana_emergente', `width=${width},height=${height},left=${left},top=${top}`);
+        }
+    
+        // Lógica para cargar el contenido en el iframe al abrir el modal
         const iframeModal = document.getElementById('iframeModal');
         if (iframeModal) {
-        iframeModal.addEventListener('show.bs.modal', event => {
+            iframeModal.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget;
             const url = button.getAttribute('data-bs-whatever');
             const btnText = button.innerText;
             const modalTitle = iframeModal.querySelector('.modal-title');
             const modalBodyIframe = iframeModal.querySelector('.modal-body iframe');
+    
             modalTitle.textContent = btnText;
             modalBodyIframe.src = url;
-        });
+            });
         }
-    });
+        });
     </script>
-
+    
     <script>
-    let tiempoInactividad = 300000; // 5 minutos
-    let temporizadorInactivo;
+        let tiempoInactividad = 300000; // 5 minutos
+        let temporizadorInactivo;
 
-    function reiniciarTemporizador() {
+        function reiniciarTemporizador() {
         clearTimeout(temporizadorInactivo);
         temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
-    }
+        }
 
-    function redirigirAlIndex() {
+        function redirigirAlIndex() {
         window.location.href = "{% url 'cerrarSesion' %}";
-    }
+        }
 
-    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
         reiniciarTemporizador();
         document.addEventListener("mousemove", reiniciarTemporizador);
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
-    });
+        });
     </script>
 {% endblock %}

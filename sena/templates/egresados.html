@@ -21,17 +21,17 @@
                 <div class="col-md-6 mb-4">
                     <div class="d-flex flex-column gap-3">
                         <button type="button"
-                                class="option-card-egresados" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Conoce nuestros convenios' 'URL_1'|base64encode %}">
+                                class="option-card-egresados" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Conoce nuestros convenios' 'https://www.sena.edu.co/es-co/comunidades/instructores/Paginas/convenios_con_universidades.aspx'|base64encode %}">
                             Conoce nuestros Convenios
                         </button>
 
                         <button type="button"
-                                class="option-card-egresados" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Postula tu Hoja de Vida' 'URL_2'|base64encode %}">
+                                class="option-card-egresados" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Postula tu Hoja de Vida' 'https://agenciapublicadeempleo.sena.edu.co/'|base64encode %}">
                             Postula tu Hoja de Vida
                         </button>
 
                         <button type="button"
-                                class="option-card-egresados" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Descarga tu Certificado' 'URL_3'|base64encode %}">
+                                class="option-card-egresados abrir-ventana" data-url="{% url 'abrirUrl' 'Descarga tu Certificado' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}">
                             Descarga tu Certificado
                         </button>
                     </div>
@@ -60,6 +60,22 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.abrir-ventana').forEach(function(enlace) {
+            enlace.addEventListener('click', function(event) {
+            event.preventDefault();
+            const url = this.getAttribute('data-url');
+            abrirVentanaEmergente(url);
+            });
+        });
+    
+        function abrirVentanaEmergente(url) {
+            const width = 800;
+            const height = 600;
+            const left = (screen.width - width) / 2;
+            const top = (screen.height - height) / 2;
+            window.open(url, 'ventana_emergente', `width=${width},height=${height},left=${left},top=${top}`);
+        }
+    
         const iframeModal = document.getElementById('iframeModal');
         if (iframeModal) {
             iframeModal.addEventListener('show.bs.modal', event => {
@@ -68,31 +84,32 @@
             const btnText = button.innerText;
             const modalTitle = iframeModal.querySelector('.modal-title');
             const modalBodyIframe = iframeModal.querySelector('.modal-body iframe');
+    
             modalTitle.textContent = btnText;
             modalBodyIframe.src = url;
             });
         }
         });
-    </script>
-
-    <script>
-        let tiempoInactividad = 300000; // 5 minutos
-        let temporizadorInactivo;
-
-        function reiniciarTemporizador() {
-        clearTimeout(temporizadorInactivo);
-        temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
-        }
-
-        function redirigirAlIndex() {
-        window.location.href = "{% url 'cerrarSesion' %}";
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-        reiniciarTemporizador();
-        document.addEventListener("mousemove", reiniciarTemporizador);
-        document.addEventListener("keydown", reiniciarTemporizador);
-        document.addEventListener("click", reiniciarTemporizador);
-        });
-    </script>
+        </script>
+    
+        <script>
+            let tiempoInactividad = 300000; // 5 minutos
+            let temporizadorInactivo;
+    
+            function reiniciarTemporizador() {
+            clearTimeout(temporizadorInactivo);
+            temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+            }
+    
+            function redirigirAlIndex() {
+            window.location.href = "{% url 'cerrarSesion' %}";
+            }
+    
+            document.addEventListener("DOMContentLoaded", function () {
+            reiniciarTemporizador();
+            document.addEventListener("mousemove", reiniciarTemporizador);
+            document.addEventListener("keydown", reiniciarTemporizador);
+            document.addEventListener("click", reiniciarTemporizador);
+            });
+        </script>
 {% endblock %}
