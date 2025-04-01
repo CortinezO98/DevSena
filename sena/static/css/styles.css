@@ -414,41 +414,6 @@ html, body {
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Para pantallas grandes (≥1200px) */
-@media (min-width: 1200px) {
-    .contact-section .container {
-        max-width: 1400px;
-        padding: 25px;
-    }
-    .option-card-contact {
-        font-size: 24px;
-        max-width: 450px;
-        height: 100px;
-        padding: 0 25px;
-    }
-    .inicio-texto {
-        font-size: 20px;
-        padding: 12px 25px;
-    }
-}
-
-/* Para pantallas extra grandes (≥1400px) */
-@media (min-width: 1600px) {
-    .contact-section .container {
-        max-width: 1600px;
-        padding: 30px;
-    }
-    .option-card-contact {
-        font-size: 26px;
-        max-width: 500px;
-        height: 110px;
-        padding: 0 30px;
-    }
-    .inicio-texto {
-        font-size: 22px;
-        padding: 15px 30px;
-    }
-}
 
 
 @media (max-width: 992px) {
@@ -467,7 +432,7 @@ html, body {
     /* Ajusta el tamaño del logo si es necesario */
     .logo-senaCatencion {
         max-width: 60px;
-        right: 30px;
+        right: -10px;
     }
     .option-card-contact {
         font-size: 20px;
@@ -680,7 +645,7 @@ html, body {
 
 .competencias-section {
     min-height: 100vh;
-    background: url("../img/cercom.jpeg") no-repeat right center;
+    background: url("../img/cercom.jpeg") ;
     background-size: cover;
     position: relative;
     display: flex;
@@ -698,10 +663,11 @@ html, body {
 }
 
 .header-competencias h1{
+    position: absolute;
     color: #5a5b5a;
     font-size: 50px;
-    top: 40px;  
-    left: -250px; 
+    top: 100px;  
+    left: 250px; 
     margin: 0;
 }
 
@@ -714,7 +680,7 @@ html, body {
     border-radius: 12px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #002b5c;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
     width: 100%;
     max-width: 400px;
@@ -837,10 +803,11 @@ html, body {
 }
 
 .header-bienestar h1{
+    position: absolute;
     color: #5a5b5a;
     font-size: 50px;
     top: 40px;  
-    left: -100px; 
+    left: 150px; 
     margin: 0;
 }
 
@@ -872,7 +839,7 @@ html, body {
     box-shadow: 4px 4px 15px rgba(255, 255, 255, 0.5), 
                 2px 2px 10px rgba(0, 0, 0, 0.1); 
     color: #002b5c;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     width: 400px; 
     height: 100px; 
@@ -978,7 +945,7 @@ html, body {
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     padding: 20px 10px;
     text-align: center;
@@ -1096,7 +1063,7 @@ html, body {
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255,255,255,0.5), 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
     padding: 20px 10px;
     text-align: center;
@@ -1208,7 +1175,7 @@ html, body {
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255,255,255,0.5), 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
     padding: 20px 10px;
     text-align: center;
@@ -1264,7 +1231,7 @@ html, body {
     position: absolute;
     color: #5a5b5a;
     font-size: 50px;
-    top: 80px;  
+    top: 100px;  
     left: 90px; 
     margin: 0;
 }
@@ -1286,11 +1253,11 @@ html, body {
 
 .option-card-formatos {
     background: linear-gradient(to right, #e4e5e4, #feffff);
-    border: 2px solid rgba(255, 255, 255, 0.8); 
+    border: none; 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #002b5c;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     width: 100%;
     max-width: 550px;
@@ -1398,8 +1365,8 @@ html, body {
     max-width: 300px;
     height: auto;
     position:absolute;
-    top: 20px;
-    right: 50px;
+    top: 10px;
+    right: 10px;
 }
 
 .campesena-buttons {
@@ -1462,7 +1429,7 @@ html, body {
 
 .empresarios-section {
     min-height: 100vh;
-    background: url("../img/empresario.jpeg") no-repeat right center;
+    background: url("../img/empresario.jpeg");
     background-size: cover;
     position: relative;
     display: flex;
@@ -1481,10 +1448,11 @@ html, body {
 }
 
 .header-empresarios h1{
+    position: absolute;
     color: #5a5b5a;
     font-size: 60px;
-    top: 40px;  
-    left: -300px; 
+    top: 80px;  
+    left: 350px; 
     margin: 0;
 }
 
@@ -1503,7 +1471,7 @@ html, body {
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bold;
     padding: 20px 10px;
     text-align: center;
@@ -1613,10 +1581,11 @@ html, body {
 }
 
 .header-certificados h1{
+    position: absolute;
     color: #5a5b5a;
-    font-size: 50px;
-    top: 40px;  
-    left: -180px; 
+    font-size: 3rem;
+    top: 100px;  
+    left: 250px; 
     margin: 0;
 }
 
@@ -1638,14 +1607,17 @@ html, body {
     border-radius: 12px;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     padding: 20px 30px; 
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    width: 450px; 
+    width: 500px; 
     height: 100px;
+    max-width: 500px;
+    min-height: 100px; 
+    margin: 0 auto;
 }
 
 .option-card-certificados:hover {
@@ -1654,10 +1626,21 @@ html, body {
 }
 
 .nota-certificados {
+    width: 100%;
+    max-width: 500px;           
+    text-align: justify;        
+    margin-top: 10px;           
     font-size: 15px;
-    color: #666;
+    color: #002b5c;
 }
 
+@media (max-width: 992px) {
+    .header-certificados h1 {
+        font-size: 2.5rem;  
+        top: 80px;
+        left: 300px;
+    }
+}
 
 @media (max-width: 768px) and (min-width: 577px) {
     .certificados-section {
@@ -1665,9 +1648,9 @@ html, body {
         background-size: cover;
     }
     .header-certificados h1 {
-        font-size: 30px;
-        top: 20px;
-        left: 10px;
+        font-size: 2rem;    
+        top: 60px;
+        left: 200px;
     }
     .logo-certificados {
         max-width: 200px;
@@ -1681,6 +1664,7 @@ html, body {
         height: 120px;
     }
     .nota-certificados {
+        max-width: 320px;
         font-size: 14px;
     }
 }
@@ -1692,9 +1676,9 @@ html, body {
         background-size: cover;
     }
     .header-certificados h1 {
-        font-size: 24px;
-        top: 15px;
-        left: 5px;
+        font-size: 1.5rem; 
+        top: 40px;
+        left: 50px;
     }
     .logo-certificados {
         max-width: 130px;
@@ -1708,6 +1692,7 @@ html, body {
         height: 100px;
     }
     .nota-certificados {
+        max-width: 280px;
         font-size: 13px;
     }
 }
@@ -1762,7 +1747,7 @@ html, body {
 
 .option-card-pqr {
     background: linear-gradient(to right, #e4e5e4, #feffff);
-    border: 2px solid rgba(255, 255, 255, 0.8); 
+    border: none; 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #002b5c;

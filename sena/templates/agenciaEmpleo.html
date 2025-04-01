@@ -58,9 +58,9 @@
         });
     });
     function abrirVentanaEmergente(url) {
-        const width = 800;
-        const height = 600;
-        const left = (screen.width - width) / 2;
+        const width = 1200;
+        const height = 800;
+        const left = (screen.width / 2) + ((screen.width / 2 - width) / 2);
         const top = (screen.height - height) / 2;
         window.open(url, 'ventana_emergente', `width=${width},height=${height},left=${left},top=${top}`);
     }
