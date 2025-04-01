@@ -160,11 +160,11 @@ body {
     border-radius: 12px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #002b5c; 
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     width: 100%;
-    max-width: 300px; 
-    height: 60px;
+    max-width: 350px; 
+    height: 80px;
     display: flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -187,6 +187,7 @@ body {
     bottom: 20px;
     left: 20px;
 }
+
 
 .inicio-boton {
     display: flex;
@@ -216,11 +217,6 @@ body {
     font-size: 18px; 
 }
 
-/* a {
-    color:  #39a900 !important;
-    text-decoration: underline;
-    font-size: 18px; 
-} */
 
 h1.fw-bold {
     color: #5a5b5a; 
@@ -233,7 +229,7 @@ h1.fw-bold {
     border-radius: 12px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #002b5c;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     padding: 10px 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -244,6 +240,7 @@ h1.fw-bold {
     transform: translateY(-2px);
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 
 @media (max-width: 768px) {
     .logo-sena-lenguaje {
@@ -262,6 +259,7 @@ h1.fw-bold {
         padding: 8px 15px;
     }
 }
+
 /* FIN */
 
 
@@ -316,6 +314,7 @@ html, body {
 }
 
 .header-banner h1{
+    position: absolute;
     color: #5a5b5a;
     font-size: 50px;
     top: 40px;  
@@ -589,7 +588,7 @@ html, body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #002b5c;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     width: 100%;
     min-width: 300px;
@@ -985,7 +984,7 @@ html, body {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    width: 350px;
+    width: 400px;
     height: 100px;
 }
 
@@ -1093,17 +1092,17 @@ html, body {
 
 .option-card-enrural {
     background: linear-gradient(to right, #e4e5e4, #feffff);
-    border: none; 
+    border: 2px solid rgba(255, 255, 255, 0.8); 
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255,255,255,0.5), 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     padding: 20px 10px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    width: 350px;   
+    width: 400px;   
     height: 100px;  
     display: flex;
     align-items: center;
@@ -1209,7 +1208,7 @@ html, body {
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255,255,255,0.5), 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     padding: 20px 10px;
     text-align: center;
@@ -1262,10 +1261,11 @@ html, body {
 }
 
 .header-formatos h1{
+    position: absolute;
     color: #5a5b5a;
     font-size: 50px;
-    top: 40px;  
-    left: -150px; 
+    top: 80px;  
+    left: 90px; 
     margin: 0;
 }
 
@@ -1293,7 +1293,7 @@ html, body {
     font-size: 20px;
     font-weight: bold;
     width: 100%;
-    max-width: 400px;
+    max-width: 550px;
     height: 100px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -1411,7 +1411,7 @@ html, body {
 
 .option-card-campesena {
     background: linear-gradient(to right, #e4e5e4, #feffff);
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.8); 
     border-radius: 12px;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
@@ -1421,7 +1421,7 @@ html, body {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    width: 300px; 
+    width: 320px; 
 }
 
 .option-card-campesena:hover {
@@ -1482,7 +1482,7 @@ html, body {
 
 .header-empresarios h1{
     color: #5a5b5a;
-    font-size: 50px;
+    font-size: 60px;
     top: 40px;  
     left: -300px; 
     margin: 0;
@@ -1503,13 +1503,13 @@ html, body {
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 2px 2px 10px rgba(0,0,0,0.1);
     color: #002b5c;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     padding: 20px 10px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    width: 350px;
+    width: 420px;
     height: 100px;
 }
 
@@ -1645,7 +1645,7 @@ html, body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     width: 450px; 
-    height: 150px;
+    height: 100px;
 }
 
 .option-card-certificados:hover {
@@ -1741,6 +1741,8 @@ html, body {
 .titulo-pqr {
     color: #5a5b5a;
     margin: 0;
+    font-size: 55px;
+
 }
 
 .logo-pqr {
@@ -1764,10 +1766,10 @@ html, body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #002b5c;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     height: 100px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -1862,7 +1864,7 @@ html, body {
 
 .header-servicios h1{
     color: #5a5b5a;
-    font-size: 50px;
+    font-size: 55px;
     top: 40px;  
     left: -300px; 
     margin: 0;
@@ -1893,7 +1895,7 @@ html, body {
     gap: 30px;  
     justify-content: center;
     align-items: center;
-    margin-top: 400px; 
+    margin-top: 100px; 
     flex-wrap: wrap; 
 }
 .option-card-servicios {
@@ -1902,10 +1904,10 @@ html, body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #002b5c;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     height: 100px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -1989,13 +1991,21 @@ html, body {
     right: 5vw;
 
 }
-.header-banner h1{
-    color: #5a5b5a;
-    font-size: 50px;
-    top: 40px;  
-    left: -300px; 
+
+.titulo-grueso{
+    position: absolute;
+    font-size: 60px;
+    top: 80px;  
+    left: 100px; 
     margin: 0;
+    font-family: "Aptos Black", "Segoe UI Black", "Helvetica Neue", 'Work Sans', sans-serif;
+    font-weight: 900;              
+    font-size: 3rem;               
+    text-transform: uppercase;     
+    color: #333;                   
+    letter-spacing: 0.05em;  
 }
+
 
 .logo-sena:hover {
     transform: scale(1.05);
