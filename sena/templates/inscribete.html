@@ -66,6 +66,9 @@
             </div>
         </div>
         {% include 'base/components/botonAtras.html' %}
+        <button id="btnScan" class="btn btn-success position-fixed shadow-lg fw-bold d-flex align-items-center gap-2" style="bottom: 120px; right: 140px; z-index: 9999; padding: 12px 20px; border-radius: 12px; font-size: 16px;"onclick="escanearCedula()">
+            Escanear Cédula
+        </button>
     </section>
 
     <!-- Modal para iframe -->
@@ -126,5 +129,25 @@
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
     });
+    </script>
+
+    <script>
+    function escanearCedula() {
+        fetch('/escanear-cedula/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Se ha abierto el escáner. Escanee la cédula y verifique la imagen en el escritorio. ✅ ");
+            } else {
+                alert("❌ Error al escanear: " + data.error);
+            }
+        });
+    }
     </script>
 {% endblock %}

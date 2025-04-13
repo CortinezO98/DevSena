@@ -8,6 +8,9 @@ import base64
 from .models import *
 from .forms import RegistroFormulario, RegistroUsuarioForm
 from .sms_utils import sms
+import subprocess
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 
 # Pagina principal
@@ -215,3 +218,16 @@ def formatos(request):
 
 def certificados(request):
     return render(request, 'certificados.html')
+
+@csrf_exempt
+def escanear_cedula(request):
+    if request.method == 'POST':
+        try:
+            scanner_exe = r'C:\Program Files (x86)\Plustek\Plustek VTM300\VTM_Demo.exe'
+
+            subprocess.Popen([scanner_exe], shell=True)
+
+            return JsonResponse({'success': True})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Método no permitido'})
