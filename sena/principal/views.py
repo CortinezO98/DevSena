@@ -231,3 +231,7 @@ def escanear_cedula(request):
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)})
     return JsonResponse({'success': False, 'error': 'Método no permitido'})
+
+
+def nosotros(request):
+    return render(request, 'nosotros.html')

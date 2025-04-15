@@ -37,6 +37,6 @@ urlpatterns = [
     #path('salir/', Logout, name='logout'),
     path('cerrarSesion/', CerrarSesion, name='cerrarSesion'),
     path('escanear-cedula/', escanear_cedula, name='escanear_cedula'),
-    
+    path('nosotros/', nosotros, name='nosotros'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT_SERVER)
 
