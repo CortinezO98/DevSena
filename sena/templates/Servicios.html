@@ -3,18 +3,46 @@
 {% load mytags %}
 
 {% block main %}
-<div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-                Servicios
-            </a>
-            <a href="#" data-url="https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Aulas Moviles</a>
-            <a href="#" data-url="http://sennova.senaedu.edu.co/" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Sennova</a>
+<section class="servicios-section position-relative min-vh-100">
+    <header class="header-servicios position-absolute w-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <h1 class="fw-bold mb-4 titulo-servicios">Otros servicios</h1>
+                </div>
+                <div class="col text-end">
+                    <img src="{% static 'img/logoSena.png' %}" alt="Logo SENA" class="logo-servicios">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container -flex flex-column justify-content-center align-items-center h-100">
+        <div class="botones-container">
+            <button type="button" class="option-card-servicios" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Aulas Moviles' 'https://www.sena.edu.co/es-co/formacion/Paginas/aulasMoviles.aspx'|base64encode %}"> Aulas Móviles </button>
+            <button type="button" class="option-card-servicios abrir-ventana" data-url="{% url 'abrirUrl' 'Sennova' 'http://sennova.senaedu.edu.co/'|base64encode %}"> Sennova </button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
+</section>
+
+
+<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -28,9 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function abrirVentanaEmergente(url) {
-        var width = 800;
-        var height = 600;
-        var left = (screen.width - width) / 2;
+        var width = 1200;
+        var height = 800;
+        var left = (screen.width / 2) + ((screen.width / 2 - width) / 2);
         var top = (screen.height - height) / 2;
         window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
     }
@@ -38,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 300000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -47,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -56,7 +84,22 @@ document.addEventListener("DOMContentLoaded", function() {
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
     });
-</script>        
+
+    
+    const iframeModal = document.getElementById('iframeModal')
+        if (iframeModal) {
+        iframeModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const url = button.getAttribute('data-bs-whatever')
+            const btnText = button.innerText;
+            const modalTitle = iframeModal.querySelector('.modal-title')
+            const modalBodyInput = iframeModal.querySelector('.modal-body iframe')
+
+            modalTitle.textContent = `${btnText}`
+            modalBodyInput.src = url
+        })
+    }
+</script>
 {%endblock%}
 
 

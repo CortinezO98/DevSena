@@ -1,20 +1,48 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load mytags %}
 
 {% block main %}
-<div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-                PQRS
-            </a>
-            <a href="#" data-url="https://sciudadanos.sena.edu.co/wausuarios.aspx" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Radicar</a>
-            <a href="#" data-url="https://sciudadanos.sena.edu.co/waconsultaopciones.aspx" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Consultar</a>
-            <a href="#" data-url="https://www.sena.edu.co/es-co/ciudadano/Paginas/Denuncias_Corrupcion.aspx" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Denuncias</a>
+<section class="pqr-section position-relative min-vh-100">
+    <header class="header-pqr position-absolute w-100">
+        <div class="container">
+            <div class="row align-items-center justify-content-end">
+                <div class="col-auto text-end">
+                    <img src="{% static 'img/logoSena.png' %}" alt="Logo SENA" class="logo-pqr">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container position-relative h-100">
+        <div class="row h-100 justify-content-end align-items-center">
+            <div class="col-md-6 d-flex flex-column gap-3 align-items-center mt-4">
+                <h1 class="fw-bold mb-4 titulo-pqr mt-5">Portal PQRSD</h1>
+                <button type="button" class="option-card-pqr" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Radica tu PQRSD' 'https://sciudadanos.sena.edu.co/wausuarios.aspx'|base64encode %}"> Radica tú PQRSD </button>
+                <button type="button" class="option-card-pqr" data-bs-toggle="modal" data-bs-target="#iframeModal" data-bs-whatever="{% url 'abrirUrl' 'Consulta tu PQRSD' 'https://sciudadanos.sena.edu.co/waconsultaopciones.aspx'|base64encode %}"> Consulta tú PQRSD </button>
+            </div>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
+</section>
+
+<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -36,10 +64,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
-
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 300000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -48,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -57,5 +84,20 @@ document.addEventListener("DOMContentLoaded", function() {
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
     });
-</script>        
+
+    
+    const iframeModal = document.getElementById('iframeModal')
+        if (iframeModal) {
+        iframeModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const url = button.getAttribute('data-bs-whatever')
+            const btnText = button.innerText;
+            const modalTitle = iframeModal.querySelector('.modal-title')
+            const modalBodyInput = iframeModal.querySelector('.modal-body iframe')
+
+            modalTitle.textContent = `${btnText}`
+            modalBodyInput.src = url
+        })
+    }
+</script>      
 {%endblock%}

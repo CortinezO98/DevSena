@@ -3,20 +3,51 @@
 {% load mytags %}
 
 {% block main %}
-<div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-                Empresarios
-            </a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Empresarios' 'https://www.sena.edu.co/es-co/Empresarios/Paginas/default.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Empresarios</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Portal Autogestión' 'https://autogestionprd.powerappsportals.com/SignIn?ReturnUrl=%2F'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Portal Autogestión</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Certificados Aportes Y Fic' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Certificados Aportes Y Fic</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Facilidad de Pago' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Facilidad de Pago</a>
+
+<section class="empresarios-section position-relative min-vh-100">
+    <header class="header-empresarios position-absolute w-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <h1 class="fw-bold mb-4 titulo-empresarios">Empresarios</h1>
+                </div>
+                <div class="col text-end">
+                    <img src="{% static 'img/logoSena.png' %}" alt="Logo SENA" class="logo-empresarios">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container position-relative">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-5 mb-4">
+                <div class="d-flex flex-column gap-3">
+                    <button type="button" class="option-card-empresarios abrir-ventana" data-url="{% url 'abrirUrl' 'Certificados Aportes y FIC' 'https://certificadoempresarios.sena.edu.co/index.php/auth/login#no'|base64encode %}"> Certificados aportes y FIC </button>
+                    <button type="button" class="option-card-empresarios abrir-ventana" data-url="{% url 'abrirUrl' 'Facilidad de pago' 'https://sedeelectronica.sena.edu.co/Paginas/InicioSesion.aspx'|base64encode %}"> Facilidad de pago </button>
+                    <button type="button" class="option-card-empresarios abrir-ventana" data-url="{% url 'abrirUrl' 'Portal Autogestión' 'https://autogestionprd.powerappsportals.com/SignIn?ReturnUrl=%2F'|base64encode %}"> Portal autogestión </button>
+                </div>
+            </div>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
+</section>
+
+<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -30,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function abrirVentanaEmergente(url) {
-        var width = 800;
-        var height = 600;
-        var left = (screen.width - width) / 2;
+        var width = 1200;
+        var height = 800;
+        var left = (screen.width / 2) + ((screen.width / 2 - width) / 2);
         var top = (screen.height - height) / 2;
         window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
     }
@@ -40,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 300000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -49,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -58,7 +89,22 @@ document.addEventListener("DOMContentLoaded", function() {
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
     });
-</script>       
+
+    
+    const iframeModal = document.getElementById('iframeModal')
+        if (iframeModal) {
+        iframeModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const url = button.getAttribute('data-bs-whatever')
+            const btnText = button.innerText;
+            const modalTitle = iframeModal.querySelector('.modal-title')
+            const modalBodyInput = iframeModal.querySelector('.modal-body iframe')
+
+            modalTitle.textContent = `${btnText}`
+            modalBodyInput.src = url
+        })
+    }
+</script>      
 {%endblock%}
 
 

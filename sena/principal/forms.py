@@ -1,5 +1,5 @@
 from django import forms
-from .models import RegistroDatosUser
+from .models import RegistroDatosUser, RegistroUsuario
 
 class RegistroFormulario(forms.ModelForm):
     TIPO_CONTACTO_CHOICES = (
@@ -49,10 +49,10 @@ class RegistroFormulario(forms.ModelForm):
 
     tipo_contacto = forms.ChoiceField(choices=TIPO_CONTACTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
     tipo_documento = forms.ChoiceField(choices=TIPO_DOCUMENTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
-    numero_documento = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '10'}))
+    numero_documento = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     nombres = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}))
     apellidos = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}))
-    sede_contacto = forms.ChoiceField(choices=SEDE_CONTACTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
+    sede_contacto = forms.ChoiceField(choices=SEDE_CONTACTO_CHOICES, widget=forms.Select(attrs={'class': 'form-select', 'id': 'id_sede_contacto'}))
 
     class Meta:
         model = RegistroDatosUser
@@ -65,3 +65,30 @@ class RegistroFormulario(forms.ModelForm):
             'apellidos': {'required': 'Este campo es requerido'},
             'sede_contacto': {'required': 'Este campo es requerido'},
         }
+
+class RegistroUsuarioForm(forms.ModelForm):
+    class Meta:
+        model = RegistroUsuario
+        fields = [
+            'tipo_contacto',
+            'tipo_documento',
+            'numero_documento',
+            'nombres',
+            'apellidos',
+        ]
+        widgets = {
+            'tipo_contacto': forms.Select(attrs={'class': 'form-select'}, choices=RegistroUsuario.TIPO_CONTACTO_CHOICES),
+            'tipo_documento': forms.Select(attrs={'class': 'form-select'}, choices=RegistroUsuario.TIPO_DOCUMENTO_CHOICES),
+            'numero_documento': forms.TextInput(attrs={'class': 'form-control', 'maxlength': '10'}),
+            'nombres': forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'maxlength': '20'}),
+        }
+        error_messages = {
+            'tipo_contacto': {'required': 'Este campo es requerido'},
+            'tipo_documento': {'required': 'Este campo es requerido'},
+            'numero_documento': {'required': 'Este campo es requerido'},
+            'nombres': {'required': 'Este campo es requerido'},
+            'apellidos': {'required': 'Este campo es requerido'},
+        }
+
+

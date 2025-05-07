@@ -12,7 +12,8 @@ def GenerarLink(request):
             fechaExpiracionLink = datetime.now()  + timedelta(hours=24),
             nombreAgente = request.POST["nombreAgente"],
             idInteraccion = request.POST["idInteraccion"],
-            seleccionarCanal = request.POST["seleccionarCanal"]
+            seleccionarCanal = request.POST["seleccionarCanal"],
+            fecha_creacion = datetime.now()
         )
         encuesta.save()
         return redirect('encuesta:GenerarLinkRedirect', encuesta.token)
@@ -29,6 +30,7 @@ def Formulario(request, token):
     if request.method == 'POST':
         encuesta.dominioPersonaAtendio = int(request.POST["dominioPersonaAtendio"])
         encuesta.satisfaccionServicioRecibido = int(request.POST["satisfaccionServicioRecibido"])
+        encuesta.tiempoEsperaServicio = int(request.POST["tiempoEsperaServicio"])
         encuesta.recomendacionCanalAtencion = int(request.POST["recomendacionCanalAtencion"])
         encuesta.solucionSolicitud = eval(request.POST["solucionSolicitud"])
         encuesta.fechaExpiracionLink = datetime.now()

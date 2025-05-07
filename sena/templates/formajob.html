@@ -9,37 +9,23 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
                 Formación para el trabajo
             </a>
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal" 
-            data-bs-whatever="https://oferta.senasofiaplus.edu.co/sofia-oferta/">Formación Titulada</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Formacion Titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}">Formación Titulada</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
-            data-bs-whatever="https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx">Articulación Con La MediaTecnica</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Articulación Con La MediaTecnica' 'https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx'|base64encode %}">Articulación Con La MediaTecnica</button>
 
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
-            data-bs-whatever="https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer">Certificados De Formación</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Certificados De Formación' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}">Certificados De Formación</button>
 
-            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
-            data-bs-whatever="https://ejecuciondelaformacion.sena.edu.co/cursos-cortos">Formación Complementaria</button>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Formación Complementaria' 'https://ejecuciondelaformacion.sena.edu.co/cursos-cortos'|base64encode %}">Formación Complementaria</button>
             
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
-            data-bs-whatever="https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx">Tecnoacademias</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Tecnoacademias' 'https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx'|base64encode %}">Tecnoacademias</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
-            data-bs-whatever="https://sena.territorio.la/cms/index.php/ingles">Bilingüismo</button>
+            data-bs-whatever="{% url 'abrirUrl' 'Bilingüismo' 'https://zajuna.sena.edu.co'|base64encode %}">Bilingüismo</button>
 
             <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#iframeModal"
-            data-bs-whatever="https://sena.territorio.la/cms/index.php/titulada">Formación Titulada Virtual</button>
-
-            
-
-            <!-- <a href="#" data-url="{% url 'abrirUrl' 'formacion_titulada' 'https://oferta.senasofiaplus.edu.co/sofia-oferta/'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Titulada</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Articulacion Con La Media Tecnica' 'https://www.sena.edu.co/es-co/formacion/Paginas/articulacionMedia.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Articulación Con La Media Tecnica</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Certificados de formacion' 'https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Certificados De Formación</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Formacion Complemetaria' 'https://ejecuciondelaformacion.sena.edu.co/cursos-cortos'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Complementaria</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Tecnoacademias' 'https://www.sena.edu.co/es-co/formacion/Paginas/tecnoacademia.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Tecnoacademias</a>
-
-            <a href="#" data-url="{% url 'abrirUrl' 'Bilingüismo' 'https://sena.territorio.la/cms/index.php/ingles'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Bilingüismo</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Formación Titulada Virtual' 'https://sena.territorio.la/cms/index.php/titulada'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación Titulada Virtual</a> -->
+            data-bs-whatever="{% url 'abrirUrl' 'Formacion Titulada virtual' 'https://zajuna.sena.edu.co//'|base64encode %} ">Formación Titulada Virtual</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
@@ -86,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 3000000; 
+    let tiempoInactividad = 300000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -95,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -122,5 +108,3 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 {%endblock%}
-
-

@@ -9,12 +9,34 @@
             <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
                 Gestión para el Empleo Sena
             </a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Tramite de Inscripción Hoja de Vida' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Tramite de Inscripción Hoja de Vida</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Consecución Empleo' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Consecución Empleo</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Formación-Cualificación' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Formación-Cualificación</a>
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Tramite de Inscripción Hoja de Vida' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Tramite de Inscripción Hoja de Vida</button>
+
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Consecución Empleo' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Consecución Empleo</button>
+            
+            <button type="button" class="list-group-item list-group-item-action abrir-ventana" data-url="{% url 'abrirUrl' 'Formación-Cualificación' 'https://ape.sena.edu.co/spe-web/spe/login'|base64encode %}">Formación-Cualificación</button>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
+</div>
+
+<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </div>
 
 <script>
@@ -22,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var enlaces = document.querySelectorAll('.abrir-ventana');
     enlaces.forEach(function(enlace) {
         enlace.addEventListener('click', function(event) {
-            event.preventDefault(); 
+            event.preventDefault();
             var url = this.getAttribute('data-url');
             abrirVentanaEmergente(url);
         });
@@ -37,10 +59,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
-
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 300000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -49,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -58,6 +79,21 @@ document.addEventListener("DOMContentLoaded", function() {
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
     });
+
+    
+    const iframeModal = document.getElementById('iframeModal')
+        if (iframeModal) {
+        iframeModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const url = button.getAttribute('data-bs-whatever')
+            const btnText = button.innerText;
+            const modalTitle = iframeModal.querySelector('.modal-title')
+            const modalBodyInput = iframeModal.querySelector('.modal-body iframe')
+
+            modalTitle.textContent = `${btnText}`
+            modalBodyInput.src = url
+        })
+    }
 </script>
 {%endblock%}
 

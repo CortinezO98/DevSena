@@ -3,20 +3,66 @@
 {% load mytags %}
 
 {% block main %}
-<div class="row">
-    <div class="offset-lg-3 col-lg-6">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action active" aria-current="true" style='background-color:#00af00; '>
-                Emprendimiento
-            </a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Asesoria Creación Empresa' 'https://ape.sena.edu.co/spe-web/spe/registro/buscador#'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Asesoria Creación Empresa</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Fortalecimiento Empresarial' 'https://www.fondoemprender.com/SitePages/FortalecimientoEmpresarial.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Fortalecimiento Empresarial</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'SER (Sena Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">SER (Sena Emprende Rural)</a>
-            <a href="#" data-url="{% url 'abrirUrl' 'Fondo Emprender' 'https://www.fondoemprender.com/SitePages/FondoEmprender.aspx'|base64encode %}" class="list-group-item list-group-item-action abrir-ventana" target="_blank">Fondo Emprender</a>
+
+<section class="enrural-section position-relative min-vh-100">
+    <header class="header-enrural position-absolute w-100">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    <img src="{% static 'img/emprender.png' %}" alt="Fondo Emprender" class="logo-enrural">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row justify-content-start">
+            <div class="col-md-6 col-sm-8 d-flex flex-column align-items-start ps-5">
+                <div class="d-flex flex-column gap-3">
+
+                    <button type="button" class="option-card-enrural abrir-ventana" data-url="{% url 'abrirUrl' 'Cómo crear tu empresa' 'https://www.fondoemprender.com/SitePages/FondoEmprenderConvocatorias2020.aspx'|base64encode %}">
+                    Cómo crear tu empresa
+                    </button>
+
+                    <button type="button" class="option-card-enrural abrir-ventana"data-url="{% url 'abrirUrl' 'Cómo crecer con tu empresa' 'https://www.fondoemprender.com/SitePages/FondoEmprenderLineaCrecer.aspx'|base64encode %}">
+                    Cómo crecer con tu empresa
+                    </button>
+
+                    <button type="button"
+                            class="option-card-enrural abrir-ventana" data-url="{% url 'abrirUrl' 'SER (SENA Emprende Rural)' 'https://www.fondoemprender.com/SitePages/senaemprenderural.aspx'|base64encode %}">
+                    SER (SENA Emprende Rural)
+                    </button>
+
+                    <button type="button" class="option-card-enrural abrir-ventana" data-url="{% url 'abrirUrl' 'Conoce nuestras Oficinas' 'https://www.fondoemprender.com/SitePages/FondoEmprenderServicioalciudadano2020.aspx'|base64encode %}">
+                    Conoce nuestras Oficinas
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     {% include 'base/components/botonAtras.html' %}
+</section>
+
+
+<div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="iframeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="iframeModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -30,9 +76,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function abrirVentanaEmergente(url) {
-        var width = 800;
-        var height = 600;
-        var left = (screen.width - width) / 2;
+        var width = 1200;
+        var height = 800;
+        var left = (screen.width / 2) + ((screen.width / 2 - width) / 2);
         var top = (screen.height - height) / 2;
         window.open(url, 'ventana_emergente', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
     }
@@ -40,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
         
-    let tiempoInactividad = 30000; 
+    let tiempoInactividad = 300000; 
     let temporizadorInactivo;
 
     function reiniciarTemporizador() {
@@ -49,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function redirigirAlIndex() {
-        window.location.href = "{% url 'index' %}";
+        window.location.href = "{% url 'cerrarSesion' %}";
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -58,6 +104,21 @@ document.addEventListener("DOMContentLoaded", function() {
         document.addEventListener("keydown", reiniciarTemporizador);
         document.addEventListener("click", reiniciarTemporizador);
     });
-</script>
+
+    
+    const iframeModal = document.getElementById('iframeModal')
+        if (iframeModal) {
+        iframeModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            const url = button.getAttribute('data-bs-whatever')
+            const btnText = button.innerText;
+            const modalTitle = iframeModal.querySelector('.modal-title')
+            const modalBodyInput = iframeModal.querySelector('.modal-body iframe')
+
+            modalTitle.textContent = `${btnText}`
+            modalBodyInput.src = url
+        })
+    }
+</script> 
 {%endblock%}
 

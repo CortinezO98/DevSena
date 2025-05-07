@@ -5,20 +5,60 @@
 
 body {
     font-family: 'WorkSans', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.text-1 {
+
+:root {
+    --principal-text-color: #013451; 
+}
+
+
+.wave-section {
+    height: 100vh; 
+    background: url("..img/fondo.png") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden; 
+}
+
+
+.option-card {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border-radius: 8px;               
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    transition: all 0.2s ease-in-out; 
     text-align: center;
-    margin-top: 15vh; 
-    transform: translateY(-50%); 
-    font-size: 3em;
-    color: #39a900 !important;
-    text-shadow: 2px 2px 2px grey !important; 
-    font-weight: 500;
+    padding: 20px;
+    cursor: pointer;
+    color: var(--principal-text-color); 
 }
 
-.logo {
-    height: 100px;
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.option-card img {
+    width: 50px; 
+    height: auto;
+    margin-bottom: 10px;
+}
+
+
+.option-card .title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: var(--principal-text-color);
+}
+
+
+.fa-3x {
+    font-size: 2rem !important;
+    color: #39a900; 
 }
 
 .btn-success {
@@ -39,156 +79,2047 @@ body {
     --bs-btn-disabled-border-color: #39a900;
 }
 
-.text-bg-success {
-    background-color: #39a900 !important;
-}
-
-.color-a {
-    color: #39a900 !important;
-}
-
-.card-link:hover {
-    transition: box-shadow 0.3s ease;
-    box-shadow: 3px 3px 8px grey !important; 
-}
-
-.card-link {
-    margin: 10px 0; 
-}
-.a-none {
-    color: inherit; 
-    text-decoration: none;
-}
-
-.card-link > .card-footer {
-    min-height: 65px !important;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center; 
+.btn-outline-danger {
+    --bs-btn-color: #dc3545;
+    --bs-btn-border-color: #dc3545;
+    --bs-btn-hover-bg: #dc3545;
+    --bs-btn-hover-border-color: #dc3545;
 }
 
 
-/* Estilos del footer */
 .footer-container {
     margin-top: 60px;
     position: fixed !important;
     bottom: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
 }
 
 .footer {
-    background-color: white!important; /* Color de fondo del footer */
-    color: #00324D!important; 
+    background-color: white !important;
+    color: #00324D !important;
 }
 
 .social-media {
-    background-color:  #39a900!important; /* Color de fondo del área de redes sociales */
-    padding: 1rem; 
-
+    background-color: #39a900 !important;
+    padding: 1rem;
 }
 
 .me-5 {
     display: flex;
     align-items: center;
-    color: white !important; 
+    color: white !important;
 }
+
 .social-icons {
     margin-left: auto;
 }
 
 .social-media a {
     text-decoration: none !important;
-}
-
-/* Estilos de los enlaces sociales */
-.social-media a {
-    color: #1c2331; 
-    margin-right: 0.75rem; 
-}
-
-/* Estilos de las secciones de enlaces */
-.links {
-    padding: 1rem; 
-}
-
-.links .fw-bold {
-    color: #00324D ; /* Color del texto en negrita */
-}
-
-/* Estilos de los enlaces */
-.links a {
-    color: #00324D !important; 
-    margin-bottom: 0.5rem; 
-}
-section.links {
-    font-size: 14px !important;
-}
-
-.d-inline-block {width: 60px; 
-    background-color: #1c2331!important;
+    color: #1c2331;
+    margin-right: 0.75rem;
 }
 
 .header-bar {
     background-color: #015dca;
 }
-
 .header-bar > .container > img {
     max-height: 20px;
 }
-
 .fixed-top {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; 
+    z-index: 1000;
 }
 
 
-/* Estilos de la sección de contacto */
-.contact {
-    padding: 1rem; 
+
+/* LENGUAJE.HTML */
+.header-banner {
+    position: relative;
 }
 
-.contact .fw-bold {
-    color: #7c4dff; 
+.logo-container {
+    position: absolute;
+    top: 20px;     
+    right: 20px;    
 }
 
-.contact p {
-    margin-bottom: 0.5rem; 
+.logo-sena-lenguaje {
+    max-width: 150px; 
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 80px;
+}
+
+.option-card-lenguaje {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c; 
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 350px; 
+    height: 80px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
-.list-group {
-    text-align: center;     
-}
-.list-group-item{
-    margin: 0 auto; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    white-space: nowrap;
+.option-card-lenguaje:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.footer-list-links > p > a {
-    text-decoration: none;
+.icono-telefono {
+    width: 30px;
+    height: auto;
 }
 
-.chatButton {
+
+.inicio-container {
+    position: relative;
+    bottom: 40px;
+    left: 40px;
+}
+
+
+.inicio-boton {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icono-circular {
+    width: 50px;
+    height: 50px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.icono-circular:hover {
+    background-color: #e0e0e0;
+}
+
+.icono-circular i {
+    color: #39a900 !important; 
+    font-size: 22px; 
+}
+
+
+h1.fw-bold {
+    color: #5a5b5a; 
+    position: relative;
+    top: -10px;
+}
+
+.inicio-texto {
+    background: linear-gradient(to right, #f8f8f8, white);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 12px 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.inicio-texto:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 768px) {
+    .logo-sena-lenguaje {
+    max-width: 80px;
+    top: 10px;
+    right: 20px;
+
+    }
+    .option-card-lenguaje {
+        font-size: 16px;
+        max-width: 250px;
+        height: 55px;
+    }
+    .inicio-texto {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+}
+
+/* FIN */
+
+
+
+/* Catencion */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.contact-section {
+    min-height: 100vh;
+    background: url("../img/operadora.jpeg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.contact-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3); 
+    z-index: 1;
+}
+
+.contact-section .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+
+.header-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+.header-banner h1{
+    position: absolute;
+    color: #5a5b5a;
+    font-size: 55px;
+    top: 40px;  
+    left: 100px; 
+    margin: 0;
+}
+
+.logo-container { 
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.logo-senaCatencion {
+    max-width: 120px;
+    height: auto;
+    position:absolute;
+    top: 10px;
+    right: -350px;
+}
+
+.option-card-contact {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 400px;
+    height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.option-card-contact:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 15px rgba(5, 5, 5, 0.2);
+}
+
+.icono-contacto {
+    width: 60px;
+    height: auto;
+}
+
+.inicio-container {
     position: fixed;
-    bottom: 0px; 
-    right: 0px; 
-    z-index: 12000;
-    overflow: hidden;
+    bottom: 40px;
+    left: 40px;
+    z-index: 1000;
+}
+.inicio-boton {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
-.chatButton > a > img {
-    height: 120px;
-    border-radius: 80px;
+.icono-circular {
+    width: 60px;
+    height: 60px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    transition: background-color 0.3s ease;
 }
 
-.webchatStartButtonContainer {
-    top: calc(90% - 70px) !important;
+.icono-circular i {
+    color: #39a900 !important;
+    font-size: 20px;
+}
+
+.icono-circular:hover {
+    background-color: #e0e0e0;
+}
+
+.inicio-texto {
+    background: linear-gradient(to right, #f8f8f8, white);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 12px 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inicio-texto:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 
+
+@media (max-width: 992px) {
+    .contact-section .container {
+        padding: 15px;
+        max-width: 1000px;
+    }
+    .header-banner {
+        padding: 15px;
+    }
+    .header-banner h1{
+        font-size: 30px;
+        top: 10px;
+        left: 10px;
+    }
+    /* Ajusta el tamaño del logo si es necesario */
+    .logo-senaCatencion {
+        max-width: 60px;
+        right: -10px;
+    }
+    .option-card-contact {
+        font-size: 20px;
+        max-width: 350px;
+        height: 70px;
+        padding: 0 15px;
+    }
+    .inicio-texto {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+}
+
+/* Pantallas pequeñas (≤768px) */
+@media (max-width: 768px) {
+    .contact-section {
+        background-size: cover;
+        background-position: center;
+    }
+    .contact-section .container {
+        padding: 10px;
+        max-width: 100%;
+    }
+    .header-banner {
+        padding: 10px;
+    }
+    .header-banner h1{
+        font-size: 30px;
+        top: 10px;
+        left: 10px;
+    }
+    .logo-senaCatencion {
+        max-width: 60px;
+        right: 30px; 
+    }
+    .option-card-contact {
+        font-size: 16px;
+        max-width: 250px;
+        height: 55px;
+        padding: 0 10px;
+    }
+    .inicio-texto {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+}
+
+/* Pantallas muy pequeñas (≤576px) */
+@media (max-width: 576px) {
+    .contact-section .container {
+        padding: 5px;
+    }
+    .header-banner {
+        padding: 5px;
+    }
+    .header-banner h1{
+        font-size: 30px;
+    }
+    .logo-senaCatencion {
+        max-width: 60px;
+        right: 50px; 
+    }
+    .option-card-contact {
+        font-size: 14px;
+        max-width: 220px;
+        height: 80px;
+        padding: 0 8px;
+    }
+    .inicio-texto {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}
+/* FIN */
+
+/* INSCRIBETE */
+
+.inscribete-section {
+    min-height: 100vh;
+    background: url("../img/inscribete.jpeg") no-repeat right center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-inscribete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-inscribete h1 {
+    position: absolute;
+    top: 100px;  
+    left: 300px; 
+    margin: 0; 
+    font-size: 55px;
+}
+
+
+.logo-sofiaplus {
+    max-width: 200px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 50px;
+}
+
+.option-card-inscribete {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100%;
+    min-width: 300px;
+    max-width: 500px;
+    height: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el texto */
+    padding: 10px;
+    text-align: center;
+}
+
+.option-card-inscribete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Breakpoint: Pantallas medianas (≤992px) */
+@media (max-width: 992px) {
+    .header-inscribete h1 {
+        font-size: 40px;
+        top: 15px;
+        left: 15px;
+    }
+    .logo-sofiaplus {
+        max-width: 180px;
+        top: 15px;
+        right: 30px;
+    }
+    .option-card-inscribete {
+        font-size: 18px;
+        max-width: 350px;
+        height: 90px;
+        padding: 15px 20px;
+    }
+}
+
+/* Breakpoint: Pantallas pequeñas (≤768px) */
+@media (max-width: 768px) {
+    .inscribete-section {
+        background: url("../img/inscribete.jpg") no-repeat center center;
+        background-size: cover;
+    }
+    .header-inscribete h1 {
+        font-size: 30px;
+        top: 10px;
+        left: 10px;
+    }
+    .logo-sofiaplus {
+        max-width: 120px;
+        top: 10px;
+        right: 20px;
+    }
+    .option-card-inscribete {
+        font-size: 16px;
+        max-width: 300px;
+        height: 80px;
+        padding: 10px 15px;
+    }
+}
+
+/* Breakpoint: Pantallas muy pequeñas (≤576px) */
+@media (max-width: 576px) {
+    .header-inscribete h1 {
+        font-size: 24px;
+        top: 5px;
+        left: 5px;
+    }
+    .logo-sofiaplus {
+        max-width: 100px;
+        top: 5px;
+        right: 10px;
+    }
+    .option-card-inscribete {
+        font-size: 14px;
+        max-width: 260px;
+        height: 70px;
+        padding: 8px 10px;
+    }
+}
+
+/* FIN INSCRIBETE */
+
+
+/* CERCOM */
+
+.competencias-section {
+    min-height: 100vh;
+    background: url("../img/cercom.jpeg") ;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-competencias {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-competencias h1{
+    position: absolute;
+    color: #5a5b5a;
+    font-size: 50px;
+    top: 100px;  
+    left: 250px; 
+    margin: 0;
+}
+
+.titulo-competencias {
+    color: #5a5b5a;
+}
+
+.option-card-competencias {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c;
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 400px;
+    height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.option-card-competencias:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+}
+
+
+
+@media (min-width: 1800px) {
+    .header-competencias h1 {
+        font-size: 60px;
+
+    }
+    .option-card-competencias {
+        font-size: 26px;
+        max-width: 500px;
+        height: 100px;
+        padding: 20px 30px;
+    }
+}
+
+@media (max-width: 1366px) { /* Laptops HD (1366x768) */
+    .competencias-section {
+        background-size: 80% 100%;
+    }
+    .header-competencias h1 {
+        font-size: 42px;
+        top: 40px;  
+        left: 0px; 
+    }
+    .option-card-competencias {
+        font-size: 20px;
+        max-width: 350px;
+        height: 75px;
+    }
+}
+
+@media (max-width: 1600px) { /* Laptops Full HD (1920x1080) */
+    .competencias-section {
+        background-size: 85% 100%;
+    }
+    .header-competencias h1 {
+        font-size: 45px;
+        top: 40px;  
+        left: 0px;
+    }
+    .option-card-competencias {
+        font-size: 22px;
+        max-width: 380px;
+        height: 85px;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .competencias-section {
+        background: url("../img/cercom.jpg") no-repeat right center;
+        background-size: cover
+    }
+    .header-competencias h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+    .option-card-competencias {
+        font-size: 18px;
+        max-width: 350px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .competencias-section {
+        background: url("../img/cercom.jpg") no-repeat right center;
+        background-size: cover;
+    }
+    .header-competencias h1 {
+        font-size: 30px;
+        top: 20px;
+        left: 10px;
+    }
+    .option-card-competencias {
+        font-size: 16px;
+        padding: 10px 15px;
+        max-width: 300px;
+        height: 60px;
+    }
+}
+/* FIN */
+
+
+/* BIENESTAR */
+
+.bienestar-section {
+    min-height: 100vh;
+    background: url("../img/bienestar.jpeg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-bienestar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-bienestar h1{
+    position: absolute;
+    color: #5a5b5a;
+    font-size: 50px;
+    top: 40px;  
+    left: 150px; 
+    margin: 0;
+}
+
+.logo-sofiaBienestar {
+    max-width: 120px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 50px;
+}
+
+
+.botones-container {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    gap: 80px; 
+    width: 100%;
+    flex-wrap: wrap; 
+}
+
+.option-card-bienestar {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: 2px solid rgba(255, 255, 255, 0.8); 
+    border-radius: 12px;
+    box-shadow: 4px 4px 15px rgba(255, 255, 255, 0.5), 
+                2px 2px 10px rgba(0, 0, 0, 0.1); 
+    color: #002b5c;
+    font-size: 22px;
+    font-weight: bold;
+    width: 400px; 
+    height: 100px; 
+    padding: 50px;  
+    text-align: center; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin: 30px 60px; 
+}
+
+.option-card-bienestar:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 20px rgba(255, 255, 255, 0.8), 
+                4px 4px 15px rgba(0,0,0,0.2);
+}
+
+
+
+@media (max-width: 992px) {
+
+    .header-bienestar h1 {
+        font-size: 40px;
+        top: 30px;
+        left: 15px;
+    }
+
+    .logo-sofiaBienestar {
+        top: 15px;
+        right: 40px;
+    }
+    .botones-container {
+        margin-top: 250px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .header-bienestar h1 {
+        font-size: 30px;
+        top: 20px;
+        left: 10px;
+    }
+    .logo-sofiaBienestar {
+        max-width: 90px;
+        top: 10px;
+        right: 20px;
+    }
+    .option-card-bienestar {
+        font-size: 16px;
+        padding: 10px 15px;
+        min-width: 150px;
+    }
+    .botones-container {
+        flex-direction: column; 
+        gap: 15px; 
+        margin-top: 80px; 
+    }
+}
+/* FIN */
+
+
+/* EGRESADOS */
+
+.egresados-section {
+    min-height: 100vh;
+    background: url("../img/egresados_bg.jpeg") no-repeat right center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-egresados {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-egresados h1{
+    color: #5a5b5a;
+    font-size: 50px;
+    top: 20px;  
+    left: -150px; 
+    margin: 0;
+}
+.logo-egresados {
+    max-width: 250px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.option-card-egresados {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: none; 
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 400px;
+    height: 100px;
+}
+
+.option-card-egresados:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255,255,255,0.8), 4px 4px 15px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 992px) {
+    .header-egresados h1 {
+        font-size: 40px;
+        top: 15px;
+        left: 15px;
+    }
+    .logo-egresados {
+        max-width: 220px;
+        top: 15px;
+        right: 15px;
+    }
+    .option-card-egresados {
+        font-size: 18px;
+        padding: 18px 10px;
+        width: 320px;
+        height: 95px;
+    }
+}
+
+/* Breakpoint: Pantallas pequeñas (≤768px) */
+@media (max-width: 768px) {
+    .egresados-section {
+        background: url("../img/egresados_bg.jpg") no-repeat center center;
+        background-size: cover;
+        align-items: center;
+    }
+    .header-egresados h1 {
+        font-size: 30px;
+        top: 10px;
+        left: 10px;
+    }
+    .logo-egresados {
+        max-width: 150px;
+        top: 10px;
+        right: 10px;
+    }
+    .option-card-egresados {
+        font-size: 16px;
+        padding: 10px 15px;
+        width: 220px;
+        height: 90px;
+    }
+}
+
+/* Breakpoint: Pantallas extra pequeñas (≤576px) */
+@media (max-width: 576px) {
+    .header-egresados h1 {
+        font-size: 24px;
+        top: 5px;
+        left: 5px;
+    }
+    .logo-egresados {
+        max-width: 120px;
+        top: 5px;
+        right: 5px;
+    }
+    .option-card-egresados {
+        font-size: 14px;
+        padding: 8px 10px;
+        width: 200px;
+        height: 80px;
+    }
+}
+/* FIN */
+
+/*  ENRURAL/FONDO EMPRENDER */
+
+.enrural-section {
+    min-height: 100vh;
+    background: url("../img/enrural.jpg") no-repeat right center;
+    background-size: 60% 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+    padding-left: 5%;
+}
+
+.header-enrural {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.logo-enrural {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 450px; 
+    height: auto;
+    margin: 0;
+}
+
+
+.option-card-enrural {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: 2px solid rgba(255, 255, 255, 0.8); 
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5), 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 400px;   
+    height: 100px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-card-enrural:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255,255,255,0.8), 4px 4px 15px rgba(0,0,0,0.2);
+}
+
+
+@media (max-width: 992px) {
+    .enrural-section {
+        background-size: 80% 100%;
+        padding-left: 3%;
+    }
+    .logo-enrural {
+        max-width: 350px;
+        top: 15px;
+        left: 15px;
+    }
+    .option-card-enrural {
+        font-size: 17px;
+        padding: 18px 10px;
+        width: 320px;
+        height: 95px;
+    }
+}
+
+/* Pantallas pequeñas (≤768px) */
+@media (max-width: 768px) {
+    .enrural-section {
+        background: url("../img/enrural.jpg") no-repeat center center;
+        background-size: cover;
+        padding-left: 5%;
+    }
+    .logo-enrural {
+        max-width: 200px;
+        top: 10px;
+        left: 10px;
+    }
+    .option-card-enrural {
+        font-size: 16px;
+        padding: 10px 15px;
+        width: 220px;
+        height: 80px;
+    }
+}
+
+/* Pantallas extra pequeñas (≤576px) */
+@media (max-width: 576px) {
+    .enrural-section {
+        padding-left: 5%;
+        background-size: cover;
+    }
+    .logo-enrural {
+        max-width: 150px;
+        top: 5px;
+        left: 5px;
+    }
+    .option-card-enrural {
+        font-size: 14px;
+        padding: 8px 10px;
+        width: 180px;
+        height: 70px;
+    }
+}
+/* FIN ENRURAL/FONDO EMPRENDER */
+
+
+/* AGENCIA EMPLEO */
+.ape-section {
+    min-height: 100vh;
+    background: url("../img/ape_bg.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-ape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.logo-ape {
+    max-width: 250px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 0px;
+}
+
+.option-card-ape {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: 2px solid rgba(255, 255, 255, 0.8);  
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5), 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 450px;   
+    height: 100px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-card-ape:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255,255,255,0.8), 4px 4px 15px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .logo-ape {
+        max-width: 150px;
+    }
+    .option-card-ape {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
+
+/* FIN AGENCIA EMPLEO */
+
+
+/* FORMATOS */
+
+.formatos-section {
+    min-height: 100vh;
+    background: url("../img/formatos_bg.jpeg") no-repeat right center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-formatos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-formatos h1{
+    position: absolute;
+    color: #5a5b5a;
+    font-size: 50px;
+    top: 100px;  
+    left: 90px; 
+    margin: 0;
+}
+
+
+.logo-formatos {
+    max-width: 120px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 50px;
+}
+
+.subtitulo-formatos {
+    color: #002b5c;
+    margin-bottom: 1rem;
+}
+
+
+.option-card-formatos {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: none; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c;
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 550px;
+    height: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.option-card-formatos:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 992px) {
+    .header-formatos h1 {
+        font-size: 40px;
+        top: 30px;
+        left: -100px;
+    }
+    .logo-formatos {
+        max-width: 100px;
+        top: 15px;
+        right: 30px;
+    }
+    .option-card-formatos {
+        font-size: 18px;
+        padding: 15px 20px;
+        max-width: 350px;
+        height: 90px;
+    }
+}
+
+/* PEQUEÑAS (≤768px) */
+@media (max-width: 768px) {
+    .formatos-section {
+        background: url("../img/formatos_bg.jpg") no-repeat center center;
+        background-size: cover;
+    }
+    .header-formatos h1 {
+        font-size: 30px;
+        top: 20px;
+        left: 10px;
+    }
+    .logo-formatos {
+        max-width: 80px;
+        top: 10px;
+        right: 20px;
+    }
+    .option-card-formatos {
+        font-size: 16px;
+        padding: 10px 15px;
+        max-width: 300px;
+        height: 80px;
+    }
+}
+
+/* EXTRA PEQUEÑAS (≤576px) */
+@media (max-width: 576px) {
+    .header-formatos h1 {
+        font-size: 24px;
+        top: 15px;
+        left: 5px;
+    }
+    .logo-formatos {
+        max-width: 70px;
+        top: 5px;
+        right: 10px;
+    }
+    .option-card-formatos {
+        font-size: 14px;
+        padding: 8px 10px;
+        max-width: 260px;
+        height: 70px;
+    }
+}
+
+/* FIN FORMATOS */
+
+/* CAMPESENA */
+
+.campesena-section {
+    min-height: 100vh;
+    background: url("../img/campesena_bg.jpeg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-formatos {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.campe-person-img {
+    max-width: 300px;
+    height: auto;
+    position:absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.campesena-buttons {
+    position: absolute;
+    bottom: 130px;
+    right: 40px;
+    z-index: 3;
+}
+
+.option-card-campesena {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: 2px solid rgba(255, 255, 255, 0.8); 
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 320px; 
+}
+
+.option-card-campesena:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .campe-person-img {
+        max-width: 180px;
+    }
+    .option-card-campesena {
+        font-size: 16px;
+        padding: 12px 20px; 
+        width: 220px; 
+    }
+    .campesena-buttons {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .campe-person-img {
+        max-height: 150px;
+    }
+    .option-card-campesena {
+        font-size: 14px;
+        padding: 10px 15px;
+        width: 125px;
+    }
+}
+
+/* FIN CAMPESENA */
+
+
+/* EMPRESARIOS */
+
+.empresarios-section {
+    min-height: 100vh;
+    background: url("../img/empresario.jpeg");
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.header-empresarios {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-empresarios h1{
+    position: absolute;
+    color: #5a5b5a;
+    font-size: 60px;
+    top: 80px;  
+    left: 350px; 
+    margin: 0;
+}
+
+
+.logo-empresarios {
+    max-width: 120px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 50px;
+}
+
+.option-card-empresarios {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: 2px solid rgba(255, 255, 255, 0.8); 
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 420px;
+    height: 100px;
+}
+
+.option-card-empresarios:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255,255,255,0.8), 4px 4px 15px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+    .header-empresarios h1 {
+        font-size: 45px;
+        top: 35px;
+        left: -10px;
+    }
+    .logo-empresarios {
+        max-width: 110px;
+        top: 18px;
+        right: 40px;
+    }
+    .option-card-empresarios {
+        font-size: 17px;
+        padding: 18px 10px;
+        width: 330px;
+        height: 95px;
+    }
+}
+
+/* --- Pantallas pequeñas (≤768px y >576px) --- */
+@media (max-width: 768px) and (min-width: 577px) {
+    .empresarios-section {
+        background: url("../img/empresario.jpg") no-repeat center center;
+        background-size: cover;
+    }
+    .header-empresarios h1 {
+        font-size: 35px;
+        top: 25px;
+        left: 10px;
+    }
+    .logo-empresarios {
+        max-width: 90px;
+        top: 15px;
+        right: 20px;
+    }
+    .option-card-empresarios {
+        font-size: 16px;
+        padding: 15px 10px;
+        width: 280px;
+        height: 85px;
+    }
+}
+
+/* --- Pantallas extra pequeñas (≤576px) --- */
+@media (max-width: 576px) {
+    .empresarios-section {
+        background: url("../img/empresario.jpg") no-repeat center center;
+        background-size: cover;
+    }
+    .header-empresarios h1 {
+        font-size: 24px;
+        top: 15px;
+        left: 5px;
+    }
+    .logo-empresarios {
+        max-width: 70px;
+        top: 10px;
+        right: 10px;
+    }
+    .option-card-empresarios {
+        font-size: 14px;
+        padding: 10px 8px;
+        width: 100%;
+        max-width: 260px;
+        height: 70px;
+    }
+}
+
+
+/* FIN EMPRESARIOS */
+
+
+
+/* CERTIFICADOS */
+
+.certificados-section {
+    min-height: 100vh;
+    background: url("../img/certificados_bg.jpeg") no-repeat right center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-certificados {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-certificados h1{
+    position: absolute;
+    color: #5a5b5a;
+    font-size: 3rem;
+    top: 100px;  
+    left: 250px; 
+    margin: 0;
+}
+
+.logo-certificados {
+    max-width: 300px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 50px;
+}
+
+.shift-left-certi{
+    transform: translateX(-10%);
+}
+
+.option-card-certificados {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    color: #002b5c;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px 30px; 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 500px; 
+    height: 100px;
+    max-width: 500px;
+    min-height: 100px; 
+    margin: 0 auto;
+}
+
+.option-card-certificados:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+}
+
+.nota-certificados {
+    width: 100%;
+    max-width: 500px;           
+    text-align: justify;        
+    margin-top: 10px;           
+    font-size: 15px;
+    color: #002b5c;
+}
+
+@media (max-width: 992px) {
+    .header-certificados h1 {
+        font-size: 2.5rem;  
+        top: 80px;
+        left: 300px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+    .certificados-section {
+        background: url("../img/certificados_bg.jpg") no-repeat center center;
+        background-size: cover;
+    }
+    .header-certificados h1 {
+        font-size: 2rem;    
+        top: 60px;
+        left: 200px;
+    }
+    .logo-certificados {
+        max-width: 200px;
+        top: 15px;
+        right: 20px;
+    }
+    .option-card-certificados {
+        font-size: 16px;
+        padding: 15px 20px;
+        width: 320px;
+        height: 120px;
+    }
+    .nota-certificados {
+        max-width: 320px;
+        font-size: 14px;
+    }
+}
+
+/* --- Pantallas extra pequeñas (≤576px) --- */
+@media (max-width: 576px) {
+    .certificados-section {
+        background: url("../img/certificados_bg.jpg") no-repeat center center;
+        background-size: cover;
+    }
+    .header-certificados h1 {
+        font-size: 1.5rem; 
+        top: 40px;
+        left: 50px;
+    }
+    .logo-certificados {
+        max-width: 130px;
+        top: 10px;
+        right: 10px;
+    }
+    .option-card-certificados {
+        font-size: 14px;
+        padding: 10px 15px;
+        width: 280px;
+        height: 100px;
+    }
+    .nota-certificados {
+        max-width: 280px;
+        font-size: 13px;
+    }
+}
+
+/* FIN CERTIFICADOS */
+
+
+
+
+/* PQRSD */
+
+.pqr-section {
+    min-height: 100vh;
+    background: url("../img/pqr_person.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-pqr {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.titulo-pqr {
+    color: #5a5b5a;
+    margin: 0;
+    font-size: 55px;
+
+}
+
+.logo-pqr {
+    max-width: 120px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 50px;
+}
+
+
+.pqr-person-img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+
+.option-card-pqr {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: none; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c;
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 350px;
+    height: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.option-card-pqr:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+}
+
+
+@media (max-width: 768px) {
+    .pqr-section {
+        justify-content: flex-start;
+        padding-top: 80px;
+    }
+    .titulo-pqr {
+        font-size: 32px;
+        top: 10px;
+        left: 10px;
+    }
+    .logo-pqr {
+        max-width: 80px;
+        top: 10px;
+        right: 20px;
+    }
+    .option-card-pqr {
+        font-size: 16px;
+        padding: 15px 20px;
+        width: 220px;
+    }
+    .pqr-person-img {
+        max-height: 300px;
+    }
+}
+
+/* Breakpoint: Pantallas extra pequeñas (≤576px) */
+@media (max-width: 576px) {
+    .pqr-section {
+        justify-content: flex-start;
+        padding-top: 80px;
+    }
+    .header-pqr {
+        padding: 10px;
+    }
+    .titulo-pqr {
+        font-size: 24px;
+        top: 5px;
+        left: 5px;
+    }
+    .logo-pqr {
+        max-width: 70px;
+        top: 5px;
+        right: 10px;
+    }
+    .option-card-pqr {
+        font-size: 14px;
+        padding: 10px 15px;
+        width: 200px;
+    }
+    .pqr-person-img {
+        max-height: 250px;
+    }
+}
+
+/* FIN PQRSD */
+
+/* SERVICIOS */
+
+.servicios-section {
+    min-height: 200vh;
+    background: url("../img/servicios_bg.jpeg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-servicios {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.header-servicios h1{
+    color: #5a5b5a;
+    font-size: 55px;
+    top: 40px;  
+    left: -120px; 
+    margin: 0;
+}
+
+
+.logo-servicios {
+    max-width: 120px;
+    height: auto;
+    position:absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.subtitulo-servicios {
+    color: #002b5c;
+    margin-bottom: 1rem;
+}
+
+.servicios-img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.botones-container {
+    display: flex;
+    flex-direction: row;  
+    gap: 30px;  
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px; 
+    flex-wrap: wrap; 
+}
+.option-card-servicios {
+    background: linear-gradient(to right, #e4e5e4, #feffff);
+    border: 2px solid rgba(255, 255, 255, 0.8); 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #002b5c;
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 400px;
+    height: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px; 
+    margin: 100px; 
+
+} 
+
+.option-card-servicios:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .botones-container {
+        flex-direction: column;  
+        gap: 15px;
+    }
+    
+    .option-card-servicios {
+        width: 100%;  
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+    
+    .logo-servicios {
+        max-width: 80px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-servicios h1{
+        font-size: 30px;
+        top: 40px;  
+        left: 40px; 
+    }
+    .botones-container {
+        flex-direction: column;  
+        gap: 15px;
+    }
+    
+    .option-card-servicios {
+        width: 100%;  
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+    
+    .logo-servicios {
+        max-width: 70px;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+
+/* FIN SERVICIOS */
+
+
+/* KIOSCO INDEX */
+
+.kiosk-section {
+    min-height: 100vh;
+    background: url("../img/kiosco.jpg") no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.logo-sena-index {
+    max-width: 6vw;
+    height: auto;
+    position: absolute;
+    top: 3vh;
+    right: 5vw;
+
+}
+
+.titulo-grueso{
+    position: absolute;
+    font-size: 60px;
+    top: 80px;  
+    left: 100px; 
+    margin: 0;
+    font-family: "Aptos Black", "Segoe UI Black", "Helvetica Neue", 'Work Sans', sans-serif;
+    font-weight: 900;              
+    font-size: 3rem;               
+    text-transform: uppercase;     
+    color:  #3e3d3e !important;                   
+    letter-spacing: 0.05em;  
+}
+
+
+.logo-sena:hover {
+    transform: scale(1.05);
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.title-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: clamp(20px, 4vw, 40px);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-1 {
+    color: #002b5c;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    top: 40px;  
+    left: -200px; 
+    margin: 0;
+}
+
+.ut-logo {
+    max-width: 180px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.ut-logo:hover {
+    transform: scale(1.05);
+}
+
+.continue-container {
+    position: fixed;
+    bottom: 120px;
+    right: 130px;
+    z-index: 1000;
+}
+
+.btn-continue {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 8px;
+    background-color: #39a900;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-continue:hover {
+    background-color: #2e8a00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+
+
+/* Ajustes para móviles/tablets (máximo 768px) */
+@media (max-width: 768px) {
+    .title-container {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .ut-logo {
+        max-width: 100px;
+    }
+
+    .btn-continue {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+    }
+
+    .continue-container {
+        bottom: 3vh;
+        right: 3vw;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas (máximo 576px) */
+@media (max-width: 576px) {
+    .logo-sena-index {
+        max-width: 60px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .text-1 {
+        font-size: 1.4rem;
+    }
+
+    .title-container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .ut-logo {
+        max-width: 80px;
+    }
+
+    .btn-continue {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+    }
+
+    .continue-container {
+        bottom: 2vh;
+        right: 2vw;
+    }
+}

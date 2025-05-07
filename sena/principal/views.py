@@ -2,11 +2,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib import messages
+from django.db import transaction
 from datetime import datetime
 import base64
 from .models import *
-from .forms import RegistroFormulario
+from .forms import RegistroFormulario, RegistroUsuarioForm
 from .sms_utils import sms
+import subprocess
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 
 # Pagina principal
@@ -61,26 +65,57 @@ def PQR(request):
 def CATENCION(request):
     return render(request, "Catencion.html")
 
-
-
+@transaction.atomic
 def REGISTROUSER(request):
     if request.method == 'POST':
-        form = RegistroFormulario(request.POST)
+        form = RegistroUsuarioForm(request.POST)
         if form.is_valid():
-            registro = form.save(commit=False)
-            registro.ip_dispositivo = obtenerIpCliente(request)
-            registro.save()
-            messages.success(request, 'Registro exitoso.')
-            return redirect('panel') 
+            ipSede = ObtenerIpSede(request, request.POST["ip_sede"])
+            try:
+                with transaction.atomic():
+                    registro = form.save(commit=False)
+                    registro.fecha_registro = datetime.now()
+                    registro.ip_sede = ipSede
+                    registro.save()
+                    request.session['usuarioActual'] = {
+                        'id': registro.id,
+                        'nombre': '{} {}'.format(registro.nombres, registro.apellidos),
+                    }
+                messages.success(request, 'Registro exitoso.')
+            except Exception as ex:
+                print("Exception: ", ex)
+                messages.error(request, 'Ocurrió un error. Intente de nuevo.')
+            
+            response = redirect('/panel/')
+            if not request.COOKIES.get('sedeId') or request.COOKIES.get('sedeId') != ipSede.sede.id:
+                response.set_cookie('sedeId', ipSede.sede.id, max_age=315360000)  
+            return response
         else:
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f"Error en el campo {field}: {error}")
     else:
-        form = RegistroFormulario()
-        
-    return render(request, 'RegistroUser.html', {'form': form})
+        sedes = Sede.objects.all()
+        form = RegistroUsuarioForm()
+    
+    context = {
+        'form': form, 
+        'sedes': sedes,
+        'ipSede': ObtenerIpSede(request, request.COOKIES.get('sedeId'))
+    }
+    return render(request, 'RegistroUser.html', context)
 
+def ObtenerIpSede(request, sedeId):
+    ip_cliente = obtenerIpCliente(request)
+    ipSede = IpSede.objects.filter(direccion_ip=ip_cliente).first()
+    sede = Sede.objects.filter(id=sedeId).first()
+    if not ipSede and sede:
+        ipSede = IpSede(
+            direccion_ip=ip_cliente,
+            sede_id=sedeId
+        )
+        ipSede.save()
+    return ipSede
 
 def Califica(request):
     if request.method == 'POST':
@@ -97,12 +132,6 @@ def Califica(request):
         return redirect('califica')
     return render(request, "califica.html")
 
-# 
-# def AbrirUrl(request, accion, url):
-#     crearRegistroAccion(request, accion)
-#     return redirect(url)
-
-
 def AbrirUrl(request, accion, url):
     crearRegistroAccion(request, accion)
     return redirect(validarUrl(url))
@@ -115,11 +144,11 @@ def validarUrl(url) -> str:
         return url
 
 def crearRegistroAccion(request, accion:str):
-    registroAccion = RegistroAccion(
+    usuarioActual = request.session.get('usuarioActual', None)
+    registroAccion = RegistroAccionUsuario(
         accion = obtenerAccion(accion),
-        ip = obtenerIpCliente(request),
         fecha = datetime.now(),
-        usuario = request.user if request.user.is_authenticated else None
+        usuario_id = usuarioActual['id'] if usuarioActual else None
     )
     registroAccion.save()
     
@@ -136,9 +165,6 @@ def obtenerAccion(nombre:str) -> Accion:
         accion.save()
     return accion
         
-
-
-
 
 def SMS(request):
     if request.method == "POST":
@@ -158,18 +184,54 @@ def SMS(request):
         return render(request, "enviar_sms.html")
 
 
-
 def PanelView(request):
-    mensaje_bienvenida = None
-    if request.method == 'POST':
-        form = RegistroFormulario(request.POST)
-        if form.is_valid():
-            nombre = form.cleaned_data['nombres']
-            apellido = form.cleaned_data['apellidos']
-            mensaje_bienvenida = f"{nombre} {apellido}"
-            request.session['nombre_usuario'] = mensaje_bienvenida
+    usuarioActual = request.session.get('usuarioActual', None)
+    print('usuarioActual', usuarioActual)
+    if usuarioActual:
+        return render(request, "interface2.html")
     else:
-        form = RegistroFormulario()
-        mensaje_bienvenida = request.session.get('nombre_usuario', None)
+        return redirect('RegistroUser')
 
-    return render(request, "interface2.html", {'form': form, 'mensaje_bienvenida': mensaje_bienvenida})
+def CerrarSesion(request):
+    request.session['usuarioActual'] = None
+    return redirect('index')
+
+
+
+def lenguaje(request):
+    return render(request, 'lenguaje.html')
+
+def inscribete(request):
+    return render(request, 'inscribete.html')
+
+def egresados(request):
+    return render(request, 'egresados.html')
+
+
+def agenciaEmpleo(request):
+    return render(request, 'agenciaEmpleo.html')
+
+
+def formatos(request):
+    return render(request, 'formatos.html')
+
+
+def certificados(request):
+    return render(request, 'certificados.html')
+
+@csrf_exempt
+def escanear_cedula(request):
+    if request.method == 'POST':
+        try:
+            scanner_exe = r'C:\Program Files (x86)\Plustek\Plustek VTM300\VTM_Demo.exe'
+
+            subprocess.Popen([scanner_exe], shell=True)
+
+            return JsonResponse({'success': True})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Método no permitido'})
+
+
+def nosotros(request):
+    return render(request, 'nosotros.html')
