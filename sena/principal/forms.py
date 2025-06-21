@@ -67,6 +67,22 @@ class RegistroFormulario(forms.ModelForm):
         }
 
 class RegistroUsuarioForm(forms.ModelForm):
+    LENGUA_SENAS_CHOICES = (
+        ('False', 'NO'),
+        ('True', 'SÍ'),
+    )
+    desea_lengua_senas = forms.ChoiceField(
+        label="¿Deseas atención en lengua de señas?",
+        choices=LENGUA_SENAS_CHOICES,
+        widget=forms.Select(attrs={
+            'class': 'form-select',
+            # opcional: un ID específico si lo necesitas en tu JS
+            'id': 'id_desea_lengua_senas'
+        }),
+        initial='False',        # por defecto “No”
+        required=True,
+        error_messages={'required': 'Por favor selecciona una opción.'}
+    )
     class Meta:
         model = RegistroUsuario
         fields = [

@@ -70,6 +70,8 @@ def REGISTROUSER(request):
     if request.method == 'POST':
         form = RegistroUsuarioForm(request.POST)
         if form.is_valid():
+            desea_senas = form.cleaned_data['desea_lengua_senas'] == 'True'
+            request.session['sign_lang'] = desea_senas
             ipSede = ObtenerIpSede(request, request.POST["ip_sede"])
             try:
                 with transaction.atomic():
@@ -187,10 +189,13 @@ def SMS(request):
 def PanelView(request):
     usuarioActual = request.session.get('usuarioActual', None)
     print('usuarioActual', usuarioActual)
-    if usuarioActual:
-        return render(request, "interface2.html")
-    else:
+    if not usuarioActual:
         return redirect('RegistroUser')
+    
+    if request.session.get('sign_lang'):
+        return render(request, 'panel_senas.html')
+    
+    return render(request, 'interface2.html')
 
 def CerrarSesion(request):
     request.session['usuarioActual'] = None
