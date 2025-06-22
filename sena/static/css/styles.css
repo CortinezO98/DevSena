@@ -2123,3 +2123,27 @@ html, body {
         right: 2vw;
     }
 }
+
+#servicios-panel .option-card .option-icon {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+#servicios-panel .option-card {
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#servicios-panel .option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.15);
+}
+#servicios-panel .card-body.p-0 {
+    padding: 0 !important;
+}

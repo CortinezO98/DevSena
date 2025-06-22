@@ -3,210 +3,300 @@
 {% load mytags %}
 
 {% block main %}
-<div class="wave-section animate__animated animate__fadeIn">
+  <style>
+    /* Los videos ocupan todo el ancho de la card y mantienen la proporción */
+    #servicios-panel .option-card .option-icon {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Ajustes de la card para que no quede espacio extra */
+    #servicios-panel .option-card {
+      padding: 0;
+      overflow: hidden;
+      border: none;
+      border-radius: 0.75rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    #servicios-panel .option-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.15);
+    }
+
+    /* Elimina cualquier padding interno de card-body */
+    #servicios-panel .card-body.p-0 {
+      padding: 0 !important;
+    }
+  </style>
+
+  <div id="servicios-panel" class="wave-section animate__animated animate__fadeIn">
     <div class="container">
-        <div class="row">
-            <div class="col text-center my-4">
-                <img src="{% static 'img/logoPanel2.png' %}" alt="Banner" class="img-fluid ">
-            </div>
+
+      <div class="row">
+        <div class="col text-center my-4">
+          <img src="{% static 'img/logoPanel2.png' %}" alt="Banner" class="img-fluid">
         </div>
-        <div class="row">
-            <div class="col text-end mt-3">
-                {% if request.session.usuarioActual %}
-                <div class="mensaje-bienvenida">
-                    Bienvenido, <strong>{{ request.session.usuarioActual.nombre }}</strong>
-                    <a href="{% url 'cerrarSesion' %}" class="btn btn-outline-danger btn-sm ms-2">Cerrar sesión</a>
-                </div>
-                {% endif %}
+      </div>
+
+      <div class="row">
+        <div class="col text-end mt-3">
+          {% if request.session.usuarioActual %}
+            <div class="mensaje-bienvenida">
+              Bienvenido, <strong>{{ request.session.usuarioActual.nombre }}</strong>
+              <a href="{% url 'cerrarSesion' %}" class="btn btn-outline-danger btn-sm ms-2">
+                Cerrar sesión
+              </a>
             </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-3">
+        {% comment %} Cada tarjeta solo contiene el video, sin texto debajo {% endcomment %}
+
+        <!-- Videollamada lengua de señas -->
+        <div class="col">
+          <a href="{% url 'lenguaje' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/videollamada.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
         </div>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-3">
-            <!-- Videollamada lengua de señas -->
-            <div class="col">
-                <a href="{% url 'lenguaje' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/videollamada.gif' %}" alt="Videollamada" class="mb-2">
-                        <p class="title">Videollamada lengua de señas</p>
-                    </div>
-                </a>
+        <!-- Contáctate con nosotros -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Contáctate con nosotros' 'Catencion' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/contactanos.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
             </div>
-
-            <!-- Contáctate con nosotros -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Contáctate con nosotros' 'Catencion' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/contactanos.gif' %}" alt="Contáctanos" class="mb-2">
-                        <p class="title">Contáctate con nosotros</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Inscríbete a nuestra oferta -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Inscríbete a nuestra oferta' 'inscribete' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/oferta.gif' %}" alt="Oferta" class="mb-2">
-                        <p class="title">Inscríbete a nuestra oferta</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Certificado por competencia laboral -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Certificado por competencia laboral' 'cercom' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/competencialaboral.gif' %}" alt="Competencia Laboral" class="mb-2">
-                        <p class="title">Competencias Laborales</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Bienestar al aprendiz -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Bienestar al aprendiz' 'Bienestar' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/bienestar.gif' %}" alt="Bienestar" class="mb-2">
-                        <p class="title">Bienestar al aprendiz</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Egresados -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Egresados' 'egresados' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/egresados.gif' %}" alt="Egresados" class="mb-2">
-                        <p class="title">Egresados</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Fondo Emprender -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Fondo Emprender' 'enrural' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/fondoemprender.gif' %}" alt="Fondo Emprender" class="mb-2">
-                        <p class="title">Fondo Emprender</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Agencia Pública Empleo -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Agencia Pública Empleo' 'agenciaEmpleo' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/agenciapublicaempleo.gif' %}" alt="Agencia Pública de Empleo" class="mb-2">
-                        <p class="title">Agencia Pública Empleo</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Formatos aprendices -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Formatos aprendices' 'formatos' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/formatosaprendices.gif' %}" alt="Formatos Aprendices" class="mb-2">
-                        <p class="title">Formatos aprendices</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- CampeSENA -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'CampeSENA' 'CampeSENA' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/campesena_logo2.gif' %}" alt="CampeSENA" class="mb-2">
-                        <p class="title">CampeSENA</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Empresarios -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Empresarios' 'Empresarios' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/empresarios.gif' %}" alt="Empresarios" class="mb-2">
-                        <p class="title">Empresarios</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Descarga tus Certificados -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Descarga tus Certificados' 'certificados' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/certificados.gif' %}" alt="Descarga Certificados" class="mb-2">
-                        <p class="title">Descarga tus Certificados</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Radica tus PQRSD -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Radica tus PQRSD' 'Pqr' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/pqrsd.gif' %}" alt="PQRSD" class="mb-2">
-                        <p class="title">Radica tus PQRSD</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Otros servicios -->
-            <div class="col">
-                <a href="{% url 'abrirUrl' 'Otros servicios' 'Servicios' %}" class="text-decoration-none">
-                    <div class="option-card">
-                        <img src="{% static 'gifs/otrosservicios.gif' %}" alt="Otros Servicios" class="mb-2">
-                        <p class="title">Otros servicios</p>
-                    </div>
-                </a>
-            </div>
+          </a>
         </div>
+
+        <!-- Inscríbete a nuestra oferta -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Inscríbete a nuestra oferta' 'inscribete' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/oferta.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Competencias Laborales -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Certificado por competencia laboral' 'cercom' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/competencialaboral.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Bienestar al aprendiz -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Bienestar al aprendiz' 'Bienestar' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/bienestar.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Egresados -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Egresados' 'egresados' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/egresados.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Fondo Emprender -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Fondo Emprender' 'enrural' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/fondoemprender.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Agencia Pública Empleo -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Agencia Pública Empleo' 'agenciaEmpleo' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/agenciapublicaempleo.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Formatos aprendices -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Formatos aprendices' 'formatos' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/formatosaprendices.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- CampeSENA -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'CampeSENA' 'CampeSENA' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/campesena.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Empresarios -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Empresarios' 'Empresarios' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/empresarios.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Descarga tus Certificados -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Descarga tus Certificados' 'certificados' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/certificados.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Radica tus PQRSD -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Radica tus PQRSD' 'Pqr' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/pqrsd.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Otros servicios -->
+        <div class="col">
+          <a href="{% url 'abrirUrl' 'Otros servicios' 'Servicios' %}" class="text-decoration-none">
+            <div class="option-card card h-100 text-center">
+              <div class="card-body p-0">
+                <video class="option-icon"
+                       src="{% static 'videos/otrosservicios.mp4' %}"
+                       autoplay loop muted playsinline preload="auto">
+                  Tu navegador no soporta video.
+                </video>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<script>
+  {# Scripts para ventana emergente y tiempo de inactividad #}
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var enlaces = document.querySelectorAll('.abrir-ventana');
-        enlaces.forEach(function(enlace) {
-            enlace.addEventListener('click', function(event) {
-                event.preventDefault();
-                var url = this.getAttribute('data-url');
-                abrirVentanaEmergente(url);
-            });
+      var enlaces = document.querySelectorAll('.abrir-ventana');
+      enlaces.forEach(function(enlace) {
+        enlace.addEventListener('click', function(event) {
+          event.preventDefault();
+          abrirVentanaEmergente(this.getAttribute('data-url'));
         });
-        function abrirVentanaEmergente(url) {
-            var width = 1400;
-            var height = 1400;
-            var left = (screen.width - width) / 2;
-            var top = (screen.height - height) / 2;
-            window.open(
-                url,
-                'ventana_emergente',
-                'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top
-            );
-        }
+      });
+      function abrirVentanaEmergente(url) {
+        var w = 1400, h = 1400,
+            l = (screen.width - w)/2, t = (screen.height - h)/2;
+        window.open(url, 'ventana', `width=${w},height=${h},left=${l},top=${t}`);
+      }
     });
-</script>
+  </script>
 
-<script>
-    let tiempoInactividad = 600000; // 5 minutos
-    let temporizadorInactivo;
-
-    function reiniciarTemporizador() {
-        clearTimeout(temporizadorInactivo);
-        temporizadorInactivo = setTimeout(redirigirAlIndex, tiempoInactividad);
+  <script>
+    let tiempoInactividad = 600000, temporizador;
+    function reiniciar() {
+      clearTimeout(temporizador);
+      temporizador = setTimeout(() => window.location.href = "{% url 'cerrarSesion' %}", tiempoInactividad);
     }
-
-    function redirigirAlIndex() {
-        window.location.href = "{% url 'cerrarSesion' %}";
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        reiniciarTemporizador();
-        document.addEventListener("mousemove", reiniciarTemporizador);
-        document.addEventListener("keydown", reiniciarTemporizador);
-        document.addEventListener("click", reiniciarTemporizador);
+    document.addEventListener("DOMContentLoaded", () => {
+      reiniciar();
+      ['mousemove','keydown','click'].forEach(evt => document.addEventListener(evt, reiniciar));
     });
-</script>
+  </script>
 {% endblock %}
