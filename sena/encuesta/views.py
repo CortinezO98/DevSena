@@ -32,7 +32,6 @@ def Formulario(request, token):
         encuesta.satisfaccionServicioRecibido = int(request.POST["satisfaccionServicioRecibido"])
         encuesta.tiempoEsperaServicio = int(request.POST["tiempoEsperaServicio"])
         encuesta.recomendacionCanalAtencion = int(request.POST["recomendacionCanalAtencion"])
-        encuesta.solucionSolicitud = eval(request.POST["solucionSolicitud"])
         encuesta.fechaExpiracionLink = datetime.now()
         encuesta.save()
         return redirect('encuesta:Finalizada')
