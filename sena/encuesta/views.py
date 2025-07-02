@@ -59,7 +59,7 @@ def Formulario(request, token):
                 'canal_seleccionado': encuesta.seleccionarCanal,
             }
             
-            return render(request, 'encuesta/Formulario.html')
+            return render(request, 'encuesta/Formulario.html', context)
         else:
             return render(request, 'encuesta/expiroLink.html')
         
