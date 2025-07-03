@@ -33,7 +33,7 @@ def Formulario(request, token):
         'Facebook': '¿Qué tan fácil fue hacer uso de Facebook para contactarnos?',
         'Instagram': '¿Qué tan fácil fue hacer uso de Instagram para contactarnos?',
         'Twitter': '¿Qué tan fácil fue hacer uso de Twitter para contactarnos?',
-        'SMS': '¿Qué tan fácil fue hacer uso de SMS para contactarnos?',
+        'SMS': '¿Qué tan fácil fue hacer uso de SMS (mensajes de texto) para contactarnos?',
         'Chat_Agente': '¿Qué tan fácil fue hacer uso del chat con agente para contactarnos?',
     }
 
