@@ -29,12 +29,12 @@ def Formulario(request, token):
     encuesta = Encuesta.objects.filter(token=token).first()
     # Mapeo de canales a preguntas personalizadas
     preguntas_por_canal = {
-        'WhatsApp': '¿Qué tan fácil fue hacer uso de WhatsApp para contactarnos?',
-        'Facebook': '¿Qué tan fácil fue hacer uso de Facebook para contactarnos?',
-        'Instagram': '¿Qué tan fácil fue hacer uso de Instagram para contactarnos?',
-        'Twitter': '¿Qué tan fácil fue hacer uso de Twitter para contactarnos?',
-        'SMS': '¿Qué tan fácil fue hacer uso de SMS (mensajes de texto) para contactarnos?',
-        'Chat_Agente': '¿Qué tan fácil fue hacer uso del chat con agente para contactarnos?',
+        'WhatsApp': '¿Qué tan fácil fue hacer uso del canal de WhatsApp para contactarnos?',
+        'Facebook': '¿Qué tan fácil fue hacer uso del canal de Facebook para contactarnos?',
+        'Instagram': '¿Qué tan fácil fue hacer uso del canal de Instagram para contactarnos?',
+        'Twitter': '¿Qué tan fácil fue hacer uso del canal de Twitter para contactarnos?',
+        'SMS': '¿Qué tan fácil fue hacer uso del canal de SMS para contactarnos?',
+        'Chat_Agente': '¿Qué tan fácil fue hacer uso del canal de chat con agente para contactarnos?',
     }
 
     if request.method == 'POST':
