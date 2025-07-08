@@ -32,7 +32,7 @@ def Formulario(request, token):
         'WhatsApp': '¿Qué tan fácil fue hacer uso del canal de WhatsApp para contactarnos?',
         'Facebook': '¿Qué tan fácil fue hacer uso del canal de Facebook para contactarnos?',
         'Instagram': '¿Qué tan fácil fue hacer uso del canal de Instagram para contactarnos?',
-        'Twitter': '¿Qué tan fácil fue hacer uso del canal de Twitter para contactarnos?',
+        'Twitter': '¿Qué tan fácil fue hacer uso del canal de X para contactarnos?',
         'SMS': '¿Qué tan fácil fue hacer uso del canal de SMS para contactarnos?',
         'Chat_Agente': '¿Qué tan fácil fue hacer uso del canal de chat con agente para contactarnos?',
     }
