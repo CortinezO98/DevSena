@@ -58,9 +58,13 @@
         {% comment %} Cada tarjeta solo contiene el video, sin texto debajo {% endcomment %}
 
         <!-- Videollamada lengua de señas -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Videollamada lengua de señas</h6>
           <a href="{% url 'lenguaje' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
+              <div class="card-header bg-transparent border-0">
+                <h5 class="card-title mb-0">Videollamada en Lengua de Señas</h5>
+              </div>
               <div class="card-body p-0">
                 <video class="option-icon" src="{% static 'videos/videollamada.mp4' %}" autoplay loop muted playsinline preload="auto"> Tu navegador no soporta video.</video>
               </div>
@@ -69,7 +73,8 @@
         </div>
 
         <!-- Contáctate con nosotros -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Contáctate con nosotros</h6>	
           <a href="{% url 'abrirUrl' 'Contáctate con nosotros' 'Catencion' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -80,7 +85,8 @@
         </div>
 
         <!-- Inscríbete a nuestra oferta -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Inscríbete a nuestra oferta</h6>	
           <a href="{% url 'abrirUrl' 'Inscríbete a nuestra oferta' 'inscribete' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -91,7 +97,8 @@
         </div>
 
         <!-- Competencias Laborales -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Competencias Laborales</h6>
           <a href="{% url 'abrirUrl' 'Certificado por competencia laboral' 'cercom' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -102,7 +109,8 @@
         </div>
 
         <!-- Bienestar al aprendiz -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Bienestar al aprendiz</h6>
           <a href="{% url 'abrirUrl' 'Bienestar al aprendiz' 'Bienestar' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -113,7 +121,8 @@
         </div>
 
         <!-- Egresados -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Egresado</h6>
           <a href="{% url 'abrirUrl' 'Egresados' 'egresados' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -124,7 +133,8 @@
         </div>
 
         <!-- Fondo Emprender -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Fondo Emprender</h6>
           <a href="{% url 'abrirUrl' 'Fondo Emprender' 'enrural' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -135,7 +145,8 @@
         </div>
 
         <!-- Agencia Pública Empleo -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Agencia Pública Empleo</h6>
           <a href="{% url 'abrirUrl' 'Agencia Pública Empleo' 'agenciaEmpleo' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -146,7 +157,8 @@
         </div>
 
         <!-- Formatos aprendices -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Formato aprendiz</h6>
           <a href="{% url 'abrirUrl' 'Formatos aprendices' 'formatos' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -157,7 +169,8 @@
         </div>
 
         <!-- CampeSENA -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">CampeSENA</h6>
           <a href="{% url 'abrirUrl' 'CampeSENA' 'CampeSENA' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -168,7 +181,8 @@
         </div>
 
         <!-- Empresarios -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Empresarios</h6>
           <a href="{% url 'abrirUrl' 'Empresarios' 'Empresarios' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -179,7 +193,8 @@
         </div>
 
         <!-- Descarga tus Certificados -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Descarga tus Certificados</h6>
           <a href="{% url 'abrirUrl' 'Descarga tus Certificados' 'certificados' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -190,7 +205,8 @@
         </div>
 
         <!-- Radica tus PQRSD -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Radica tus PQRSD</h6>
           <a href="{% url 'abrirUrl' 'Radica tus PQRSD' 'Pqr' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
@@ -201,7 +217,8 @@
         </div>
 
         <!-- Otros servicios -->
-        <div class="col">
+        <div class="col p-3">
+          <h6 class="text-center mb-2">Otros servicios</h6>
           <a href="{% url 'abrirUrl' 'Otros servicios' 'Servicios' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
