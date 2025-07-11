@@ -4,6 +4,11 @@
 
 {% block main %}
   <style>
+    /*fix del height principal*/
+    .wave-section {
+      min-height: 100vh !important;
+    }
+
     /* Los videos ocupan todo el ancho de la card y mantienen la proporción */
     #servicios-panel .option-card .option-icon {
       width: 100%;
@@ -59,14 +64,14 @@
 
         <!-- Videollamada lengua de señas -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Videollamada lengua de señas</h6>
+          <h6 class="text-center mb-2 fw-bold">Videollamada lengua de señas</h6>
           <a href="{% url 'lenguaje' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <!-- <div class="card-header bg-transparent border-0">
                 <h5 class="card-title mb-0">Videollamada en Lengua de Señas</h5>
               </div> -->
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/videollamada.mp4' %}" autoplay loop muted playsinline preload="auto"> Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/videollamada.gif' %}" alt="Videollamada en lengua de señas">
               </div>
             </div>
           </a>
@@ -74,11 +79,11 @@
 
         <!-- Contáctate con nosotros -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Contáctate con nosotros</h6>	
+          <h6 class="text-center mb-2 fw-bold">Contáctate con nosotros</h6>	
           <a href="{% url 'abrirUrl' 'Contáctate con nosotros' 'Catencion' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/contactanos.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/contactanos.gif' %}" alt="Contactanos">
               </div>
             </div>
           </a>
@@ -86,11 +91,11 @@
 
         <!-- Inscríbete a nuestra oferta -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Inscríbete a nuestra oferta</h6>	
+          <h6 class="text-center mb-2 fw-bold">Inscríbete a nuestra oferta</h6>	
           <a href="{% url 'abrirUrl' 'Inscríbete a nuestra oferta' 'inscribete' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/oferta.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/oferta.gif' %}" alt="Oferta educativa">
               </div>
             </div>
           </a>
@@ -98,11 +103,11 @@
 
         <!-- Competencias Laborales -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Competencias Laborales</h6>
+          <h6 class="text-center mb-2 fw-bold">Competencias Laborales</h6>
           <a href="{% url 'abrirUrl' 'Certificado por competencia laboral' 'cercom' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/competencialaboral.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/competencialaboral.gif' %}" alt="Competencia laboral">
               </div>
             </div>
           </a>
@@ -110,11 +115,11 @@
 
         <!-- Bienestar al aprendiz -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Bienestar al aprendiz</h6>
+          <h6 class="text-center mb-2 fw-bold">Bienestar al aprendiz</h6>
           <a href="{% url 'abrirUrl' 'Bienestar al aprendiz' 'Bienestar' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/bienestar.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/bienestar.gif' %}" alt="Bienestar">
               </div>
             </div>
           </a>
@@ -122,11 +127,11 @@
 
         <!-- Egresados -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Egresado</h6>
+          <h6 class="text-center mb-2 fw-bold">Egresado</h6>
           <a href="{% url 'abrirUrl' 'Egresados' 'egresados' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/egresados.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/egresados.gif' %}" alt="Egresados">
               </div>
             </div>
           </a>
@@ -134,11 +139,11 @@
 
         <!-- Fondo Emprender -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Fondo Emprender</h6>
+          <h6 class="text-center mb-2 fw-bold">Fondo Emprender</h6>
           <a href="{% url 'abrirUrl' 'Fondo Emprender' 'enrural' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/fondoemprender.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/fondoemprender.gif' %}" alt="Fondo emprender">
               </div>
             </div>
           </a>
@@ -146,11 +151,11 @@
 
         <!-- Agencia Pública Empleo -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Agencia Pública Empleo</h6>
+          <h6 class="text-center mb-2 fw-bold">Agencia Pública Empleo</h6>
           <a href="{% url 'abrirUrl' 'Agencia Pública Empleo' 'agenciaEmpleo' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/agenciapublicaempleo.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/agenciapublicaempleo.gif' %}" alt="Agencia pública de empleo">
               </div>
             </div>
           </a>
@@ -158,11 +163,11 @@
 
         <!-- Formatos aprendices -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Formato aprendiz</h6>
+          <h6 class="text-center mb-2 fw-bold">Formato aprendiz</h6>
           <a href="{% url 'abrirUrl' 'Formatos aprendices' 'formatos' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/formatosaprendices.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/formatosaprendices.gif' %}" alt="Formatos aprendices">
               </div>
             </div>
           </a>
@@ -170,11 +175,11 @@
 
         <!-- CampeSENA -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">CampeSENA</h6>
+          <h6 class="text-center mb-2 fw-bold">CampeSENA</h6>
           <a href="{% url 'abrirUrl' 'CampeSENA' 'CampeSENA' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/campesena.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/campesena.gif' %}" alt="CampeSENA">
               </div>
             </div>
           </a>
@@ -182,11 +187,11 @@
 
         <!-- Empresarios -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Empresarios</h6>
+          <h6 class="text-center mb-2 fw-bold">Empresarios</h6>
           <a href="{% url 'abrirUrl' 'Empresarios' 'Empresarios' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/empresarios.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/empresarios.gif' %}" alt="Empresarios">
               </div>
             </div>
           </a>
@@ -194,11 +199,11 @@
 
         <!-- Descarga tus Certificados -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Descarga tus Certificados</h6>
+          <h6 class="text-center mb-2 fw-bold">Descarga tus Certificados</h6>
           <a href="{% url 'abrirUrl' 'Descarga tus Certificados' 'certificados' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/certificados.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/certificados.gif' %}" alt="Certificados">
               </div>
             </div>
           </a>
@@ -206,11 +211,11 @@
 
         <!-- Radica tus PQRSD -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Radica tus PQRSD</h6>
+          <h6 class="text-center mb-2 fw-bold">Radica tus PQRSD</h6>
           <a href="{% url 'abrirUrl' 'Radica tus PQRSD' 'Pqr' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/pqrsd.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/pqrsd.gif' %}" alt="PQRSD">
               </div>
             </div>
           </a>
@@ -218,11 +223,11 @@
 
         <!-- Otros servicios -->
         <div class="col p-3">
-          <h6 class="text-center mb-2">Otros servicios</h6>
+          <h6 class="text-center mb-2 fw-bold">Otros servicios</h6>
           <a href="{% url 'abrirUrl' 'Otros servicios' 'Servicios' %}" class="text-decoration-none">
             <div class="option-card card h-100 text-center">
               <div class="card-body p-0">
-                <video class="option-icon" src="{% static 'videos/otrosservicios.mp4' %}" autoplay loop muted playsinline preload="auto">Tu navegador no soporta video.</video>
+                <img class="option-icon" src="{% static 'images/otrosservicios.gif' %}" alt="Otros servicios">
               </div>
             </div>
           </a>
